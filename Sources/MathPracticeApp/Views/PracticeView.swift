@@ -91,8 +91,13 @@ struct PracticeView: View {
             .formStyle(.grouped)
             .navigationTitle("Practice")
             .toolbar {
-                Button("Skip") { showSkipPrompt = true }
-                    .disabled(model.currentProblem == nil)
+                ToolbarItemGroup(placement: .primaryAction) {
+                    Text(appVersionString)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    Button("Skip") { showSkipPrompt = true }
+                        .disabled(model.currentProblem == nil)
+                }
             }
             .alert("Skip this problem?", isPresented: $showSkipPrompt) {
                 TextField("Note (optional)", text: $skipNote)
@@ -108,6 +113,11 @@ struct PracticeView: View {
     /// Once the answer is out there is nothing left to gate, so the label says so.
     private var stepButtonTitle: String {
         model.revealState.answerShown ? "Show full solution" : "Show next step"
+    }
+
+    private var appVersionString: String {
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "—"
+        return "v\(version)"
     }
 
     private var solutionBlocks: [MathBlock] {
