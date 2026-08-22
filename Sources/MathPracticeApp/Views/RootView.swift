@@ -6,23 +6,56 @@ import SwiftUI
 
 struct RootView: View {
     @Environment(AppModel.self) private var model
+    @State private var selectedTab: RootTab = .practice
 
     var body: some View {
-        TabView {
-            PracticeView()
-                .tabItem { Label("Practice", systemImage: "function") }
-            DashboardView()
-                .tabItem { Label("Progress", systemImage: "chart.bar") }
-            SessionsView()
-                .tabItem { Label("Sessions", systemImage: "list.bullet.clipboard") }
-            KeyView()
-                .tabItem { Label("Key", systemImage: "star") }
-            WorksheetsView()
-                .tabItem { Label("Worksheets", systemImage: "doc.text") }
-            SettingsView()
-                .tabItem { Label("Settings", systemImage: "gearshape") }
+        ZStack {
+            // Hidden, zero-size buttons: the only way to attach `.keyboardShortcut` so it's
+            // live everywhere in this view regardless of which tab (and its own toolbar
+            // shortcuts) currently has focus.
+            Button("", action: { moveTab(by: -1) })
+                .keyboardShortcut("[", modifiers: [.command, .shift])
+                .frame(width: 0, height: 0)
+                .opacity(0)
+            Button("", action: { moveTab(by: 1) })
+                .keyboardShortcut("]", modifiers: [.command, .shift])
+                .frame(width: 0, height: 0)
+                .opacity(0)
+
+            TabView(selection: $selectedTab) {
+                PracticeView()
+                    .tabItem { Label("Practice", systemImage: "function") }
+                    .tag(RootTab.practice)
+                DashboardView()
+                    .tabItem { Label("Progress", systemImage: "chart.bar") }
+                    .tag(RootTab.progress)
+                SessionsView()
+                    .tabItem { Label("Sessions", systemImage: "list.bullet.clipboard") }
+                    .tag(RootTab.sessions)
+                KeyView()
+                    .tabItem { Label("Key", systemImage: "star") }
+                    .tag(RootTab.key)
+                WorksheetsView()
+                    .tabItem { Label("Worksheets", systemImage: "doc.text") }
+                    .tag(RootTab.worksheets)
+                SettingsView()
+                    .tabItem { Label("Settings", systemImage: "gearshape") }
+                    .tag(RootTab.settings)
+            }
         }
     }
+
+    private func moveTab(by delta: Int) {
+        let all = RootTab.allCases
+        guard let currentIndex = all.firstIndex(of: selectedTab) else { return }
+        let newIndex = (currentIndex + delta + all.count) % all.count
+        selectedTab = all[newIndex]
+    }
+}
+
+/// `Cmd-Shift-[` / `Cmd-Shift-]` (documented in Settings) cycle through these in order.
+private enum RootTab: CaseIterable {
+    case practice, progress, sessions, key, worksheets, settings
 }
 
 /// The topic / sub-type / difficulty selector, shared by practice and worksheet creation.

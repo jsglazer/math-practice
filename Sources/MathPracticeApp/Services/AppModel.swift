@@ -26,6 +26,8 @@ final class AppModel {
     let worksheetExporter: (any WorksheetExporting)?
     /// `nil` on iOS: there is no `SessionExporting` conformance there.
     let sessionExporter: (any SessionExporting)?
+    /// `nil` on iOS: there is no `KeyExporting` conformance there.
+    let keyExporter: (any KeyExporting)?
 
     // MARK: Derived state (in-memory cache of a pure fold — never persisted)
 
@@ -64,6 +66,7 @@ final class AppModel {
         self.deduplication = DeduplicationService(context: context)
         self.worksheetExporter = WorksheetExporterInstaller.make()
         self.sessionExporter = SessionExporterInstaller.make()
+        self.keyExporter = KeyExporterInstaller.make()
         // The session seed is the ONE place a non-deterministic value enters, and it enters
         // the shell — never core, which only ever sees the seed it is handed.
         self.generator = RandomSource(seed: sessionSeed)
@@ -194,13 +197,17 @@ final class AppModel {
 
     // MARK: - Key problems
 
+    /// Reads `keyProblems` — the in-memory, `@Observable`-tracked cache — rather than hitting
+    /// `keyProblemStore` directly. A SwiftData fetch isn't an observable property access, so a
+    /// view that only ever called into the store here would never be told to re-render when a
+    /// flag changed: the star would silently go stale until something unrelated forced a redraw.
     func isKey(_ problemID: String?) -> Bool {
         guard let problemID else { return false }
-        return keyProblemStore.isFlagged(problemID)
+        return keyProblems.contains { $0.problemID == problemID }
     }
 
     func keyNote(for problemID: String) -> String? {
-        keyProblemStore.record(for: problemID)?.note
+        keyProblems.first { $0.problemID == problemID }?.note
     }
 
     /// Flags `problem` if it isn't already Key, or un-flags it (and drops its note) if it is.
@@ -286,6 +293,16 @@ final class AppModel {
                 resolve: regenerate,
                 to: url
             )
+            lastError = nil
+        } catch {
+            lastError = error.localizedDescription
+        }
+    }
+
+    func exportKeyProblems(to url: URL) async {
+        guard let keyExporter else { return }
+        do {
+            try await keyExporter.export(keyProblems: keyProblems, registry: registry, to: url)
             lastError = nil
         } catch {
             lastError = error.localizedDescription

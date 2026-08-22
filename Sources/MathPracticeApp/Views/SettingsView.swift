@@ -71,6 +71,11 @@ struct SettingsView: View {
                     PackImportControl()
                 }
 
+                Section("Keyboard shortcuts") {
+                    LabeledContent("Previous tab", value: "⌘⇧[")
+                    LabeledContent("Next tab", value: "⌘⇧]")
+                }
+
                 Section("Sync health") {
                     LabeledContent("Events in log", value: "\(model.events.count)")
                     LabeledContent("Duplicates removed", value: "\(duplicatesRemoved)")

@@ -35,6 +35,18 @@ struct PracticeView: View {
                         .font(.caption)
                     } footer: {
                         VStack(alignment: .leading, spacing: 6) {
+                            if model.isKey(problem.problemID) {
+                                TextField("Note about this problem", text: $keyNoteDraft)
+                                    .font(.caption)
+                                    .padding(6)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 6)
+                                            .stroke(Color.gray.opacity(0.4))
+                                    )
+                                    .onSubmit {
+                                        model.setKeyNote(keyNoteDraft, for: problem.problemID)
+                                    }
+                            }
                             HStack {
                                 // Written down for troubleshooting: quoting this ID is enough
                                 // to pull this exact problem instance back up later.
@@ -53,16 +65,8 @@ struct PracticeView: View {
                                     )
                                 }
                                 .buttonStyle(.plain)
-                                .font(.caption)
+                                .font(.title3)
                                 .foregroundStyle(model.isKey(problem.problemID) ? .yellow : .secondary)
-                            }
-                            if model.isKey(problem.problemID) {
-                                TextField("Note about this problem", text: $keyNoteDraft)
-                                    .font(.caption)
-                                    .textFieldStyle(.roundedBorder)
-                                    .onSubmit {
-                                        model.setKeyNote(keyNoteDraft, for: problem.problemID)
-                                    }
                             }
                         }
                     }
@@ -126,10 +130,25 @@ struct PracticeView: View {
                 keyNoteDraft = problemID.flatMap(model.keyNote) ?? ""
             }
             .toolbar {
-                ToolbarItemGroup(placement: .primaryAction) {
-                    Text(appVersionString)
-                        .font(.subheadline)
-                        .foregroundStyle(.primary)
+                // The version label rides alongside Skip in the same primary-action slot, but
+                // must not pick up the automatic Liquid Glass pill background that toolbar
+                // controls get on macOS/iOS 26 — that's the "circle" around it. Only the pill
+                // itself is opted out; Skip keeps its normal button chrome.
+                if #available(macOS 26.0, iOS 26.0, *) {
+                    ToolbarItem(placement: .primaryAction) {
+                        Text(appVersionString)
+                            .font(.subheadline)
+                            .foregroundStyle(.primary)
+                    }
+                    .sharedBackgroundVisibility(.hidden)
+                } else {
+                    ToolbarItem(placement: .primaryAction) {
+                        Text(appVersionString)
+                            .font(.subheadline)
+                            .foregroundStyle(.primary)
+                    }
+                }
+                ToolbarItem(placement: .primaryAction) {
                     Button("Skip") { showSkipPrompt = true }
                         .disabled(model.currentProblem == nil)
                 }
@@ -143,7 +162,7 @@ struct PracticeView: View {
                 Button("Cancel", role: .cancel) { skipNote = "" }
             }
             .sheet(isPresented: $showMarkdownSheet) {
-                MarkdownSolutionView(markdown: markdownText)
+                MarkdownSolutionView(markdown: markdownText, blocks: markdownBlocks)
             }
         }
     }
@@ -181,6 +200,21 @@ struct PracticeView: View {
             lines.append("$\(step.latex)$")
         }
         return lines.joined(separator: "\n")
+    }
+
+    /// The same content as `markdownText`, as typeset blocks for the "View as Markdown"
+    /// preview — the problem itself is included here (unlike `solutionBlocks`, which only
+    /// covers what Reveal has shown) since the preview always has a problem to show.
+    private var markdownBlocks: [MathBlock] {
+        guard let problem = model.currentProblem else { return [] }
+        var blocks: [MathBlock] = [MathBlock(latex: problem.promptLatex, label: "Problem:")]
+        if let answer = model.revealedAnswer {
+            blocks.append(MathBlock(latex: answer, style: .inline, label: "Answer:"))
+        }
+        for (index, step) in model.revealedSteps.enumerated() {
+            blocks.append(MathBlock(latex: step.latex, style: .inline, label: "Step \(index + 1) · \(step.title)"))
+        }
+        return blocks
     }
 
     private var solutionBlocks: [MathBlock] {

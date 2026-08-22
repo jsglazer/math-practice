@@ -137,6 +137,37 @@ struct MathDocument: Hashable {
         )
     }
 
+    /// Every flagged Key problem, newest first (matching `AppModel.keyProblems`), with its
+    /// note printed alongside — the note is the whole point of flagging something Key.
+    static func keyProblems(_ records: [KeyProblemRecord], registry: TopicRegistry) -> MathDocument {
+        var blocks: [MathBlock] = []
+        for (index, record) in records.enumerated() {
+            guard let problem = record.problem else { continue }
+            let number = index + 1
+            let topicText = registry.displayName(for: problem.practiceKey)
+            let header = "\(topicText) · Level \(problem.difficulty) · ID \(record.problemID)"
+            blocks.append(MathBlock(latex: problem.promptLatex, label: "\(number). \(header)"))
+            if !record.note.isEmpty {
+                blocks.append(MathBlock(latex: latexText(record.note), style: .inline, label: "Note"))
+            }
+        }
+        return MathDocument(
+            title: "Key Problems",
+            subtitle: "\(records.count) problem\(records.count == 1 ? "" : "s")",
+            blocks: blocks
+        )
+    }
+
+    /// Wraps free-form user text (a Key note) as a KaTeX `\text{}` block, escaping the
+    /// handful of characters that would otherwise be read as LaTeX control sequences.
+    private static func latexText(_ raw: String) -> String {
+        let escaped = raw
+            .replacingOccurrences(of: "\\", with: "\\\\")
+            .replacingOccurrences(of: "{", with: "\\{")
+            .replacingOccurrences(of: "}", with: "\\}")
+        return "\\text{\(escaped)}"
+    }
+
     private static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
@@ -198,7 +229,7 @@ struct MathDocument: Hashable {
             h1 { font-size: 20px; margin: 0 0 2px; }
             .subtitle { margin: 0 0 20px; opacity: 0.6; font-size: 13px; }
             .block { margin: 0 0 14px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; }
-            .label { font-variant-numeric: tabular-nums; opacity: 0.6; min-width: 26px; }
+            .label { font-variant-numeric: tabular-nums; font-weight: 600; opacity: 0.85; min-width: 26px; }
             .math-scroll { flex: 1 1 auto; min-width: 0; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
             .math { font-size: 19px; display: inline-block; }
             .working { flex-basis: 100%; height: \(workingSpace)px; border-bottom: 1px solid \(rule); }

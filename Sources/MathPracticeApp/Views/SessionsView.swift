@@ -41,8 +41,9 @@ private struct SessionRow: View {
     let session: PracticeSession
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        HStack(spacing: 12) {
             Text(session.startedAt, style: .date) + Text(" · ") + Text(session.startedAt, style: .time)
+            Spacer()
             HStack(spacing: 12) {
                 Label("\(session.correct)/\(session.attempts) right", systemImage: "checkmark.circle")
                 if session.skips > 0 {
@@ -64,58 +65,7 @@ private struct SessionDetailView: View {
 
     var body: some View {
         List(session.entries) { entry in
-            VStack(alignment: .leading, spacing: 4) {
-                HStack {
-                    Text(entry.key.map { model.registry.displayName(for: $0) } ?? "—")
-                    Spacer()
-                    outcomeLabel(for: entry)
-                }
-                HStack(spacing: 8) {
-                    if let difficulty = entry.difficulty {
-                        Text("Level \(difficulty)")
-                    }
-                    if let problemID = entry.problemID {
-                        Text("ID \(problemID)").monospaced().textSelection(.enabled)
-                    }
-                    Spacer()
-                    Text(entry.createdAt, style: .time)
-                }
-                .font(.caption2)
-                .foregroundStyle(.secondary)
-
-                if let note = entry.skipNote {
-                    Text("“\(note)”")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .italic()
-                }
-
-                if let problemID = entry.problemID {
-                    HStack {
-                        Button {
-                            toggleKey(for: entry, problemID: problemID)
-                        } label: {
-                            Label(
-                                model.isKey(problemID) ? "Key" : "Mark as key",
-                                systemImage: model.isKey(problemID) ? "star.fill" : "star"
-                            )
-                        }
-                        .buttonStyle(.plain)
-                        .font(.caption2)
-                        .foregroundStyle(model.isKey(problemID) ? .yellow : .secondary)
-                        .disabled(!model.isKey(problemID) && model.regenerate(entry) == nil)
-                        Spacer()
-                    }
-                    if model.isKey(problemID) {
-                        TextField("Note about this problem", text: noteBinding(for: problemID))
-                            .font(.caption2)
-                            .textFieldStyle(.roundedBorder)
-                            .onSubmit {
-                                model.setKeyNote(noteDrafts[problemID] ?? "", for: problemID)
-                            }
-                    }
-                }
-            }
+            SessionEntryRow(entry: entry, noteDrafts: $noteDrafts)
         }
         .navigationTitle(Text(session.startedAt, style: .date))
         .toolbar {
@@ -146,11 +96,105 @@ private struct SessionDetailView: View {
             Task { await model.exportSession(session, detail: detail, to: url) }
         }
     }
+}
 
-    private func toggleKey(for entry: SessionEntry, problemID: String) {
+/// One session entry, laid out as a single line: topic · sub-topic, level, ID, the Key
+/// star, whether it was got right, the equation itself, and the time — plus a button that
+/// pops up the equation (only — no metadata) as copyable, typeset Markdown. The skip note
+/// and the Key note editor, being variable-height and only sometimes present, still render
+/// as an optional second line beneath the single-line row rather than crowding it.
+private struct SessionEntryRow: View {
+    @Environment(AppModel.self) private var model
+    let entry: SessionEntry
+    @Binding var noteDrafts: [String: String]
+
+    @State private var showMarkdownSheet = false
+
+    private var problem: GeneratedProblem? { model.regenerate(entry) }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack(spacing: 10) {
+                Text(entry.key.map { model.registry.displayName(for: $0) } ?? "—")
+                    .font(.caption)
+                    .lineLimit(1)
+
+                if let difficulty = entry.difficulty {
+                    Text("L\(difficulty)")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+
+                if let problemID = entry.problemID {
+                    Text(problemID)
+                        .font(.caption2.monospaced())
+                        .foregroundStyle(.secondary)
+                        .textSelection(.enabled)
+
+                    Button {
+                        toggleKey(problemID: problemID)
+                    } label: {
+                        Image(systemName: model.isKey(problemID) ? "star.fill" : "star")
+                    }
+                    .buttonStyle(.plain)
+                    .font(.title3)
+                    .foregroundStyle(model.isKey(problemID) ? .yellow : .secondary)
+                    .disabled(!model.isKey(problemID) && problem == nil)
+                }
+
+                outcomeLabel(for: entry)
+
+                if let problem {
+                    MathTextView(latex: problem.promptLatex, minHeight: 24)
+                        .frame(maxWidth: 180)
+                }
+
+                Spacer(minLength: 4)
+
+                Text(entry.createdAt, style: .time)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+
+                if problem != nil {
+                    Button {
+                        showMarkdownSheet = true
+                    } label: {
+                        Image(systemName: "plus.circle")
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+
+            if let note = entry.skipNote {
+                Text("“\(note)”")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .italic()
+            }
+
+            if let problemID = entry.problemID, model.isKey(problemID) {
+                TextField("Note about this problem", text: noteBinding(for: problemID))
+                    .font(.caption2)
+                    .textFieldStyle(.roundedBorder)
+                    .onSubmit {
+                        model.setKeyNote(noteDrafts[problemID] ?? "", for: problemID)
+                    }
+            }
+        }
+        .sheet(isPresented: $showMarkdownSheet) {
+            if let problem {
+                MarkdownSolutionView(
+                    markdown: "$\(problem.promptLatex)$",
+                    blocks: [MathBlock(latex: problem.promptLatex)]
+                )
+            }
+        }
+    }
+
+    private func toggleKey(problemID: String) {
         if model.isKey(problemID) {
             model.removeKey(problemID)
-        } else if let problem = model.regenerate(entry) {
+        } else if let problem {
             model.toggleKey(for: problem)
             noteDrafts[problemID] = ""
         }
@@ -167,14 +211,14 @@ private struct SessionDetailView: View {
         Group {
             switch entry.outcome {
             case .correct:
-                Label("Right", systemImage: "checkmark.circle").foregroundStyle(.green)
+                Label("Yes", systemImage: "checkmark.circle").foregroundStyle(.green)
             case .incorrect:
-                Label("Wrong", systemImage: "xmark.circle").foregroundStyle(.red)
+                Label("No", systemImage: "xmark.circle").foregroundStyle(.red)
             case nil:
-                Label("Skipped", systemImage: "arrow.uturn.forward").foregroundStyle(.secondary)
+                Label("Skip", systemImage: "arrow.uturn.forward").foregroundStyle(.secondary)
             }
         }
-        .font(.caption)
+        .font(.caption2)
         .labelStyle(.titleAndIcon)
     }
 }
