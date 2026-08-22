@@ -1,9 +1,9 @@
 //  QuotientRuleTemplates.swift
 //  Sub-type: quotient rule.
 
-private let quotientRuleStatement = "\\frac{d}{dx}\\left[\\frac{u}{v}\\right] = \\frac{u'v - uv'}{v^{2}}"
+private let quotientRuleStatement = "\\frac{d}{dx}\\left[\\frac{g}{h}\\right] = \\frac{g'h - gh'}{h^{2}}"
 
-/// Builds the unsimplified `\frac{u'v - uv'}{v^2}` an answer is checked against.
+/// Builds the unsimplified `\frac{g'h - gh'}{h^2}` an answer is checked against.
 private func quotientRuleForm(
     u: Expression,
     uPrime: Expression,
@@ -14,6 +14,21 @@ private func quotientRuleForm(
         .product([uPrime, v]),
         Expression.product([u, vPrime]).negated
     ]).simplified()
+    return Expression.ratio(numerator, over: .power(v, .integer(2)))
+}
+
+/// The same numerator, fully distributed and collected into one polynomial — the closed
+/// form a person expects as "the answer" rather than the un-expanded substitution.
+private func quotientRuleAnswer(
+    u: Expression,
+    uPrime: Expression,
+    v: Expression,
+    vPrime: Expression
+) -> Expression {
+    let numerator = Expression.sum([
+        .product([uPrime, v]),
+        Expression.product([u, vPrime]).negated
+    ]).expanded()
     return Expression.ratio(numerator, over: .power(v, .integer(2)))
 }
 
@@ -47,8 +62,8 @@ struct LinearQuotientTemplate: ProblemTemplate {
         let answer = Expression.ratio(.integer(a * d - b * c), over: .power(v, .integer(2)))
 
         let steps: [SolutionStep] = [
-            namedPartsStep(title: "Name the parts", first: ("u", u), second: ("v", v)),
-            namedPartsStep(title: "Differentiate each part", first: ("u'", uPrime), second: ("v'", vPrime)),
+            namedPartsStep(title: "Name the parts", first: ("g", u), second: ("h", v)),
+            namedPartsStep(title: "Differentiate each part", first: ("g'", uPrime), second: ("h'", vPrime)),
             .narrative("Apply the quotient rule", latex: quotientRuleStatement),
             SolutionStep(title: "Substitute", expression: unsimplified),
             SolutionStep(title: "Expand and collect the numerator", expression: answer)
@@ -88,13 +103,15 @@ struct PolynomialQuotientTemplate: ProblemTemplate {
         let vPrime = powerRuleDerivative(1, 2)
 
         let problem = Expression.ratio(u, over: v)
-        let answer = quotientRuleForm(u: u, uPrime: uPrime, v: v, vPrime: vPrime)
+        let unsimplified = quotientRuleForm(u: u, uPrime: uPrime, v: v, vPrime: vPrime)
+        let answer = quotientRuleAnswer(u: u, uPrime: uPrime, v: v, vPrime: vPrime)
 
         let steps: [SolutionStep] = [
-            namedPartsStep(title: "Name the parts", first: ("u", u), second: ("v", v)),
-            namedPartsStep(title: "Differentiate each part", first: ("u'", uPrime), second: ("v'", vPrime)),
+            namedPartsStep(title: "Name the parts", first: ("g", u), second: ("h", v)),
+            namedPartsStep(title: "Differentiate each part", first: ("g'", uPrime), second: ("h'", vPrime)),
             .narrative("Apply the quotient rule", latex: quotientRuleStatement),
-            SolutionStep(title: "Substitute", expression: answer)
+            SolutionStep(title: "Substitute", expression: unsimplified),
+            SolutionStep(title: "Expand and collect the numerator", expression: answer)
         ]
 
         return ProblemDraw(
@@ -134,8 +151,8 @@ struct TrigQuotientTemplate: ProblemTemplate {
         let answer = quotientRuleForm(u: u, uPrime: uPrime, v: v, vPrime: vPrime)
 
         let steps: [SolutionStep] = [
-            namedPartsStep(title: "Name the parts", first: ("u", u), second: ("v", v)),
-            namedPartsStep(title: "Differentiate each part", first: ("u'", uPrime), second: ("v'", vPrime)),
+            namedPartsStep(title: "Name the parts", first: ("g", u), second: ("h", v)),
+            namedPartsStep(title: "Differentiate each part", first: ("g'", uPrime), second: ("h'", vPrime)),
             .narrative("Apply the quotient rule", latex: quotientRuleStatement),
             SolutionStep(title: "Substitute", expression: answer)
         ]

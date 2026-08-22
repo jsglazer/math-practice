@@ -24,7 +24,7 @@ public enum GoldenSampling {
 /// The whole fixture file.
 public struct GoldenFixture: Hashable, Sendable, Codable {
     /// Bumped whenever the record shape changes, so a stale file fails loudly.
-    public static let currentSchemaVersion = 1
+    public static let currentSchemaVersion = 2
 
     public let schemaVersion: Int
     public let seeds: [UInt64]

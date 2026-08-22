@@ -14,6 +14,7 @@
 		19DF735858450784578009DF /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF576AFE82FA8DC7408F8B0 /* PracticeView.swift */; };
 		2609CAA541B946F91D8C1608 /* MathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99526EE8967DEB60093A0CA5 /* MathRenderer.swift */; };
 		2768A7A0A44F7F6529146C5D /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FEF2D607662D1D49633DB /* DashboardView.swift */; };
+		2FE940D0762C4B0EBD16D7C5 /* SessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DAE3CCF8AA5F1752F93043 /* SessionsView.swift */; };
 		350E645EB638521F62CF77BC /* EventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8D3E318B5AFFEB919106E7 /* EventStore.swift */; };
 		398FF4D8D9AF47412915994B /* katex in Resources */ = {isa = PBXBuildFile; fileRef = 6F54EA1ADCCEDAEA70F4AAF4 /* katex */; };
 		3A2A351B62607DF5EDE78542 /* LogModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0926473ECB900B36FC4204A0 /* LogModels.swift */; };
@@ -51,6 +52,7 @@
 		DBB5DDEB8F4BDF46791533A0 /* MathPracticeCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9FF61486D6172A12D642B9BB /* MathPracticeCore */; };
 		E2B15CE9F2B61EE813EFE774 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F07628E40D80964914AC273 /* RootView.swift */; };
 		E7405422667486724FE99EB2 /* DeviceIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A849205F092A26E2F2B0DB7 /* DeviceIdentity.swift */; };
+		E769612700389645A94E059C /* SessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DAE3CCF8AA5F1752F93043 /* SessionsView.swift */; };
 		EB395BA12F697FA7A58D6B83 /* WorksheetExporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328C1E49F6D984CE8B90609 /* WorksheetExporting.swift */; };
 		EC6430FE4D21E7612CF6F6D8 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18426DF1C3B7D1D57EDCA3E /* AppModel.swift */; };
 		ED024A6BF1FE39988DF03F2A /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C58EFA870EF8178CE19D27C /* PersistenceController.swift */; };
@@ -68,6 +70,7 @@
 		2BF091EF86454A9370E598B1 /* MathPractice-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "MathPractice-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F07628E40D80964914AC273 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		3271B69343A7DC6D8DBC064E /* MathTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathTextView.swift; sourceTree = "<group>"; };
+		33DAE3CCF8AA5F1752F93043 /* SessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsView.swift; sourceTree = "<group>"; };
 		37E0B541F812DB152AD94B0E /* DeduplicationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeduplicationService.swift; sourceTree = "<group>"; };
 		485A9117E9B925DA4C37B220 /* MacWorksheetExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacWorksheetExporter.swift; sourceTree = "<group>"; };
 		51B088F018B04D1BF3B597B0 /* WorksheetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksheetStore.swift; sourceTree = "<group>"; };
@@ -133,6 +136,7 @@
 				846FEF2D607662D1D49633DB /* DashboardView.swift */,
 				CCF576AFE82FA8DC7408F8B0 /* PracticeView.swift */,
 				2F07628E40D80964914AC273 /* RootView.swift */,
+				33DAE3CCF8AA5F1752F93043 /* SessionsView.swift */,
 				DC34061659930113212A557A /* SettingsView.swift */,
 				187488CDCAEBAA356DF5CFCD /* WorksheetsView.swift */,
 			);
@@ -367,6 +371,7 @@
 				BFBB091011A2026E34E4A5DF /* PersistenceController.swift in Sources */,
 				7A35E272AA366287C3F61D35 /* PracticeView.swift in Sources */,
 				E2B15CE9F2B61EE813EFE774 /* RootView.swift in Sources */,
+				2FE940D0762C4B0EBD16D7C5 /* SessionsView.swift in Sources */,
 				D2D67A7991CCC9868BBA8668 /* SettingsView.swift in Sources */,
 				94713DF1CB820961B997CB2E /* WorksheetExporterInstaller.swift in Sources */,
 				EB395BA12F697FA7A58D6B83 /* WorksheetExporting.swift in Sources */,
@@ -395,6 +400,7 @@
 				ED024A6BF1FE39988DF03F2A /* PersistenceController.swift in Sources */,
 				19DF735858450784578009DF /* PracticeView.swift in Sources */,
 				7F9C63F0C3346B1C075883B7 /* RootView.swift in Sources */,
+				E769612700389645A94E059C /* SessionsView.swift in Sources */,
 				765F0AC3C417897CBAFFCE97 /* SettingsView.swift in Sources */,
 				F56E462D0F4A971CA285D816 /* WorksheetExporterInstaller.swift in Sources */,
 				54FBEA365665A9CA1253065E /* WorksheetExporting.swift in Sources */,
@@ -461,7 +467,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -522,7 +528,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

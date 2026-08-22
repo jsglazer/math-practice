@@ -149,6 +149,62 @@ public extension Expression {
         return .product([.constant(coefficient)] + rebuilt)
     }
 
+    // MARK: - Expansion
+
+    /// Distributes products over sums (and non-negative-integer powers of sums), then
+    /// folds and collects the result. `simplified()` alone leaves a factored product like
+    /// `-40x^4(x^2+6)` untouched — this is for the templates that instead want the answer
+    /// stated as one collected polynomial, the way it is written after "expand and collect".
+    func expanded() -> Expression {
+        switch self {
+        case .constant, .symbol:
+            return self
+        case let .sum(terms):
+            return Expression.sum(terms.map { $0.expanded() }).simplified()
+        case let .product(factors):
+            return Expression.distribute(factors.map { $0.expanded() }).simplified()
+        case let .power(base, exponent):
+            let expandedBase = base.expanded()
+            if case let .constant(power) = exponent, power.isInteger, power.numerator >= 0,
+               case .sum = expandedBase {
+                let count = power.numerator
+                guard count > 0 else { return .one }
+                var result = expandedBase
+                for _ in 1..<count {
+                    result = Expression.distribute([result, expandedBase]).simplified()
+                }
+                return result
+            }
+            return Expression.power(expandedBase, exponent).simplified()
+        case let .function(name, argument):
+            return .function(name, argument.expanded())
+        }
+    }
+
+    /// Multiplies out every sum factor against every other factor:
+    /// `a * (b + c) * (d + e)` -> `abd + abe + acd + ace`.
+    private static func distribute(_ factors: [Expression]) -> Expression {
+        var terms: [[Expression]] = [[]]
+        for factor in factors {
+            let factorTerms: [Expression]
+            if case let .sum(inner) = factor {
+                factorTerms = inner
+            } else {
+                factorTerms = [factor]
+            }
+            var next: [[Expression]] = []
+            next.reserveCapacity(terms.count * factorTerms.count)
+            for partial in terms {
+                for term in factorTerms {
+                    next.append(partial + [term])
+                }
+            }
+            terms = next
+        }
+        let products = terms.map { Expression.product($0) }
+        return products.count == 1 ? products[0] : .sum(products)
+    }
+
     // MARK: - Power
 
     private static func simplifyPower(_ base: Expression, _ exponent: Expression) -> Expression {

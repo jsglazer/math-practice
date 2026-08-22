@@ -138,6 +138,7 @@ public enum WorksheetBuilder {
                 key: question.problem.practiceKey,
                 difficulty: question.problem.difficulty,
                 templateID: question.problem.templateID,
+                problemID: question.problem.problemID,
                 kind: .worksheetSelfReport(
                     outcome,
                     worksheetID: worksheet.id,

@@ -49,7 +49,7 @@ final class MathRenderer: NSObject {
     let webView: WKWebView
 
     private var state: State = .idle
-    private var continuation: CheckedContinuation<Void, any Error>?
+    private var continuation: CheckedContinuation<CGFloat, any Error>?
 
     init(bundle: Bundle = .main) {
         let configuration = WKWebViewConfiguration()
@@ -72,15 +72,18 @@ final class MathRenderer: NSObject {
         continuation?.resume(throwing: MathRenderError.cancelled)
     }
 
-    /// Loads `document` and returns only once KaTeX says every block is typeset.
+    /// Loads `document` and returns only once KaTeX says every block is typeset, with the
+    /// rendered content's height in points — so the on-screen view can size itself to the
+    /// content instead of clipping it to a guessed fixed height.
     ///
     /// THIS IS THE SINGLE RENDER-COMPLETION AWAIT POINT IN THE CODEBASE.
-    func render(_ document: MathDocument) async throws {
+    @discardableResult
+    func render(_ document: MathDocument) async throws -> CGFloat {
         finishPending(with: MathRenderError.cancelled)
         state = .rendering
         webView.loadHTMLString(document.html(), baseURL: KaTeXAssets.baseURL)
 
-        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, any Error>) in
+        return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<CGFloat, any Error>) in
             self.continuation = continuation
         }
     }
@@ -93,18 +96,18 @@ final class MathRenderer: NSObject {
         for document: MathDocument,
         configuration: WKPDFConfiguration = WKPDFConfiguration()
     ) async throws -> Data {
-        try await render(document)
+        _ = try await render(document)
         guard state == .rendered else { throw MathRenderError.notRendered }
         return try await webView.pdf(configuration: configuration)
     }
 
-    private func finishPending(with error: (any Error)?) {
+    private func finishPending(with error: (any Error)?, height: CGFloat = 0) {
         guard let pending = continuation else { return }
         continuation = nil
         if let error {
             pending.resume(throwing: error)
         } else {
-            pending.resume()
+            pending.resume(returning: height)
         }
     }
 }
@@ -133,7 +136,8 @@ extension MathRenderer: WKScriptMessageHandler {
             return
         }
         state = .rendered
-        finishPending(with: nil)
+        let height = (body?["height"] as? NSNumber)?.doubleValue ?? 0
+        finishPending(with: nil, height: CGFloat(height))
     }
 }
 

@@ -15,28 +15,45 @@ typealias PlatformViewRepresentable = NSViewRepresentable
 typealias PlatformViewRepresentable = UIViewRepresentable
 #endif
 
-/// Renders one LaTeX string, sized to the surrounding layout.
+/// Renders one or more LaTeX blocks, sized to whatever KaTeX actually typesets rather than
+/// a guessed fixed height — the guess is what used to clip tall fractions and multi-line
+/// steps. Passing several `blocks` renders them into one continuous WKWebView, which is
+/// what lets a person select and copy a whole worked solution in one drag instead of one
+/// step-box at a time.
 struct MathTextView: View {
-    let latex: String
-    var height: CGFloat = 62
+    let blocks: [MathBlock]
+    var minHeight: CGFloat = 44
 
     @Environment(\.colorScheme) private var colorScheme
+    @State private var measuredHeight: CGFloat?
+
+    init(latex: String, minHeight: CGFloat = 44) {
+        self.blocks = [MathBlock(latex: latex)]
+        self.minHeight = minHeight
+    }
+
+    init(blocks: [MathBlock], minHeight: CGFloat = 44) {
+        self.blocks = blocks
+        self.minHeight = minHeight
+    }
 
     var body: some View {
         MathWebViewBridge(
-            document: MathDocument.expression(
-                latex,
+            document: MathDocument(
+                blocks: blocks,
                 colorScheme: colorScheme == .dark ? .dark : .light
-            )
+            ),
+            measuredHeight: $measuredHeight
         )
-        .frame(height: height)
-        .accessibilityLabel(Text(latex))
+        .frame(height: max(minHeight, measuredHeight ?? minHeight))
+        .accessibilityLabel(Text(blocks.map(\.latex).joined(separator: ", ")))
     }
 }
 
 /// The platform bridge. Kept as small as possible: create the renderer, hand it a document.
 private struct MathWebViewBridge: PlatformViewRepresentable {
     let document: MathDocument
+    let measuredHeight: Binding<CGFloat?>
 
     func makeCoordinator() -> Coordinator {
         Coordinator()
@@ -48,7 +65,7 @@ private struct MathWebViewBridge: PlatformViewRepresentable {
     }
 
     func updateNSView(_ view: WKWebView, context: Context) {
-        context.coordinator.show(document)
+        context.coordinator.show(document, heightBinding: measuredHeight)
     }
     #else
     func makeUIView(context: Context) -> WKWebView {
@@ -56,7 +73,7 @@ private struct MathWebViewBridge: PlatformViewRepresentable {
     }
 
     func updateUIView(_ view: WKWebView, context: Context) {
-        context.coordinator.show(document)
+        context.coordinator.show(document, heightBinding: measuredHeight)
     }
     #endif
 
@@ -66,14 +83,16 @@ private struct MathWebViewBridge: PlatformViewRepresentable {
         private var shown: MathDocument?
         private var task: Task<Void, Never>?
 
-        func show(_ document: MathDocument) {
+        func show(_ document: MathDocument, heightBinding: Binding<CGFloat?>) {
             guard document != shown else { return }
             shown = document
             task?.cancel()
             task = Task { [renderer] in
                 // On-screen rendering has nothing to gate on completion, so a failure here
                 // is cosmetic — the export path is the one that must not proceed early.
-                try? await renderer.render(document)
+                if let height = try? await renderer.render(document) {
+                    heightBinding.wrappedValue = height
+                }
             }
         }
     }

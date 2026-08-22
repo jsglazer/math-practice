@@ -31,6 +31,9 @@ public enum PracticeEventKind: Hashable, Sendable, Codable {
     case attempt(AttemptOutcome)
     /// A problem worked on a printed worksheet and self-reported afterwards.
     case worksheetSelfReport(AttemptOutcome, worksheetID: UUID, questionNumber: Int)
+    /// The user skipped a problem instead of working it, with an optional note about why —
+    /// e.g. "wrong topic today" — for later review.
+    case skipped(note: String?)
     /// The user pinned a `(topic, sub-type)` to a level from Settings.
     case manualLevelOverride(level: Int)
     /// The user changed the ladder thresholds. Applies to every key from this point forward.
@@ -41,6 +44,7 @@ public enum PracticeEventKind: Hashable, Sendable, Codable {
         switch self {
         case .attempt: return "attempt"
         case .worksheetSelfReport: return "worksheet-report"
+        case .skipped: return "skip"
         case .manualLevelOverride: return "level-override"
         case .ladderConfiguration: return "ladder-config"
         }
@@ -51,7 +55,7 @@ public enum PracticeEventKind: Hashable, Sendable, Codable {
         switch self {
         case let .attempt(outcome): return outcome
         case let .worksheetSelfReport(outcome, _, _): return outcome
-        case .manualLevelOverride, .ladderConfiguration: return nil
+        case .skipped, .manualLevelOverride, .ladderConfiguration: return nil
         }
     }
 }
@@ -71,6 +75,9 @@ public struct PracticeEvent: Hashable, Sendable, Codable, Identifiable {
     /// The difficulty the problem was posed at. `nil` for non-attempt events.
     public let difficulty: Int?
     public let templateID: TemplateID?
+    /// The exact problem instance this event is about — see `GeneratedProblem.problemID`.
+    /// `nil` for events with no problem, and for events written before this field existed.
+    public let problemID: String?
     public let kind: PracticeEventKind
 
     public init(
@@ -81,6 +88,7 @@ public struct PracticeEvent: Hashable, Sendable, Codable, Identifiable {
         key: PracticeKey?,
         difficulty: Int?,
         templateID: TemplateID?,
+        problemID: String? = nil,
         kind: PracticeEventKind
     ) {
         self.id = id
@@ -90,6 +98,7 @@ public struct PracticeEvent: Hashable, Sendable, Codable, Identifiable {
         self.key = key
         self.difficulty = difficulty
         self.templateID = templateID
+        self.problemID = problemID
         self.kind = kind
         self.dedupeKey = DedupeKey.event(kind: kind.tag, deviceID: deviceID, ordinal: ordinal)
     }
@@ -104,6 +113,7 @@ public struct PracticeEvent: Hashable, Sendable, Codable, Identifiable {
         key: PracticeKey?,
         difficulty: Int?,
         templateID: TemplateID?,
+        problemID: String? = nil,
         kind: PracticeEventKind
     ) {
         self.id = id
@@ -114,6 +124,7 @@ public struct PracticeEvent: Hashable, Sendable, Codable, Identifiable {
         self.key = key
         self.difficulty = difficulty
         self.templateID = templateID
+        self.problemID = problemID
         self.kind = kind
     }
 }

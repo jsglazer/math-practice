@@ -100,8 +100,8 @@ struct MathDocument: Hashable {
             return """
             <section class="block">
               \(label)
-              <span class="math" data-latex="\(Self.escape(block.latex))"
-                data-display="\(block.style == .display)"></span>
+              <span class="math-scroll"><span class="math" data-latex="\(Self.escape(block.latex))"
+                data-display="\(block.style == .display)"></span></span>
               \(space)
             </section>
             """
@@ -126,7 +126,8 @@ struct MathDocument: Hashable {
             .subtitle { margin: 0 0 20px; opacity: 0.6; font-size: 13px; }
             .block { margin: 0 0 14px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; }
             .label { font-variant-numeric: tabular-nums; opacity: 0.6; min-width: 26px; }
-            .math { font-size: 19px; }
+            .math-scroll { flex: 1 1 auto; min-width: 0; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+            .math { font-size: 19px; display: inline-block; }
             .working { flex-basis: 100%; height: \(workingSpace)px; border-bottom: 1px solid \(rule); }
             .katex-error { color: #c0392b; }
           </style>
@@ -170,7 +171,10 @@ struct MathDocument: Hashable {
         var ready = document.fonts ? document.fonts.ready : Promise.resolve();
         ready.then(function () {
           requestAnimationFrame(function () {
-            signal({ status: 'rendered', count: nodes.length, failures: failures });
+            // Measured after the fonts have swapped in, so the height matches what is
+            // actually on screen rather than the pre-KaTeX fallback layout.
+            var height = document.body.scrollHeight;
+            signal({ status: 'rendered', count: nodes.length, failures: failures, height: height });
           });
         });
       } catch (error) {

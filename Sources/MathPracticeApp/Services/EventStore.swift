@@ -49,7 +49,8 @@ final class EventStore {
         kind: PracticeEventKind,
         key: PracticeKey?,
         difficulty: Int?,
-        templateID: TemplateID?
+        templateID: TemplateID?,
+        problemID: String? = nil
     ) -> PracticeEvent {
         let event = PracticeEvent(
             id: UUID(),
@@ -59,6 +60,7 @@ final class EventStore {
             key: key,
             difficulty: difficulty,
             templateID: templateID,
+            problemID: problemID,
             kind: kind
         )
         append(event)
@@ -84,7 +86,19 @@ final class EventStore {
             kind: .attempt(outcome),
             key: problem.practiceKey,
             difficulty: problem.difficulty,
-            templateID: problem.templateID
+            templateID: problem.templateID,
+            problemID: problem.problemID
+        )
+    }
+
+    /// Records a skip, with an optional note the user typed for later review.
+    func recordSkip(problem: GeneratedProblem, note: String?) {
+        append(
+            kind: .skipped(note: note),
+            key: problem.practiceKey,
+            difficulty: problem.difficulty,
+            templateID: problem.templateID,
+            problemID: problem.problemID
         )
     }
 

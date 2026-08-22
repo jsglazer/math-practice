@@ -7,6 +7,8 @@ import SwiftUI
 
 struct PracticeView: View {
     @Environment(AppModel.self) private var model
+    @State private var showSkipPrompt = false
+    @State private var skipNote = ""
 
     var body: some View {
         NavigationStack {
@@ -20,7 +22,7 @@ struct PracticeView: View {
                         Text(problem.instruction)
                             .font(.caption)
                             .foregroundStyle(.secondary)
-                        MathTextView(latex: problem.promptLatex, height: 76)
+                        MathTextView(latex: problem.promptLatex, minHeight: 76)
                     } header: {
                         HStack {
                             Text("Problem")
@@ -29,6 +31,12 @@ struct PracticeView: View {
                             Text("· Level \(problem.difficulty)")
                         }
                         .font(.caption)
+                    } footer: {
+                        // Written down for troubleshooting: quoting this ID is enough to
+                        // pull this exact problem instance back up later.
+                        Text("ID \(problem.problemID)")
+                            .font(.caption2.monospaced())
+                            .foregroundStyle(.tertiary)
                     }
 
                     Section("Reveal") {
@@ -40,20 +48,11 @@ struct PracticeView: View {
                         }
                         .buttonStyle(.bordered)
 
-                        if let answer = model.revealedAnswer {
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text("Answer").font(.caption).foregroundStyle(.secondary)
-                                MathTextView(latex: answer)
-                            }
-                        }
-
-                        ForEach(Array(model.revealedSteps.enumerated()), id: \.offset) { index, step in
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text("Step \(index + 1) · \(step.title)")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                                MathTextView(latex: step.latex, height: 54)
-                            }
+                        // Answer and steps render together in one WKWebView, so a person can
+                        // select and copy the whole worked solution in one drag rather than
+                        // hunting through a separate box per step.
+                        if !solutionBlocks.isEmpty {
+                            MathTextView(blocks: solutionBlocks, minHeight: 60)
                         }
                     }
 
@@ -92,8 +91,16 @@ struct PracticeView: View {
             .formStyle(.grouped)
             .navigationTitle("Practice")
             .toolbar {
-                Button("Skip", action: model.nextProblem)
+                Button("Skip") { showSkipPrompt = true }
                     .disabled(model.currentProblem == nil)
+            }
+            .alert("Skip this problem?", isPresented: $showSkipPrompt) {
+                TextField("Note (optional)", text: $skipNote)
+                Button("Skip") {
+                    model.skip(note: skipNote.trimmingCharacters(in: .whitespacesAndNewlines))
+                    skipNote = ""
+                }
+                Button("Cancel", role: .cancel) { skipNote = "" }
             }
         }
     }
@@ -101,5 +108,16 @@ struct PracticeView: View {
     /// Once the answer is out there is nothing left to gate, so the label says so.
     private var stepButtonTitle: String {
         model.revealState.answerShown ? "Show full solution" : "Show next step"
+    }
+
+    private var solutionBlocks: [MathBlock] {
+        var blocks: [MathBlock] = []
+        if let answer = model.revealedAnswer {
+            blocks.append(MathBlock(latex: answer, label: "Answer"))
+        }
+        for (index, step) in model.revealedSteps.enumerated() {
+            blocks.append(MathBlock(latex: step.latex, label: "Step \(index + 1) · \(step.title)"))
+        }
+        return blocks
     }
 }

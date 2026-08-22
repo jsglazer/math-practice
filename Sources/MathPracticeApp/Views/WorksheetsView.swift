@@ -136,7 +136,7 @@ struct WorksheetReportView: View {
                             .pickerStyle(.segmented)
                             .frame(maxWidth: 200)
                         }
-                        MathTextView(latex: question.problem.promptLatex, height: 56)
+                        MathTextView(latex: question.problem.promptLatex, minHeight: 56)
                     }
                 }
             } header: {

@@ -88,6 +88,10 @@ final class AppModel {
         DashboardAggregator.aggregate(events: events, keys: practiceKeys, ladder: ladder)
     }
 
+    var sessions: [PracticeSession] {
+        SessionAggregator.sessions(from: events)
+    }
+
     var subTypesForSelectedTopic: [SubType] {
         guard let selectedTopic, let topic = registry.topic(selectedTopic) else { return [] }
         return topic.subTypes
@@ -157,6 +161,15 @@ final class AppModel {
     func record(_ outcome: AttemptOutcome) {
         guard let currentProblem else { return }
         eventStore.recordAttempt(outcome, problem: currentProblem)
+        reload()
+        nextProblem()
+    }
+
+    /// Logs a skip — with an optional note — and moves on without ever asking for an answer.
+    func skip(note: String?) {
+        guard let currentProblem else { return }
+        let trimmed = note?.trimmingCharacters(in: .whitespacesAndNewlines)
+        eventStore.recordSkip(problem: currentProblem, note: trimmed?.isEmpty == false ? trimmed : nil)
         reload()
         nextProblem()
     }

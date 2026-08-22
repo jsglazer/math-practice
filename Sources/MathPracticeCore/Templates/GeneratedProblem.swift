@@ -5,6 +5,10 @@
 /// regenerate every other field byte-for-byte, but all of it is stored anyway so a frozen
 /// worksheet stays readable even if a template is later revised.
 public struct GeneratedProblem: Hashable, Sendable, Codable {
+    /// A short, stable code for this exact problem instance — deterministic from
+    /// `(templateID, difficulty, seed)`, so troubleshooting can reference it without the
+    /// app ever having to persist a fresh identity for it. See `ProblemIdentifier`.
+    public let problemID: String
     public let templateID: TemplateID
     public let topicID: TopicID
     public let subTypeID: SubTypeID
@@ -20,6 +24,7 @@ public struct GeneratedProblem: Hashable, Sendable, Codable {
     public let verificationRule: VerificationRule
 
     public init(
+        problemID: String,
         templateID: TemplateID,
         topicID: TopicID,
         subTypeID: SubTypeID,
@@ -34,6 +39,7 @@ public struct GeneratedProblem: Hashable, Sendable, Codable {
         canonicalAnswer: String,
         verificationRule: VerificationRule
     ) {
+        self.problemID = problemID
         self.templateID = templateID
         self.topicID = topicID
         self.subTypeID = subTypeID
@@ -61,6 +67,7 @@ public extension ProblemTemplate {
         let clamped = min(max(difficulty, difficultyRange.lowerBound), difficultyRange.upperBound)
         let draw = draw(difficulty: clamped, using: &generator)
         return GeneratedProblem(
+            problemID: ProblemIdentifier.code(templateID: id, difficulty: difficulty, seed: seed),
             templateID: id,
             topicID: topicID,
             subTypeID: subTypeID,

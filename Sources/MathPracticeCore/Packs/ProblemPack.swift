@@ -81,8 +81,10 @@ public struct ValidatedPack: Hashable, Sendable {
     /// tell an imported problem from a template-generated one.
     public func problems(instructionFallback: String = "Differentiate with respect to x") -> [GeneratedProblem] {
         pack.problems.map { problem in
-            GeneratedProblem(
-                templateID: TemplateID("pack:\(pack.identifier):\(pack.version):\(problem.index)"),
+            let templateID = TemplateID("pack:\(pack.identifier):\(pack.version):\(problem.index)")
+            return GeneratedProblem(
+                problemID: ProblemIdentifier.code(templateID: templateID, difficulty: problem.difficulty, seed: 0),
+                templateID: templateID,
                 topicID: pack.topicID,
                 subTypeID: problem.subTypeID,
                 difficulty: problem.difficulty,

@@ -2,7 +2,7 @@
 //  Sub-type: product rule. Answers are left in the factored `u'v + uv'` shape a person
 //  would write on paper — expanding is arithmetic, not the skill being drilled.
 
-private let productRuleStatement = "\\frac{d}{dx}\\left[uv\\right] = u'v + uv'"
+private let productRuleStatement = "\\frac{d}{dx}\\left[gh\\right] = g'h + gh'"
 
 /// `(a x^n + b)(c x^m + d)`
 struct PolynomialProductTemplate: ProblemTemplate {
@@ -32,8 +32,8 @@ struct PolynomialProductTemplate: ProblemTemplate {
         ]).simplified()
 
         let steps: [SolutionStep] = [
-            namedPartsStep(title: "Name the factors", first: ("u", u), second: ("v", v)),
-            namedPartsStep(title: "Differentiate each factor", first: ("u'", uPrime), second: ("v'", vPrime)),
+            namedPartsStep(title: "Name the factors", first: ("g", u), second: ("h", v)),
+            namedPartsStep(title: "Differentiate each factor", first: ("g'", uPrime), second: ("h'", vPrime)),
             .narrative("Apply the product rule", latex: productRuleStatement),
             SolutionStep(title: "Substitute", expression: answer)
         ]
@@ -82,8 +82,8 @@ struct PolynomialTrigProductTemplate: ProblemTemplate {
         ]).simplified()
 
         let steps: [SolutionStep] = [
-            namedPartsStep(title: "Name the factors", first: ("u", u), second: ("v", v)),
-            namedPartsStep(title: "Differentiate each factor", first: ("u'", uPrime), second: ("v'", vPrime)),
+            namedPartsStep(title: "Name the factors", first: ("g", u), second: ("h", v)),
+            namedPartsStep(title: "Differentiate each factor", first: ("g'", uPrime), second: ("h'", vPrime)),
             .narrative("Apply the product rule", latex: productRuleStatement),
             SolutionStep(title: "Substitute", expression: answer)
         ]
@@ -128,12 +128,12 @@ struct ExponentialProductTemplate: ProblemTemplate {
         ]).simplified()
 
         let steps: [SolutionStep] = [
-            namedPartsStep(title: "Name the factors", first: ("u", u), second: ("v", v)),
+            namedPartsStep(title: "Name the factors", first: ("g", u), second: ("h", v)),
             .narrative(
                 "The exponential brings down its inner coefficient",
                 latex: "\\frac{d}{dx}\\left[e^{\(powerTerm(k, 1).latex)}\\right] = \(vPrime.latex)"
             ),
-            namedPartsStep(title: "Differentiate each factor", first: ("u'", uPrime), second: ("v'", vPrime)),
+            namedPartsStep(title: "Differentiate each factor", first: ("g'", uPrime), second: ("h'", vPrime)),
             .narrative("Apply the product rule", latex: productRuleStatement),
             SolutionStep(title: "Substitute", expression: answer)
         ]

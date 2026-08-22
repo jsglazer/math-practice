@@ -77,6 +77,10 @@ public enum DifficultyLadder {
                 var state = states[key] ?? LadderState()
                 apply(outcome: outcome, to: &state, configuration: configuration)
                 states[key] = state
+
+            case .skipped:
+                // Neither right nor wrong — a skip carries no signal for the ladder.
+                continue
             }
         }
 

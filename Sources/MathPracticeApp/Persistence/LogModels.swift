@@ -24,9 +24,11 @@ final class EventRecord {
     var subTypeID: String?
     var difficulty: Int?
     var templateID: String?
+    var problemID: String?
 
     var kindTag: String = ""
     var outcomeRaw: String?
+    var skipNote: String?
     var overrideLevel: Int?
     var worksheetID: UUID?
     var questionNumber: Int?
@@ -44,6 +46,7 @@ final class EventRecord {
         subTypeID = event.key?.subType.rawValue
         difficulty = event.difficulty
         templateID = event.templateID?.rawValue
+        problemID = event.problemID
         kindTag = event.kind.tag
 
         switch event.kind {
@@ -53,6 +56,8 @@ final class EventRecord {
             outcomeRaw = outcome.rawValue
             worksheetID = worksheet
             questionNumber = number
+        case let .skipped(note):
+            skipNote = note
         case let .manualLevelOverride(level):
             overrideLevel = level
         case let .ladderConfiguration(configuration):
@@ -80,6 +85,7 @@ final class EventRecord {
             key: key,
             difficulty: difficulty,
             templateID: templateID.map { TemplateID($0) },
+            problemID: problemID,
             kind: kind
         )
     }
@@ -95,6 +101,8 @@ final class EventRecord {
                   let worksheetID,
                   let questionNumber else { return nil }
             return .worksheetSelfReport(outcome, worksheetID: worksheetID, questionNumber: questionNumber)
+        case "skip":
+            return .skipped(note: skipNote)
         case "level-override":
             guard let overrideLevel else { return nil }
             return .manualLevelOverride(level: overrideLevel)
