@@ -174,3 +174,30 @@ final class WorksheetQuestionRecord {
         return WorksheetQuestion(id: questionID, dedupeKey: dedupeKey, index: index, problem: problem)
     }
 }
+
+/// A problem flagged "Key" for later review, with the note taken about it. Keyed by
+/// `problemID` — the problem is stored as encoded JSON, the same way a frozen worksheet
+/// question is, so the Key tab stays readable even if a template is later revised.
+@Model
+final class KeyProblemRecord {
+    var dedupeKey: String = ""
+    var problemID: String = ""
+    var problemData: Data?
+    var note: String = ""
+    var createdAt: Date = Date.distantPast
+    var updatedAt: Date = Date.distantPast
+
+    init(problem: GeneratedProblem, note: String = "", createdAt: Date = Date()) {
+        dedupeKey = DedupeKey.keyProblem(problemID: problem.problemID)
+        problemID = problem.problemID
+        problemData = try? JSONEncoder().encode(problem)
+        self.note = note
+        self.createdAt = createdAt
+        updatedAt = createdAt
+    }
+
+    var problem: GeneratedProblem? {
+        guard let problemData else { return nil }
+        return try? JSONDecoder().decode(GeneratedProblem.self, from: problemData)
+    }
+}

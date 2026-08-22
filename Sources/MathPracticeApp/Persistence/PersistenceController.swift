@@ -27,7 +27,8 @@ enum Persistence {
     static let logModels: [any PersistentModel.Type] = [
         EventRecord.self,
         WorksheetRecord.self,
-        WorksheetQuestionRecord.self
+        WorksheetQuestionRecord.self,
+        KeyProblemRecord.self
     ]
 
     /// The two configurations must never share a model type: a type in both stores would

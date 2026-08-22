@@ -53,6 +53,7 @@ final class DeduplicationService {
         removed["worksheetQuestions"] = collapse(FetchDescriptor<WorksheetQuestionRecord>())
         removed["packs"] = collapse(FetchDescriptor<PackRecord>())
         removed["packProblems"] = collapse(FetchDescriptor<PackProblemRecord>())
+        removed["keyProblems"] = collapse(FetchDescriptor<KeyProblemRecord>())
 
         let total = removed.values.reduce(0, +)
         if total > 0 {
@@ -99,6 +100,12 @@ extension PackRecord: Deduplicable {
 }
 
 extension PackProblemRecord: Deduplicable {
+    var recordID: UUID { UUID.derived(from: dedupeKey) }
+}
+
+extension KeyProblemRecord: Deduplicable {
+    /// No natural UUID — a key problem is naturally identified by `problemID`, so flagging
+    /// the same problem on two devices before they sync collapses to one record.
     var recordID: UUID { UUID.derived(from: dedupeKey) }
 }
 

@@ -60,6 +60,7 @@ private struct SessionDetailView: View {
     let session: PracticeSession
 
     @State private var pendingExportDetail: SessionExportDetail?
+    @State private var noteDrafts: [String: String] = [:]
 
     var body: some View {
         List(session.entries) { entry in
@@ -87,6 +88,32 @@ private struct SessionDetailView: View {
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .italic()
+                }
+
+                if let problemID = entry.problemID {
+                    HStack {
+                        Button {
+                            toggleKey(for: entry, problemID: problemID)
+                        } label: {
+                            Label(
+                                model.isKey(problemID) ? "Key" : "Mark as key",
+                                systemImage: model.isKey(problemID) ? "star.fill" : "star"
+                            )
+                        }
+                        .buttonStyle(.plain)
+                        .font(.caption2)
+                        .foregroundStyle(model.isKey(problemID) ? .yellow : .secondary)
+                        .disabled(!model.isKey(problemID) && model.regenerate(entry) == nil)
+                        Spacer()
+                    }
+                    if model.isKey(problemID) {
+                        TextField("Note about this problem", text: noteBinding(for: problemID))
+                            .font(.caption2)
+                            .textFieldStyle(.roundedBorder)
+                            .onSubmit {
+                                model.setKeyNote(noteDrafts[problemID] ?? "", for: problemID)
+                            }
+                    }
                 }
             }
         }
@@ -118,6 +145,22 @@ private struct SessionDetailView: View {
             pendingExportDetail = nil
             Task { await model.exportSession(session, detail: detail, to: url) }
         }
+    }
+
+    private func toggleKey(for entry: SessionEntry, problemID: String) {
+        if model.isKey(problemID) {
+            model.removeKey(problemID)
+        } else if let problem = model.regenerate(entry) {
+            model.toggleKey(for: problem)
+            noteDrafts[problemID] = ""
+        }
+    }
+
+    private func noteBinding(for problemID: String) -> Binding<String> {
+        Binding(
+            get: { noteDrafts[problemID] ?? model.keyNote(for: problemID) ?? "" },
+            set: { noteDrafts[problemID] = $0 }
+        )
     }
 
     private func outcomeLabel(for entry: SessionEntry) -> some View {

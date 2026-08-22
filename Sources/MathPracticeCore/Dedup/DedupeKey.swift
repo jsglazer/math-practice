@@ -36,4 +36,10 @@ public enum DedupeKey {
     public static func packProblem(identifier: String, version: Int, problemIndex: Int) -> String {
         ["pack-problem", identifier, String(version), String(problemIndex)].joined(separator: separator)
     }
+
+    /// A problem flagged "Key" — keyed by the problem's own deterministic ID, so flagging
+    /// the same problem instance twice (e.g. from two devices) never duplicates the record.
+    public static func keyProblem(problemID: String) -> String {
+        ["key-problem", problemID].joined(separator: separator)
+    }
 }

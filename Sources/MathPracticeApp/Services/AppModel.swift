@@ -19,6 +19,7 @@ final class AppModel {
     let registry: TopicRegistry
     let eventStore: EventStore
     let worksheetStore: WorksheetStore
+    let keyProblemStore: KeyProblemStore
     let packImportService: PackImportService
     let deduplication: DeduplicationService
     /// `nil` on iOS: there is no `WorksheetExporting` conformance there.
@@ -31,6 +32,7 @@ final class AppModel {
     private(set) var events: [PracticeEvent] = []
     private(set) var ladder: LadderSnapshot = DifficultyLadder.fold([])
     private(set) var worksheets: [Worksheet] = []
+    private(set) var keyProblems: [KeyProblemRecord] = []
 
     // MARK: Session state
 
@@ -57,6 +59,7 @@ final class AppModel {
         self.registry = registry
         self.eventStore = EventStore(context: context, deviceID: deviceID)
         self.worksheetStore = WorksheetStore(context: context)
+        self.keyProblemStore = KeyProblemStore(context: context)
         self.packImportService = PackImportService(context: context, registry: registry)
         self.deduplication = DeduplicationService(context: context)
         self.worksheetExporter = WorksheetExporterInstaller.make()
@@ -79,6 +82,7 @@ final class AppModel {
         events = eventStore.allEvents()
         ladder = DifficultyLadder.fold(events)
         worksheets = worksheetStore.all()
+        keyProblems = keyProblemStore.all()
     }
 
     // MARK: - Derived views
@@ -186,6 +190,37 @@ final class AppModel {
         eventStore.recordSkip(problem: currentProblem, note: trimmed?.isEmpty == false ? trimmed : nil)
         reload()
         nextProblem()
+    }
+
+    // MARK: - Key problems
+
+    func isKey(_ problemID: String?) -> Bool {
+        guard let problemID else { return false }
+        return keyProblemStore.isFlagged(problemID)
+    }
+
+    func keyNote(for problemID: String) -> String? {
+        keyProblemStore.record(for: problemID)?.note
+    }
+
+    /// Flags `problem` if it isn't already Key, or un-flags it (and drops its note) if it is.
+    func toggleKey(for problem: GeneratedProblem) {
+        if keyProblemStore.isFlagged(problem.problemID) {
+            keyProblemStore.unflag(problem.problemID)
+        } else {
+            keyProblemStore.flag(problem)
+        }
+        reload()
+    }
+
+    func setKeyNote(_ note: String, for problemID: String) {
+        keyProblemStore.setNote(note, for: problemID)
+        reload()
+    }
+
+    func removeKey(_ problemID: String) {
+        keyProblemStore.unflag(problemID)
+        reload()
     }
 
     // MARK: - Settings

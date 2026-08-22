@@ -10,6 +10,7 @@ struct PracticeView: View {
     @State private var showSkipPrompt = false
     @State private var skipNote = ""
     @State private var showMarkdownSheet = false
+    @State private var keyNoteDraft = ""
 
     var body: some View {
         NavigationStack {
@@ -33,12 +34,37 @@ struct PracticeView: View {
                         }
                         .font(.caption)
                     } footer: {
-                        // Written down for troubleshooting: quoting this ID is enough to
-                        // pull this exact problem instance back up later.
-                        Text("ID \(problem.problemID)")
-                            .font(.caption2.monospaced())
-                            .foregroundStyle(.secondary)
-                            .textSelection(.enabled)
+                        VStack(alignment: .leading, spacing: 6) {
+                            HStack {
+                                // Written down for troubleshooting: quoting this ID is enough
+                                // to pull this exact problem instance back up later.
+                                Text("ID \(problem.problemID)")
+                                    .font(.caption2.monospaced())
+                                    .foregroundStyle(.secondary)
+                                    .textSelection(.enabled)
+                                Spacer()
+                                Button {
+                                    model.toggleKey(for: problem)
+                                    keyNoteDraft = model.keyNote(for: problem.problemID) ?? ""
+                                } label: {
+                                    Label(
+                                        model.isKey(problem.problemID) ? "Key" : "Mark as key",
+                                        systemImage: model.isKey(problem.problemID) ? "star.fill" : "star"
+                                    )
+                                }
+                                .buttonStyle(.plain)
+                                .font(.caption)
+                                .foregroundStyle(model.isKey(problem.problemID) ? .yellow : .secondary)
+                            }
+                            if model.isKey(problem.problemID) {
+                                TextField("Note about this problem", text: $keyNoteDraft)
+                                    .font(.caption)
+                                    .textFieldStyle(.roundedBorder)
+                                    .onSubmit {
+                                        model.setKeyNote(keyNoteDraft, for: problem.problemID)
+                                    }
+                            }
+                        }
                     }
 
                     Section("Reveal") {
@@ -96,11 +122,14 @@ struct PracticeView: View {
             }
             .formStyle(.grouped)
             .navigationTitle("Practice")
+            .onChange(of: model.currentProblem?.problemID, initial: true) { _, problemID in
+                keyNoteDraft = problemID.flatMap(model.keyNote) ?? ""
+            }
             .toolbar {
                 ToolbarItemGroup(placement: .primaryAction) {
                     Text(appVersionString)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .font(.subheadline)
+                        .foregroundStyle(.primary)
                     Button("Skip") { showSkipPrompt = true }
                         .disabled(model.currentProblem == nil)
                 }

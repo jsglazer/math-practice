@@ -16,6 +16,7 @@
 		19DF735858450784578009DF /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF576AFE82FA8DC7408F8B0 /* PracticeView.swift */; };
 		2609CAA541B946F91D8C1608 /* MathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99526EE8967DEB60093A0CA5 /* MathRenderer.swift */; };
 		2768A7A0A44F7F6529146C5D /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FEF2D607662D1D49633DB /* DashboardView.swift */; };
+		2B4D921CD84FAF55F2CCD3EF /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6072E6F18E01DA67ADCF4DF /* KeyView.swift */; };
 		2FE940D0762C4B0EBD16D7C5 /* SessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DAE3CCF8AA5F1752F93043 /* SessionsView.swift */; };
 		34DE52EB8F8FF657F9AABFE7 /* SessionExporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE3D982D3DA85C9F957C891 /* SessionExporting.swift */; };
 		350E645EB638521F62CF77BC /* EventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8D3E318B5AFFEB919106E7 /* EventStore.swift */; };
@@ -40,6 +41,7 @@
 		7F7FC954225F6BA531A33DCC /* DeduplicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E0B541F812DB152AD94B0E /* DeduplicationService.swift */; };
 		7F9C63F0C3346B1C075883B7 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F07628E40D80964914AC273 /* RootView.swift */; };
 		848CE0F1FF6210742452E6E5 /* katex in Resources */ = {isa = PBXBuildFile; fileRef = 6F54EA1ADCCEDAEA70F4AAF4 /* katex */; };
+		88F1BC148C386A245A4EE508 /* KeyProblemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D134AA2F89E85B62859A /* KeyProblemStore.swift */; };
 		92940F614E5F3AE10BE11920 /* MathPracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CF28C8DD3D4164164C436F /* MathPracticeApp.swift */; };
 		92AC5A6B7C510094F46E1FB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8D67AE42EEF678387F86B8E /* Assets.xcassets */; };
 		94713DF1CB820961B997CB2E /* WorksheetExporterInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06739EBEDF98B708C01DA7FF /* WorksheetExporterInstaller.swift */; };
@@ -64,6 +66,8 @@
 		EB395BA12F697FA7A58D6B83 /* WorksheetExporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328C1E49F6D984CE8B90609 /* WorksheetExporting.swift */; };
 		EC6430FE4D21E7612CF6F6D8 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18426DF1C3B7D1D57EDCA3E /* AppModel.swift */; };
 		ED024A6BF1FE39988DF03F2A /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C58EFA870EF8178CE19D27C /* PersistenceController.swift */; };
+		EDACC29F21B08AFD276F26C2 /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6072E6F18E01DA67ADCF4DF /* KeyView.swift */; };
+		F1167919D6AFF9B82C532B24 /* KeyProblemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D134AA2F89E85B62859A /* KeyProblemStore.swift */; };
 		F335B274850BAB4A233966D0 /* MathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99526EE8967DEB60093A0CA5 /* MathRenderer.swift */; };
 		F56E462D0F4A971CA285D816 /* WorksheetExporterInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564CD3DD592C9C3B13DAA836 /* WorksheetExporterInstaller.swift */; };
 		F863D5D9D80C499AF906AAA8 /* MarkdownSolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6801D32377467297703A7722 /* MarkdownSolutionView.swift */; };
@@ -75,6 +79,7 @@
 		0A849205F092A26E2F2B0DB7 /* DeviceIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIdentity.swift; sourceTree = "<group>"; };
 		0C58EFA870EF8178CE19D27C /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		1070DCCCB076F6704AC522C4 /* math-practice */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "math-practice"; path = .; sourceTree = SOURCE_ROOT; };
+		1459D134AA2F89E85B62859A /* KeyProblemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyProblemStore.swift; sourceTree = "<group>"; };
 		187488CDCAEBAA356DF5CFCD /* WorksheetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksheetsView.swift; sourceTree = "<group>"; };
 		2BF091EF86454A9370E598B1 /* MathPractice-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "MathPractice-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F07628E40D80964914AC273 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -97,6 +102,7 @@
 		9206B33FB0822C561CC3C665 /* PlatformClipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformClipboard.swift; sourceTree = "<group>"; };
 		99526EE8967DEB60093A0CA5 /* MathRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathRenderer.swift; sourceTree = "<group>"; };
 		9ABDC763B9CB199D4590C26B /* MathPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6072E6F18E01DA67ADCF4DF /* KeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyView.swift; sourceTree = "<group>"; };
 		CA53430016646E194DA409CB /* KaTeXAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaTeXAssets.swift; sourceTree = "<group>"; };
 		CCF576AFE82FA8DC7408F8B0 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
 		D8D67AE42EEF678387F86B8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -149,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				846FEF2D607662D1D49633DB /* DashboardView.swift */,
+				B6072E6F18E01DA67ADCF4DF /* KeyView.swift */,
 				6801D32377467297703A7722 /* MarkdownSolutionView.swift */,
 				CCF576AFE82FA8DC7408F8B0 /* PracticeView.swift */,
 				2F07628E40D80964914AC273 /* RootView.swift */,
@@ -231,6 +238,7 @@
 				37E0B541F812DB152AD94B0E /* DeduplicationService.swift */,
 				0A849205F092A26E2F2B0DB7 /* DeviceIdentity.swift */,
 				8B8D3E318B5AFFEB919106E7 /* EventStore.swift */,
+				1459D134AA2F89E85B62859A /* KeyProblemStore.swift */,
 				59FA40CD26CA88F408B9B970 /* PackImportService.swift */,
 				9206B33FB0822C561CC3C665 /* PlatformClipboard.swift */,
 				51B088F018B04D1BF3B597B0 /* WorksheetStore.swift */,
@@ -381,6 +389,8 @@
 				7B85049A5A7501BCAC735AEE /* DeviceIdentity.swift in Sources */,
 				3D33F33BD9B7C2885CA9EB53 /* EventStore.swift in Sources */,
 				5F30E1CEB2A10C12CBAEE7D3 /* KaTeXAssets.swift in Sources */,
+				F1167919D6AFF9B82C532B24 /* KeyProblemStore.swift in Sources */,
+				2B4D921CD84FAF55F2CCD3EF /* KeyView.swift in Sources */,
 				CDA7890BB4F76959AD731184 /* LibraryModels.swift in Sources */,
 				3A2A351B62607DF5EDE78542 /* LogModels.swift in Sources */,
 				6C2F0D1C5E1F65FF4F10C5E6 /* MacSessionExporter.swift in Sources */,
@@ -416,6 +426,8 @@
 				E7405422667486724FE99EB2 /* DeviceIdentity.swift in Sources */,
 				350E645EB638521F62CF77BC /* EventStore.swift in Sources */,
 				7D5AE88CFB647B2C14C6A9BB /* KaTeXAssets.swift in Sources */,
+				88F1BC148C386A245A4EE508 /* KeyProblemStore.swift in Sources */,
+				EDACC29F21B08AFD276F26C2 /* KeyView.swift in Sources */,
 				0D4D57002ECBDBDE19602820 /* LibraryModels.swift in Sources */,
 				AF7454B26316692735117489 /* LogModels.swift in Sources */,
 				0AC4D4EB8FE7F079800CB8A2 /* MarkdownSolutionView.swift in Sources */,
@@ -497,7 +509,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -558,7 +570,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

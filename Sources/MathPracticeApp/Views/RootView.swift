@@ -1,5 +1,5 @@
 //  RootView.swift
-//  Four places to be: practice, progress, worksheets, settings.
+//  Six places to be: practice, progress, sessions, key problems, worksheets, settings.
 
 import MathPracticeCore
 import SwiftUI
@@ -15,6 +15,8 @@ struct RootView: View {
                 .tabItem { Label("Progress", systemImage: "chart.bar") }
             SessionsView()
                 .tabItem { Label("Sessions", systemImage: "list.bullet.clipboard") }
+            KeyView()
+                .tabItem { Label("Key", systemImage: "star") }
             WorksheetsView()
                 .tabItem { Label("Worksheets", systemImage: "doc.text") }
             SettingsView()
