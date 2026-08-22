@@ -34,12 +34,14 @@
 		7F9C63F0C3346B1C075883B7 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F07628E40D80964914AC273 /* RootView.swift */; };
 		848CE0F1FF6210742452E6E5 /* katex in Resources */ = {isa = PBXBuildFile; fileRef = 6F54EA1ADCCEDAEA70F4AAF4 /* katex */; };
 		92940F614E5F3AE10BE11920 /* MathPracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CF28C8DD3D4164164C436F /* MathPracticeApp.swift */; };
+		92AC5A6B7C510094F46E1FB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8D67AE42EEF678387F86B8E /* Assets.xcassets */; };
 		94713DF1CB820961B997CB2E /* WorksheetExporterInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06739EBEDF98B708C01DA7FF /* WorksheetExporterInstaller.swift */; };
 		9C69B0C683763E2B30B68C5F /* WorksheetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B088F018B04D1BF3B597B0 /* WorksheetStore.swift */; };
 		AF7454B26316692735117489 /* LogModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0926473ECB900B36FC4204A0 /* LogModels.swift */; };
 		B47569BFF17629D66010B21D /* WorksheetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187488CDCAEBAA356DF5CFCD /* WorksheetsView.swift */; };
 		B6D4BDE9B0679771A5B68DE6 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FEF2D607662D1D49633DB /* DashboardView.swift */; };
 		BFBB091011A2026E34E4A5DF /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C58EFA870EF8178CE19D27C /* PersistenceController.swift */; };
+		BFFC2AE37CB10467CD2AD131 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8D67AE42EEF678387F86B8E /* Assets.xcassets */; };
 		C3C49DCEB92810A14B039450 /* MathDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1C7AF96DBB7F306FBF0AB /* MathDocument.swift */; };
 		CCB27A69571B4D6E9309D9E8 /* MathPracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CF28C8DD3D4164164C436F /* MathPracticeApp.swift */; };
 		CDA7890BB4F76959AD731184 /* LibraryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4F61480A5CB94E87C3C9BA /* LibraryModels.swift */; };
@@ -80,6 +82,7 @@
 		9ABDC763B9CB199D4590C26B /* MathPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA53430016646E194DA409CB /* KaTeXAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaTeXAssets.swift; sourceTree = "<group>"; };
 		CCF576AFE82FA8DC7408F8B0 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
+		D8D67AE42EEF678387F86B8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC34061659930113212A557A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E18426DF1C3B7D1D57EDCA3E /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		E328C1E49F6D984CE8B90609 /* WorksheetExporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksheetExporting.swift; sourceTree = "<group>"; };
@@ -221,6 +224,7 @@
 				B91F2F16A32CE1110CD73FE4 /* Resources */,
 				C2FB726C7ADEE29E9938D634 /* Services */,
 				2DC19BCB851CBD5AD7593E51 /* Views */,
+				D8D67AE42EEF678387F86B8E /* Assets.xcassets */,
 				74CF28C8DD3D4164164C436F /* MathPracticeApp.swift */,
 			);
 			path = MathPracticeApp;
@@ -325,6 +329,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92AC5A6B7C510094F46E1FB2 /* Assets.xcassets in Resources */,
 				398FF4D8D9AF47412915994B /* katex in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,6 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFFC2AE37CB10467CD2AD131 /* Assets.xcassets in Resources */,
 				848CE0F1FF6210742452E6E5 /* katex in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
