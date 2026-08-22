@@ -18,12 +18,12 @@ Most maths apps are answer-entry quiz engines: they want the answer typed in, th
 - **16 derivative templates** across power, product, quotient, chain, trigonometric, and exponential/logarithmic rules — every one of them verified against SymPy before it ships (see [Correctness](#correctness)). Product- and quotient-rule answers that don't reduce to a closed form by simplification alone (a distributed numerator, or a second factor multiplied through) are expanded and collected, not left half-factored — the `Substitute` step still shows the raw `g'h + gh'` form a person writes by hand, and a following `Expand and collect` step reaches the single polynomial the app treats as the answer.
 - **Every problem carries a short, stable ID.** Deterministic from `(template, difficulty, seed)`, shown right under the problem and logged with every attempt or skip — enough to reference one exact problem later without the app persisting anything extra for it.
 - **Progress matrix and session history, in its own tab.** Topic × sub-type × difficulty, showing where you are strong and where you are not, plus **Sessions** — a list of past practice sessions (grouped by a 30-minute gap in activity) you can open and review problem by problem. Every number is folded out of the log on the spot; nothing on that screen is stored beyond the event log itself.
-- **Flag a problem as Key, with a note.** A star toggle in Practice — and a matching one on any past problem in Sessions — marks it Key and lets you attach a short note explaining why. The **Key** tab lists every flagged problem with its prompt and note for quick review, and the note stays editable from there at any time.
-- **View any solution as Markdown.** A "View as Markdown" button in the Reveal section pops up the current problem, its instruction, and whatever's been revealed — answer, steps — as plain Markdown with the maths wrapped in single `$...$` delimiters, plus a one-tap Copy button, ready to paste into Obsidian or any other Markdown-aware app.
-- **PDF worksheets and session reviews (macOS).** Name a sheet, export it, work it on paper, then come back and click Right/Wrong by question number — the printed numbers and the in-app rows are the same ordinals by construction. A past session can be exported the same way, at one of four detail levels: questions only, all answers, all shown work, or shown work for wrong answers only. A session's problems are regenerated deterministically from the seed captured when it was worked; sessions logged before that capture existed export with their ID/level/outcome but no question text.
+- **Flag a problem as Key, with a note.** A star toggle in Practice — and a matching one on any past problem in Sessions, both sized for a quick tap — marks it Key and lets you attach a short note explaining why. Sessions and Practice both show every entry as a single compact line: topic · sub-type, level, ID, the Key star, right/wrong/skip, the typeset equation itself, and the time, with a `+` button that pops up just that equation as copyable Markdown. The **Key** tab lists every flagged problem with its prompt and note for quick review; tapping its star to unstar only stages the removal — dimmed until you leave the tab — so an accidental unstar is easy to undo, and each row has its own equation-only Markdown popup alongside an "Export PDF" button that turns every flagged problem (with its note) into one PDF.
+- **View any solution as Markdown.** A "View as Markdown" button in the Reveal section pops up the current problem, its instruction, and whatever's been revealed — answer, steps — typeset with bold labels rather than shown as raw source, plus a one-tap Copy button that puts the plain-Markdown form (maths wrapped in single `$...$` delimiters) on the clipboard, ready to paste into Obsidian or any other Markdown-aware app.
+- **PDF worksheets, session reviews, and Key-problem exports (macOS).** Name a sheet, export it, work it on paper, then come back and click Right/Wrong by question number — the printed numbers and the in-app rows are the same ordinals by construction. A past session can be exported the same way, at one of four detail levels: questions only, all answers, all shown work, or shown work for wrong answers only. A session's problems are regenerated deterministically from the seed captured when it was worked; sessions logged before that capture existed export with their ID/level/outcome but no question text. Every flagged Key problem can likewise be exported to one PDF, note included.
 - **Problem-pack import.** Drop in a JSON pack of LLM-authored problems for cases templates handle poorly. Packs sync, are validated wholesale, and are versioned.
 - **Multi-device sync via CloudKit.** Two Macs and an iPhone, some online and some not, converge on the same state — see [How sync works](#how-sync-works).
-- **App version in the toolbar.** The running build's version number shows next to Skip, so you always know what you're on without opening About.
+- **App version in the toolbar, keyboard shortcuts in Settings.** The running build's version number shows next to Skip with no button chrome around it, so you always know what you're on without opening About. `⌘⇧[` / `⌘⇧]` cycle between tabs from anywhere in the app; both are listed in **Settings** for reference.
 
 **v1 topic scope is derivatives.** Integrals, limits and advanced algebra are topics 2, 3 and 4, and the app is built so adding one is a new directory plus a single line in `TopicRegistry.standard` — a claim the test suite verifies by registering a topic the app has never heard of and driving the selector, the router, the ladder and the dashboard entirely through it.
 
@@ -68,7 +68,7 @@ Sources/MathPracticeApp/      the OS shell
   Persistence/                SwiftData models and the two-configuration container
   Services/                   event store, key-problem store, dedup service, pack import, app model
   Rendering/                  locally bundled KaTeX in a WKWebView
-  Export/macOS/               the only WorksheetExporting and SessionExporting conformances
+  Export/macOS/               the only WorksheetExporting, SessionExporting and KeyExporting conformances
   Export/iOS/                 their counterparts, which return nil
 
 Tools/verify_templates/       the offline SymPy gate (build-time only, never shipped)
@@ -145,8 +145,9 @@ The `canonical*` fields use the same SymPy-parseable schema the golden fixtures 
 | CloudKit sync | ✅ | ✅ |
 | PDF worksheet export | ✅ | — |
 | PDF session export | ✅ | — |
+| PDF Key-problem export | ✅ | — |
 
-PDF export has no iOS conformance to the `WorksheetExporting`/`SessionExporting` protocols, and `Export/macOS/` is excluded from the iOS target's sources — the exporters do not merely go unused there, they are not in the binary.
+PDF export has no iOS conformance to the `WorksheetExporting`/`SessionExporting`/`KeyExporting` protocols, and `Export/macOS/` is excluded from the iOS target's sources — the exporters do not merely go unused there, they are not in the binary.
 
 ## Licence
 
