@@ -1,6 +1,7 @@
 //  ProductRuleTemplates.swift
-//  Sub-type: product rule. Answers are left in the factored `u'v + uv'` shape a person
-//  would write on paper — expanding is arithmetic, not the skill being drilled.
+//  Sub-type: product rule. The substitution step states the raw `g'h + gh'` shape a person
+//  writes by hand; the answer itself is expanded and collected into one polynomial, the
+//  closed form expected as "the answer" — matching the quotient-rule convention.
 
 private let productRuleStatement = "\\frac{d}{dx}\\left[gh\\right] = g'h + gh'"
 
@@ -26,16 +27,18 @@ struct PolynomialProductTemplate: ProblemTemplate {
         let vPrime = powerRuleDerivative(c, m)
 
         let problem = Expression.product([u, v]).simplified()
-        let answer = Expression.sum([
+        let unsimplified = Expression.sum([
             .product([uPrime, v]),
             .product([u, vPrime])
         ]).simplified()
+        let answer = unsimplified.expanded()
 
         let steps: [SolutionStep] = [
             namedPartsStep(title: "Name the factors", first: ("g", u), second: ("h", v)),
             namedPartsStep(title: "Differentiate each factor", first: ("g'", uPrime), second: ("h'", vPrime)),
             .narrative("Apply the product rule", latex: productRuleStatement),
-            SolutionStep(title: "Substitute", expression: answer)
+            SolutionStep(title: "Substitute", expression: unsimplified),
+            SolutionStep(title: "Expand and collect", expression: answer)
         ]
 
         return ProblemDraw(
@@ -76,10 +79,14 @@ struct PolynomialTrigProductTemplate: ProblemTemplate {
         let vPrime = Expression.product([.integer(k), choice.derivative(of: argument)]).simplified()
 
         let problem = Expression.product([u, v]).simplified()
+        // `u` is always a bare monomial here, so expanding never distributes anything
+        // further — but the answer is still built through `.expanded()` for the same reason
+        // every product-rule template is: it is the one path that always states the closed
+        // form, whether or not this particular draw has anything left to distribute.
         let answer = Expression.sum([
             .product([uPrime, v]),
             .product([u, vPrime])
-        ]).simplified()
+        ]).simplified().expanded()
 
         let steps: [SolutionStep] = [
             namedPartsStep(title: "Name the factors", first: ("g", u), second: ("h", v)),
@@ -122,10 +129,11 @@ struct ExponentialProductTemplate: ProblemTemplate {
         let vPrime = Expression.product([.integer(k), v]).simplified()
 
         let problem = Expression.product([u, v]).simplified()
-        let answer = Expression.sum([
+        let unsimplified = Expression.sum([
             .product([uPrime, v]),
             .product([u, vPrime])
         ]).simplified()
+        let answer = unsimplified.expanded()
 
         let steps: [SolutionStep] = [
             namedPartsStep(title: "Name the factors", first: ("g", u), second: ("h", v)),
@@ -135,7 +143,8 @@ struct ExponentialProductTemplate: ProblemTemplate {
             ),
             namedPartsStep(title: "Differentiate each factor", first: ("g'", uPrime), second: ("h'", vPrime)),
             .narrative("Apply the product rule", latex: productRuleStatement),
-            SolutionStep(title: "Substitute", expression: answer)
+            SolutionStep(title: "Substitute", expression: unsimplified),
+            SolutionStep(title: "Expand and collect", expression: answer)
         ]
 
         return ProblemDraw(

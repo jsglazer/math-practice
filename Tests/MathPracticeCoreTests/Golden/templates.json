@@ -1420,8 +1420,8 @@
       "verificationRule" : "derivative"
     },
     {
-      "answerLatex" : "6 x^{2} \\left(2 x^{2} + 1\\right) + 4 \\left(2 x^{3} + 3\\right) x",
-      "canonicalAnswer" : "((6*(x)**(2)*((2*(x)**(2)) + 1)) + (4*((2*(x)**(3)) + 3)*x))",
+      "answerLatex" : "20 x^{4} + 6 x^{2} + 12 x",
+      "canonicalAnswer" : "((20*(x)**(4)) + (6*(x)**(2)) + (12*x))",
       "canonicalPrompt" : "(((2*(x)**(3)) + 3)*((2*(x)**(2)) + 1))",
       "difficulty" : 2,
       "instruction" : "Differentiate with respect to x",
@@ -1471,6 +1471,11 @@
           "canonical" : "((6*(x)**(2)*((2*(x)**(2)) + 1)) + (4*((2*(x)**(3)) + 3)*x))",
           "latex" : "6 x^{2} \\left(2 x^{2} + 1\\right) + 4 \\left(2 x^{3} + 3\\right) x",
           "title" : "Substitute"
+        },
+        {
+          "canonical" : "((20*(x)**(4)) + (6*(x)**(2)) + (12*x))",
+          "latex" : "20 x^{4} + 6 x^{2} + 12 x",
+          "title" : "Expand and collect"
         }
       ],
       "subTypeID" : "product",
@@ -1479,8 +1484,8 @@
       "verificationRule" : "derivative"
     },
     {
-      "answerLatex" : "8 x \\left(2 x + 3\\right) + 2 \\left(4 x^{2} + 3\\right)",
-      "canonicalAnswer" : "((8*x*((2*x) + 3)) + (2*((4*(x)**(2)) + 3)))",
+      "answerLatex" : "24 x^{2} + 24 x + 6",
+      "canonicalAnswer" : "((24*(x)**(2)) + (24*x) + 6)",
       "canonicalPrompt" : "(((4*(x)**(2)) + 3)*((2*x) + 3))",
       "difficulty" : 2,
       "instruction" : "Differentiate with respect to x",
@@ -1530,6 +1535,11 @@
           "canonical" : "((8*x*((2*x) + 3)) + (2*((4*(x)**(2)) + 3)))",
           "latex" : "8 x \\left(2 x + 3\\right) + 2 \\left(4 x^{2} + 3\\right)",
           "title" : "Substitute"
+        },
+        {
+          "canonical" : "((24*(x)**(2)) + (24*x) + 6)",
+          "latex" : "24 x^{2} + 24 x + 6",
+          "title" : "Expand and collect"
         }
       ],
       "subTypeID" : "product",
@@ -1538,8 +1548,8 @@
       "verificationRule" : "derivative"
     },
     {
-      "answerLatex" : "8 x \\left(2 x + 1\\right) + 2 \\left(4 x^{2} + 2\\right)",
-      "canonicalAnswer" : "((8*x*((2*x) + 1)) + (2*((4*(x)**(2)) + 2)))",
+      "answerLatex" : "24 x^{2} + 8 x + 4",
+      "canonicalAnswer" : "((24*(x)**(2)) + (8*x) + 4)",
       "canonicalPrompt" : "(((4*(x)**(2)) + 2)*((2*x) + 1))",
       "difficulty" : 2,
       "instruction" : "Differentiate with respect to x",
@@ -1589,6 +1599,11 @@
           "canonical" : "((8*x*((2*x) + 1)) + (2*((4*(x)**(2)) + 2)))",
           "latex" : "8 x \\left(2 x + 1\\right) + 2 \\left(4 x^{2} + 2\\right)",
           "title" : "Substitute"
+        },
+        {
+          "canonical" : "((24*(x)**(2)) + (8*x) + 4)",
+          "latex" : "24 x^{2} + 8 x + 4",
+          "title" : "Expand and collect"
         }
       ],
       "subTypeID" : "product",
@@ -1597,8 +1612,8 @@
       "verificationRule" : "derivative"
     },
     {
-      "answerLatex" : "-10 x^{4} \\left(-2 x^{2} + 1\\right) - 4 \\left(-2 x^{5} - 7\\right) x",
-      "canonicalAnswer" : "((-10*(x)**(4)*((-2*(x)**(2)) + 1)) + (-4*((-2*(x)**(5)) + -7)*x))",
+      "answerLatex" : "28 x^{6} - 10 x^{4} + 28 x",
+      "canonicalAnswer" : "((28*(x)**(6)) + (-10*(x)**(4)) + (28*x))",
       "canonicalPrompt" : "(((-2*(x)**(5)) + -7)*((-2*(x)**(2)) + 1))",
       "difficulty" : 5,
       "instruction" : "Differentiate with respect to x",
@@ -1648,6 +1663,11 @@
           "canonical" : "((-10*(x)**(4)*((-2*(x)**(2)) + 1)) + (-4*((-2*(x)**(5)) + -7)*x))",
           "latex" : "-10 x^{4} \\left(-2 x^{2} + 1\\right) - 4 \\left(-2 x^{5} - 7\\right) x",
           "title" : "Substitute"
+        },
+        {
+          "canonical" : "((28*(x)**(6)) + (-10*(x)**(4)) + (28*x))",
+          "latex" : "28 x^{6} - 10 x^{4} + 28 x",
+          "title" : "Expand and collect"
         }
       ],
       "subTypeID" : "product",
@@ -1656,8 +1676,8 @@
       "verificationRule" : "derivative"
     },
     {
-      "answerLatex" : "10 x \\left(2 x - 3\\right) + 2 \\left(5 x^{2} - 1\\right)",
-      "canonicalAnswer" : "((10*x*((2*x) + -3)) + (2*((5*(x)**(2)) + -1)))",
+      "answerLatex" : "30 x^{2} - 30 x - 2",
+      "canonicalAnswer" : "((30*(x)**(2)) + (-30*x) + -2)",
       "canonicalPrompt" : "(((5*(x)**(2)) + -1)*((2*x) + -3))",
       "difficulty" : 5,
       "instruction" : "Differentiate with respect to x",
@@ -1707,6 +1727,11 @@
           "canonical" : "((10*x*((2*x) + -3)) + (2*((5*(x)**(2)) + -1)))",
           "latex" : "10 x \\left(2 x - 3\\right) + 2 \\left(5 x^{2} - 1\\right)",
           "title" : "Substitute"
+        },
+        {
+          "canonical" : "((30*(x)**(2)) + (-30*x) + -2)",
+          "latex" : "30 x^{2} - 30 x - 2",
+          "title" : "Expand and collect"
         }
       ],
       "subTypeID" : "product",
@@ -1715,8 +1740,8 @@
       "verificationRule" : "derivative"
     },
     {
-      "answerLatex" : "12 x^{3} \\left(3 x - 4\\right) + 3 \\left(3 x^{4} + 3\\right)",
-      "canonicalAnswer" : "((12*(x)**(3)*((3*x) + -4)) + (3*((3*(x)**(4)) + 3)))",
+      "answerLatex" : "45 x^{4} - 48 x^{3} + 9",
+      "canonicalAnswer" : "((45*(x)**(4)) + (-48*(x)**(3)) + 9)",
       "canonicalPrompt" : "(((3*(x)**(4)) + 3)*((3*x) + -4))",
       "difficulty" : 5,
       "instruction" : "Differentiate with respect to x",
@@ -1766,6 +1791,11 @@
           "canonical" : "((12*(x)**(3)*((3*x) + -4)) + (3*((3*(x)**(4)) + 3)))",
           "latex" : "12 x^{3} \\left(3 x - 4\\right) + 3 \\left(3 x^{4} + 3\\right)",
           "title" : "Substitute"
+        },
+        {
+          "canonical" : "((45*(x)**(4)) + (-48*(x)**(3)) + 9)",
+          "latex" : "45 x^{4} - 48 x^{3} + 9",
+          "title" : "Expand and collect"
         }
       ],
       "subTypeID" : "product",
@@ -1774,8 +1804,8 @@
       "verificationRule" : "derivative"
     },
     {
-      "answerLatex" : "-48 x^{5} \\left(2 x^{2} - 8\\right) + 4 \\left(-8 x^{6} + 5\\right) x",
-      "canonicalAnswer" : "((-48*(x)**(5)*((2*(x)**(2)) + -8)) + (4*((-8*(x)**(6)) + 5)*x))",
+      "answerLatex" : "-128 x^{7} + 384 x^{5} + 20 x",
+      "canonicalAnswer" : "((-128*(x)**(7)) + (384*(x)**(5)) + (20*x))",
       "canonicalPrompt" : "(((-8*(x)**(6)) + 5)*((2*(x)**(2)) + -8))",
       "difficulty" : 8,
       "instruction" : "Differentiate with respect to x",
@@ -1825,6 +1855,11 @@
           "canonical" : "((-48*(x)**(5)*((2*(x)**(2)) + -8)) + (4*((-8*(x)**(6)) + 5)*x))",
           "latex" : "-48 x^{5} \\left(2 x^{2} - 8\\right) + 4 \\left(-8 x^{6} + 5\\right) x",
           "title" : "Substitute"
+        },
+        {
+          "canonical" : "((-128*(x)**(7)) + (384*(x)**(5)) + (20*x))",
+          "latex" : "-128 x^{7} + 384 x^{5} + 20 x",
+          "title" : "Expand and collect"
         }
       ],
       "subTypeID" : "product",
@@ -1833,8 +1868,8 @@
       "verificationRule" : "derivative"
     },
     {
-      "answerLatex" : "-6 x^{5} \\left(-5 x^{5} - 4\\right) - 25 \\left(-x^{6} - 10\\right) x^{4}",
-      "canonicalAnswer" : "((-6*(x)**(5)*((-5*(x)**(5)) + -4)) + (-25*((-1*(x)**(6)) + -10)*(x)**(4)))",
+      "answerLatex" : "55 x^{10} + 24 x^{5} + 250 x^{4}",
+      "canonicalAnswer" : "((55*(x)**(10)) + (24*(x)**(5)) + (250*(x)**(4)))",
       "canonicalPrompt" : "(((-1*(x)**(6)) + -10)*((-5*(x)**(5)) + -4))",
       "difficulty" : 8,
       "instruction" : "Differentiate with respect to x",
@@ -1884,6 +1919,11 @@
           "canonical" : "((-6*(x)**(5)*((-5*(x)**(5)) + -4)) + (-25*((-1*(x)**(6)) + -10)*(x)**(4)))",
           "latex" : "-6 x^{5} \\left(-5 x^{5} - 4\\right) - 25 \\left(-x^{6} - 10\\right) x^{4}",
           "title" : "Substitute"
+        },
+        {
+          "canonical" : "((55*(x)**(10)) + (24*(x)**(5)) + (250*(x)**(4)))",
+          "latex" : "55 x^{10} + 24 x^{5} + 250 x^{4}",
+          "title" : "Expand and collect"
         }
       ],
       "subTypeID" : "product",
@@ -1892,8 +1932,8 @@
       "verificationRule" : "derivative"
     },
     {
-      "answerLatex" : "-15 x^{4} \\left(4 x - 1\\right) + 4 \\left(-3 x^{5} + 9\\right)",
-      "canonicalAnswer" : "((-15*(x)**(4)*((4*x) + -1)) + (4*((-3*(x)**(5)) + 9)))",
+      "answerLatex" : "-72 x^{5} + 15 x^{4} + 36",
+      "canonicalAnswer" : "((-72*(x)**(5)) + (15*(x)**(4)) + 36)",
       "canonicalPrompt" : "(((-3*(x)**(5)) + 9)*((4*x) + -1))",
       "difficulty" : 8,
       "instruction" : "Differentiate with respect to x",
@@ -1943,6 +1983,11 @@
           "canonical" : "((-15*(x)**(4)*((4*x) + -1)) + (4*((-3*(x)**(5)) + 9)))",
           "latex" : "-15 x^{4} \\left(4 x - 1\\right) + 4 \\left(-3 x^{5} + 9\\right)",
           "title" : "Substitute"
+        },
+        {
+          "canonical" : "((-72*(x)**(5)) + (15*(x)**(4)) + 36)",
+          "latex" : "-72 x^{5} + 15 x^{4} + 36",
+          "title" : "Expand and collect"
         }
       ],
       "subTypeID" : "product",
@@ -2410,8 +2455,8 @@
       "verificationRule" : "derivative"
     },
     {
-      "answerLatex" : "-10 x^{4} e^{-2 x} - 2 \\left(-2 x^{5} - 7\\right) e^{-2 x}",
-      "canonicalAnswer" : "((-10*(x)**(4)*exp((-2*x))) + (-2*((-2*(x)**(5)) + -7)*exp((-2*x))))",
+      "answerLatex" : "-10 x^{4} e^{-2 x} + 4 x^{5} e^{-2 x} + 14 e^{-2 x}",
+      "canonicalAnswer" : "((-10*(x)**(4)*exp((-2*x))) + (4*(x)**(5)*exp((-2*x))) + (14*exp((-2*x))))",
       "canonicalPrompt" : "(((-2*(x)**(5)) + -7)*exp((-2*x)))",
       "difficulty" : 5,
       "instruction" : "Differentiate with respect to x",
@@ -2457,6 +2502,11 @@
           "canonical" : "((-10*(x)**(4)*exp((-2*x))) + (-2*((-2*(x)**(5)) + -7)*exp((-2*x))))",
           "latex" : "-10 x^{4} e^{-2 x} - 2 \\left(-2 x^{5} - 7\\right) e^{-2 x}",
           "title" : "Substitute"
+        },
+        {
+          "canonical" : "((-10*(x)**(4)*exp((-2*x))) + (4*(x)**(5)*exp((-2*x))) + (14*exp((-2*x))))",
+          "latex" : "-10 x^{4} e^{-2 x} + 4 x^{5} e^{-2 x} + 14 e^{-2 x}",
+          "title" : "Expand and collect"
         }
       ],
       "subTypeID" : "product",
@@ -2465,8 +2515,8 @@
       "verificationRule" : "derivative"
     },
     {
-      "answerLatex" : "10 x e^{2 x} + 2 \\left(5 x^{2} - 1\\right) e^{2 x}",
-      "canonicalAnswer" : "((10*x*exp((2*x))) + (2*((5*(x)**(2)) + -1)*exp((2*x))))",
+      "answerLatex" : "10 x e^{2 x} + 10 x^{2} e^{2 x} - 2 e^{2 x}",
+      "canonicalAnswer" : "((10*x*exp((2*x))) + (10*(x)**(2)*exp((2*x))) + (-2*exp((2*x))))",
       "canonicalPrompt" : "(((5*(x)**(2)) + -1)*exp((2*x)))",
       "difficulty" : 5,
       "instruction" : "Differentiate with respect to x",
@@ -2512,6 +2562,11 @@
           "canonical" : "((10*x*exp((2*x))) + (2*((5*(x)**(2)) + -1)*exp((2*x))))",
           "latex" : "10 x e^{2 x} + 2 \\left(5 x^{2} - 1\\right) e^{2 x}",
           "title" : "Substitute"
+        },
+        {
+          "canonical" : "((10*x*exp((2*x))) + (10*(x)**(2)*exp((2*x))) + (-2*exp((2*x))))",
+          "latex" : "10 x e^{2 x} + 10 x^{2} e^{2 x} - 2 e^{2 x}",
+          "title" : "Expand and collect"
         }
       ],
       "subTypeID" : "product",
@@ -2520,8 +2575,8 @@
       "verificationRule" : "derivative"
     },
     {
-      "answerLatex" : "12 x^{3} e^{3 x} + 3 \\left(3 x^{4} + 3\\right) e^{3 x}",
-      "canonicalAnswer" : "((12*(x)**(3)*exp((3*x))) + (3*((3*(x)**(4)) + 3)*exp((3*x))))",
+      "answerLatex" : "12 x^{3} e^{3 x} + 9 x^{4} e^{3 x} + 9 e^{3 x}",
+      "canonicalAnswer" : "((12*(x)**(3)*exp((3*x))) + (9*(x)**(4)*exp((3*x))) + (9*exp((3*x))))",
       "canonicalPrompt" : "(((3*(x)**(4)) + 3)*exp((3*x)))",
       "difficulty" : 5,
       "instruction" : "Differentiate with respect to x",
@@ -2567,6 +2622,11 @@
           "canonical" : "((12*(x)**(3)*exp((3*x))) + (3*((3*(x)**(4)) + 3)*exp((3*x))))",
           "latex" : "12 x^{3} e^{3 x} + 3 \\left(3 x^{4} + 3\\right) e^{3 x}",
           "title" : "Substitute"
+        },
+        {
+          "canonical" : "((12*(x)**(3)*exp((3*x))) + (9*(x)**(4)*exp((3*x))) + (9*exp((3*x))))",
+          "latex" : "12 x^{3} e^{3 x} + 9 x^{4} e^{3 x} + 9 e^{3 x}",
+          "title" : "Expand and collect"
         }
       ],
       "subTypeID" : "product",
@@ -2575,8 +2635,8 @@
       "verificationRule" : "derivative"
     },
     {
-      "answerLatex" : "-2 x e^{2 x} + 2 \\left(-x^{2} + 4\\right) e^{2 x}",
-      "canonicalAnswer" : "((-2*x*exp((2*x))) + (2*((-1*(x)**(2)) + 4)*exp((2*x))))",
+      "answerLatex" : "-2 x e^{2 x} - 2 x^{2} e^{2 x} + 8 e^{2 x}",
+      "canonicalAnswer" : "((-2*x*exp((2*x))) + (-2*(x)**(2)*exp((2*x))) + (8*exp((2*x))))",
       "canonicalPrompt" : "(((-1*(x)**(2)) + 4)*exp((2*x)))",
       "difficulty" : 7,
       "instruction" : "Differentiate with respect to x",
@@ -2622,6 +2682,11 @@
           "canonical" : "((-2*x*exp((2*x))) + (2*((-1*(x)**(2)) + 4)*exp((2*x))))",
           "latex" : "-2 x e^{2 x} + 2 \\left(-x^{2} + 4\\right) e^{2 x}",
           "title" : "Substitute"
+        },
+        {
+          "canonical" : "((-2*x*exp((2*x))) + (-2*(x)**(2)*exp((2*x))) + (8*exp((2*x))))",
+          "latex" : "-2 x e^{2 x} - 2 x^{2} e^{2 x} + 8 e^{2 x}",
+          "title" : "Expand and collect"
         }
       ],
       "subTypeID" : "product",
@@ -2630,8 +2695,8 @@
       "verificationRule" : "derivative"
     },
     {
-      "answerLatex" : "-24 x^{5} e^{-5 x} - 5 \\left(-4 x^{6} + 7\\right) e^{-5 x}",
-      "canonicalAnswer" : "((-24*(x)**(5)*exp((-5*x))) + (-5*((-4*(x)**(6)) + 7)*exp((-5*x))))",
+      "answerLatex" : "-24 x^{5} e^{-5 x} + 20 x^{6} e^{-5 x} - 35 e^{-5 x}",
+      "canonicalAnswer" : "((-24*(x)**(5)*exp((-5*x))) + (20*(x)**(6)*exp((-5*x))) + (-35*exp((-5*x))))",
       "canonicalPrompt" : "(((-4*(x)**(6)) + 7)*exp((-5*x)))",
       "difficulty" : 7,
       "instruction" : "Differentiate with respect to x",
@@ -2677,6 +2742,11 @@
           "canonical" : "((-24*(x)**(5)*exp((-5*x))) + (-5*((-4*(x)**(6)) + 7)*exp((-5*x))))",
           "latex" : "-24 x^{5} e^{-5 x} - 5 \\left(-4 x^{6} + 7\\right) e^{-5 x}",
           "title" : "Substitute"
+        },
+        {
+          "canonical" : "((-24*(x)**(5)*exp((-5*x))) + (20*(x)**(6)*exp((-5*x))) + (-35*exp((-5*x))))",
+          "latex" : "-24 x^{5} e^{-5 x} + 20 x^{6} e^{-5 x} - 35 e^{-5 x}",
+          "title" : "Expand and collect"
         }
       ],
       "subTypeID" : "product",
@@ -2685,8 +2755,8 @@
       "verificationRule" : "derivative"
     },
     {
-      "answerLatex" : "10 x^{4} e^{4 x} + 4 \\left(2 x^{5} - 9\\right) e^{4 x}",
-      "canonicalAnswer" : "((10*(x)**(4)*exp((4*x))) + (4*((2*(x)**(5)) + -9)*exp((4*x))))",
+      "answerLatex" : "10 x^{4} e^{4 x} + 8 x^{5} e^{4 x} - 36 e^{4 x}",
+      "canonicalAnswer" : "((10*(x)**(4)*exp((4*x))) + (8*(x)**(5)*exp((4*x))) + (-36*exp((4*x))))",
       "canonicalPrompt" : "(((2*(x)**(5)) + -9)*exp((4*x)))",
       "difficulty" : 7,
       "instruction" : "Differentiate with respect to x",
@@ -2732,6 +2802,11 @@
           "canonical" : "((10*(x)**(4)*exp((4*x))) + (4*((2*(x)**(5)) + -9)*exp((4*x))))",
           "latex" : "10 x^{4} e^{4 x} + 4 \\left(2 x^{5} - 9\\right) e^{4 x}",
           "title" : "Substitute"
+        },
+        {
+          "canonical" : "((10*(x)**(4)*exp((4*x))) + (8*(x)**(5)*exp((4*x))) + (-36*exp((4*x))))",
+          "latex" : "10 x^{4} e^{4 x} + 8 x^{5} e^{4 x} - 36 e^{4 x}",
+          "title" : "Expand and collect"
         }
       ],
       "subTypeID" : "product",
@@ -2740,8 +2815,8 @@
       "verificationRule" : "derivative"
     },
     {
-      "answerLatex" : "9 x^{2} e^{-3 x} - 3 \\left(3 x^{3} + 3\\right) e^{-3 x}",
-      "canonicalAnswer" : "((9*(x)**(2)*exp((-3*x))) + (-3*((3*(x)**(3)) + 3)*exp((-3*x))))",
+      "answerLatex" : "9 x^{2} e^{-3 x} - 9 x^{3} e^{-3 x} - 9 e^{-3 x}",
+      "canonicalAnswer" : "((9*(x)**(2)*exp((-3*x))) + (-9*(x)**(3)*exp((-3*x))) + (-9*exp((-3*x))))",
       "canonicalPrompt" : "(((3*(x)**(3)) + 3)*exp((-3*x)))",
       "difficulty" : 10,
       "instruction" : "Differentiate with respect to x",
@@ -2787,6 +2862,11 @@
           "canonical" : "((9*(x)**(2)*exp((-3*x))) + (-3*((3*(x)**(3)) + 3)*exp((-3*x))))",
           "latex" : "9 x^{2} e^{-3 x} - 3 \\left(3 x^{3} + 3\\right) e^{-3 x}",
           "title" : "Substitute"
+        },
+        {
+          "canonical" : "((9*(x)**(2)*exp((-3*x))) + (-9*(x)**(3)*exp((-3*x))) + (-9*exp((-3*x))))",
+          "latex" : "9 x^{2} e^{-3 x} - 9 x^{3} e^{-3 x} - 9 e^{-3 x}",
+          "title" : "Expand and collect"
         }
       ],
       "subTypeID" : "product",
@@ -2795,8 +2875,8 @@
       "verificationRule" : "derivative"
     },
     {
-      "answerLatex" : "-16 x e^{4 x} + 4 \\left(-8 x^{2} - 9\\right) e^{4 x}",
-      "canonicalAnswer" : "((-16*x*exp((4*x))) + (4*((-8*(x)**(2)) + -9)*exp((4*x))))",
+      "answerLatex" : "-16 x e^{4 x} - 32 x^{2} e^{4 x} - 36 e^{4 x}",
+      "canonicalAnswer" : "((-16*x*exp((4*x))) + (-32*(x)**(2)*exp((4*x))) + (-36*exp((4*x))))",
       "canonicalPrompt" : "(((-8*(x)**(2)) + -9)*exp((4*x)))",
       "difficulty" : 10,
       "instruction" : "Differentiate with respect to x",
@@ -2842,6 +2922,11 @@
           "canonical" : "((-16*x*exp((4*x))) + (4*((-8*(x)**(2)) + -9)*exp((4*x))))",
           "latex" : "-16 x e^{4 x} + 4 \\left(-8 x^{2} - 9\\right) e^{4 x}",
           "title" : "Substitute"
+        },
+        {
+          "canonical" : "((-16*x*exp((4*x))) + (-32*(x)**(2)*exp((4*x))) + (-36*exp((4*x))))",
+          "latex" : "-16 x e^{4 x} - 32 x^{2} e^{4 x} - 36 e^{4 x}",
+          "title" : "Expand and collect"
         }
       ],
       "subTypeID" : "product",
@@ -2850,8 +2935,8 @@
       "verificationRule" : "derivative"
     },
     {
-      "answerLatex" : "48 x^{5} e^{-3 x} - 3 \\left(8 x^{6} - 12\\right) e^{-3 x}",
-      "canonicalAnswer" : "((48*(x)**(5)*exp((-3*x))) + (-3*((8*(x)**(6)) + -12)*exp((-3*x))))",
+      "answerLatex" : "48 x^{5} e^{-3 x} - 24 x^{6} e^{-3 x} + 36 e^{-3 x}",
+      "canonicalAnswer" : "((48*(x)**(5)*exp((-3*x))) + (-24*(x)**(6)*exp((-3*x))) + (36*exp((-3*x))))",
       "canonicalPrompt" : "(((8*(x)**(6)) + -12)*exp((-3*x)))",
       "difficulty" : 10,
       "instruction" : "Differentiate with respect to x",
@@ -2897,6 +2982,11 @@
           "canonical" : "((48*(x)**(5)*exp((-3*x))) + (-3*((8*(x)**(6)) + -12)*exp((-3*x))))",
           "latex" : "48 x^{5} e^{-3 x} - 3 \\left(8 x^{6} - 12\\right) e^{-3 x}",
           "title" : "Substitute"
+        },
+        {
+          "canonical" : "((48*(x)**(5)*exp((-3*x))) + (-24*(x)**(6)*exp((-3*x))) + (36*exp((-3*x))))",
+          "latex" : "48 x^{5} e^{-3 x} - 24 x^{6} e^{-3 x} + 36 e^{-3 x}",
+          "title" : "Expand and collect"
         }
       ],
       "subTypeID" : "product",
