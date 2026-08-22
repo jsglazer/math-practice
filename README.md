@@ -17,8 +17,9 @@ Most maths apps are answer-entry quiz engines: they want the answer typed in, th
 - **Configurable ladder.** Harder after *N* correct in a row, easier after *M* wrong, with a hold period so one bad patch does not drop you three levels.
 - **16 derivative templates** across power, product, quotient, chain, trigonometric, and exponential/logarithmic rules — every one of them verified against SymPy before it ships (see [Correctness](#correctness)). Quotient-rule answers that don't reduce to a closed form by simplification alone (a distributed numerator) are expanded and collected, not left half-factored.
 - **Every problem carries a short, stable ID.** Deterministic from `(template, difficulty, seed)`, shown right under the problem and logged with every attempt or skip — enough to reference one exact problem later without the app persisting anything extra for it.
-- **Progress matrix and session history.** Topic × sub-type × difficulty, showing where you are strong and where you are not, plus a list of past practice sessions (grouped by a 30-minute gap in activity) you can open and review problem by problem. Every number is folded out of the log on the spot; nothing on that screen is stored beyond the event log itself.
-- **PDF worksheets (macOS).** Name a sheet, export it, work it on paper, then come back and click Right/Wrong by question number. The printed numbers and the in-app rows are the same ordinals by construction.
+- **Progress matrix and session history, in its own tab.** Topic × sub-type × difficulty, showing where you are strong and where you are not, plus **Sessions** — a list of past practice sessions (grouped by a 30-minute gap in activity) you can open and review problem by problem. Every number is folded out of the log on the spot; nothing on that screen is stored beyond the event log itself.
+- **View any solution as Markdown.** A "View as Markdown" button in the Reveal section pops up the current problem, its instruction, and whatever's been revealed — answer, steps — as plain Markdown with the maths wrapped in single `$...$` delimiters, plus a one-tap Copy button, ready to paste into Obsidian or any other Markdown-aware app.
+- **PDF worksheets and session reviews (macOS).** Name a sheet, export it, work it on paper, then come back and click Right/Wrong by question number — the printed numbers and the in-app rows are the same ordinals by construction. A past session can be exported the same way, at one of four detail levels: questions only, all answers, all shown work, or shown work for wrong answers only. A session's problems are regenerated deterministically from the seed captured when it was worked; sessions logged before that capture existed export with their ID/level/outcome but no question text.
 - **Problem-pack import.** Drop in a JSON pack of LLM-authored problems for cases templates handle poorly. Packs sync, are validated wholesale, and are versioned.
 - **Multi-device sync via CloudKit.** Two Macs and an iPhone, some online and some not, converge on the same state — see [How sync works](#how-sync-works).
 - **App version in the toolbar.** The running build's version number shows quietly in grey next to Skip, so you always know what you're on without opening About.
@@ -66,8 +67,8 @@ Sources/MathPracticeApp/      the OS shell
   Persistence/                SwiftData models and the two-configuration container
   Services/                   event store, dedup service, pack import, app model
   Rendering/                  locally bundled KaTeX in a WKWebView
-  Export/macOS/               the only WorksheetExporting conformance
-  Export/iOS/                 its counterpart, which returns nil
+  Export/macOS/               the only WorksheetExporting and SessionExporting conformances
+  Export/iOS/                 their counterparts, which return nil
 
 Tools/verify_templates/       the offline SymPy gate (build-time only, never shipped)
 ```
@@ -142,8 +143,9 @@ The `canonical*` fields use the same SymPy-parseable schema the golden fixtures 
 | Problem-pack import | ✅ | ✅ |
 | CloudKit sync | ✅ | ✅ |
 | PDF worksheet export | ✅ | — |
+| PDF session export | ✅ | — |
 
-PDF export has no iOS conformance to the `WorksheetExporting` protocol, and `Export/macOS/` is excluded from the iOS target's sources — the exporter does not merely go unused there, it is not in the binary.
+PDF export has no iOS conformance to the `WorksheetExporting`/`SessionExporting` protocols, and `Export/macOS/` is excluded from the iOS target's sources — the exporters do not merely go unused there, they are not in the binary.
 
 ## Licence
 
