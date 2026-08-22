@@ -5,30 +5,33 @@
 
 import MathPracticeCore
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct SessionsView: View {
     @Environment(AppModel.self) private var model
 
     var body: some View {
-        List {
-            if model.sessions.isEmpty {
-                ContentUnavailableView(
-                    "No sessions yet",
-                    systemImage: "list.bullet.clipboard",
-                    description: Text("Work or skip a problem and it shows up here.")
-                )
-            } else {
-                ForEach(model.sessions) { session in
-                    NavigationLink(value: session.id) {
-                        SessionRow(session: session)
+        NavigationStack {
+            List {
+                if model.sessions.isEmpty {
+                    ContentUnavailableView(
+                        "No sessions yet",
+                        systemImage: "list.bullet.clipboard",
+                        description: Text("Work or skip a problem and it shows up here.")
+                    )
+                } else {
+                    ForEach(model.sessions) { session in
+                        NavigationLink(value: session.id) {
+                            SessionRow(session: session)
+                        }
                     }
                 }
             }
-        }
-        .navigationTitle("Sessions")
-        .navigationDestination(for: UUID.self) { id in
-            if let session = model.sessions.first(where: { $0.id == id }) {
-                SessionDetailView(session: session)
+            .navigationTitle("Sessions")
+            .navigationDestination(for: UUID.self) { id in
+                if let session = model.sessions.first(where: { $0.id == id }) {
+                    SessionDetailView(session: session)
+                }
             }
         }
     }
@@ -56,6 +59,8 @@ private struct SessionDetailView: View {
     @Environment(AppModel.self) private var model
     let session: PracticeSession
 
+    @State private var pendingExportDetail: SessionExportDetail?
+
     var body: some View {
         List(session.entries) { entry in
             VStack(alignment: .leading, spacing: 4) {
@@ -69,7 +74,7 @@ private struct SessionDetailView: View {
                         Text("Level \(difficulty)")
                     }
                     if let problemID = entry.problemID {
-                        Text("ID \(problemID)").monospaced()
+                        Text("ID \(problemID)").monospaced().textSelection(.enabled)
                     }
                     Spacer()
                     Text(entry.createdAt, style: .time)
@@ -86,6 +91,33 @@ private struct SessionDetailView: View {
             }
         }
         .navigationTitle(Text(session.startedAt, style: .date))
+        .toolbar {
+            if model.sessionExporter != nil {
+                ToolbarItem(placement: .primaryAction) {
+                    Menu("Export PDF", systemImage: "square.and.arrow.up") {
+                        ForEach(SessionExportDetail.allCases) { detail in
+                            Button(detail.displayName) { pendingExportDetail = detail }
+                        }
+                    }
+                }
+            }
+        }
+        .fileExporter(
+            isPresented: Binding(
+                get: { pendingExportDetail != nil },
+                set: { if !$0 { pendingExportDetail = nil } }
+            ),
+            document: SessionPDFDocument(),
+            contentType: .pdf,
+            defaultFilename: model.sessionExporter?.suggestedFilename(for: session) ?? "Session.pdf"
+        ) { result in
+            guard case let .success(url) = result, let detail = pendingExportDetail else {
+                pendingExportDetail = nil
+                return
+            }
+            pendingExportDetail = nil
+            Task { await model.exportSession(session, detail: detail, to: url) }
+        }
     }
 
     private func outcomeLabel(for entry: SessionEntry) -> some View {
@@ -101,5 +133,20 @@ private struct SessionDetailView: View {
         }
         .font(.caption)
         .labelStyle(.titleAndIcon)
+    }
+}
+
+/// `fileExporter` needs a document to name the destination; the real bytes are written by
+/// the exporter once KaTeX has signalled that the page is fully typeset — see `WorksheetsView`'s
+/// `PlaceholderPDFDocument`, which this mirrors for sessions.
+private struct SessionPDFDocument: FileDocument {
+    static let readableContentTypes: [UTType] = [.pdf]
+
+    init() {}
+
+    init(configuration: ReadConfiguration) throws {}
+
+    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
+        FileWrapper(regularFileWithContents: Data())
     }
 }

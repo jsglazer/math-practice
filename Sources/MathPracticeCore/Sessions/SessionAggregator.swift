@@ -14,6 +14,9 @@ public struct SessionEntry: Hashable, Sendable, Identifiable {
     public let difficulty: Int?
     public let templateID: TemplateID?
     public let problemID: String?
+    /// See `PracticeEvent.seed`. `nil` for entries logged before this field existed — their
+    /// problem text can no longer be regenerated, only the ID/level/outcome remain.
+    public let seed: UInt64?
     public let outcome: AttemptOutcome?
     public let skipNote: String?
 
@@ -80,6 +83,7 @@ public enum SessionAggregator {
                     difficulty: event.difficulty,
                     templateID: event.templateID,
                     problemID: event.problemID,
+                    seed: event.seed,
                     outcome: event.kind.outcome,
                     skipNote: event.kind.skipNote
                 )

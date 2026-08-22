@@ -139,6 +139,7 @@ public enum WorksheetBuilder {
                 difficulty: question.problem.difficulty,
                 templateID: question.problem.templateID,
                 problemID: question.problem.problemID,
+                seed: question.problem.seed,
                 kind: .worksheetSelfReport(
                     outcome,
                     worksheetID: worksheet.id,

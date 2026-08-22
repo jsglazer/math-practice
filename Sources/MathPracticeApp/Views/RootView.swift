@@ -13,6 +13,8 @@ struct RootView: View {
                 .tabItem { Label("Practice", systemImage: "function") }
             DashboardView()
                 .tabItem { Label("Progress", systemImage: "chart.bar") }
+            SessionsView()
+                .tabItem { Label("Sessions", systemImage: "list.bullet.clipboard") }
             WorksheetsView()
                 .tabItem { Label("Worksheets", systemImage: "doc.text") }
             SettingsView()

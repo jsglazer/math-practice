@@ -25,6 +25,9 @@ final class EventRecord {
     var difficulty: Int?
     var templateID: String?
     var problemID: String?
+    /// `PracticeEvent.seed`, stored bit-for-bit — SwiftData/CloudKit has no unsigned 64-bit
+    /// column, so the round trip goes through `Int64(bitPattern:)` / `UInt64(bitPattern:)`.
+    var seedBits: Int64?
 
     var kindTag: String = ""
     var outcomeRaw: String?
@@ -47,6 +50,7 @@ final class EventRecord {
         difficulty = event.difficulty
         templateID = event.templateID?.rawValue
         problemID = event.problemID
+        seedBits = event.seed.map { Int64(bitPattern: $0) }
         kindTag = event.kind.tag
 
         switch event.kind {
@@ -86,6 +90,7 @@ final class EventRecord {
             difficulty: difficulty,
             templateID: templateID.map { TemplateID($0) },
             problemID: problemID,
+            seed: seedBits.map { UInt64(bitPattern: $0) },
             kind: kind
         )
     }

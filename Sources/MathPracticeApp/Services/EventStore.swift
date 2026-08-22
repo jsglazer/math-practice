@@ -50,7 +50,8 @@ final class EventStore {
         key: PracticeKey?,
         difficulty: Int?,
         templateID: TemplateID?,
-        problemID: String? = nil
+        problemID: String? = nil,
+        seed: UInt64? = nil
     ) -> PracticeEvent {
         let event = PracticeEvent(
             id: UUID(),
@@ -61,6 +62,7 @@ final class EventStore {
             difficulty: difficulty,
             templateID: templateID,
             problemID: problemID,
+            seed: seed,
             kind: kind
         )
         append(event)
@@ -87,7 +89,8 @@ final class EventStore {
             key: problem.practiceKey,
             difficulty: problem.difficulty,
             templateID: problem.templateID,
-            problemID: problem.problemID
+            problemID: problem.problemID,
+            seed: problem.seed
         )
     }
 
@@ -98,7 +101,8 @@ final class EventStore {
             key: problem.practiceKey,
             difficulty: problem.difficulty,
             templateID: problem.templateID,
-            problemID: problem.problemID
+            problemID: problem.problemID,
+            seed: problem.seed
         )
     }
 

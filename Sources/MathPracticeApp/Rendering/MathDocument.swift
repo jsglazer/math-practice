@@ -71,10 +71,83 @@ struct MathDocument: Hashable {
         )
     }
 
+    /// A session review page: every entry with its ID/level/outcome, plus the problem's
+    /// prompt (and, per `detail`, its answer/steps) wherever `resolve` can reconstruct it.
+    /// Entries logged before problem instances carried a `seed` cannot be reconstructed —
+    /// those print with a note instead of hanging the export on missing content.
+    static func session(
+        _ session: PracticeSession,
+        registry: TopicRegistry,
+        detail: SessionExportDetail,
+        resolve: (SessionEntry) -> GeneratedProblem?
+    ) -> MathDocument {
+        // Oldest first, matching the order they were actually worked in.
+        let ordered = session.entries.reversed()
+        var blocks: [MathBlock] = []
+        for (index, entry) in ordered.enumerated() {
+            let number = index + 1
+            let topicText = entry.key.map(registry.displayName) ?? "—"
+            let levelText = entry.difficulty.map { "Level \($0)" } ?? ""
+            let idText = entry.problemID.map { "ID \($0)" } ?? ""
+            let outcomeText: String
+            switch entry.outcome {
+            case .correct: outcomeText = "Right"
+            case .incorrect: outcomeText = "Wrong"
+            case nil: outcomeText = "Skipped"
+            }
+            let header = [topicText, levelText, outcomeText, idText]
+                .filter { !$0.isEmpty }
+                .joined(separator: " · ")
+
+            guard let problem = resolve(entry) else {
+                blocks.append(MathBlock(
+                    latex: "\\text{Question text unavailable — logged before this export existed.}",
+                    label: "\(number). \(header)"
+                ))
+                continue
+            }
+
+            blocks.append(MathBlock(latex: problem.promptLatex, label: "\(number). \(header)"))
+
+            let includesWork = detail.includesWork(for: entry.outcome)
+            if includesWork {
+                blocks.append(MathBlock(latex: problem.answerLatex, style: .inline, label: "Answer"))
+                if detail.includesSteps {
+                    for (stepIndex, step) in problem.steps.enumerated() {
+                        blocks.append(MathBlock(
+                            latex: step.latex,
+                            style: .inline,
+                            label: "Step \(stepIndex + 1) · \(step.title)"
+                        ))
+                    }
+                }
+            }
+        }
+
+        let subtitleParts = [
+            "\(session.correct)/\(session.attempts) right",
+            session.skips > 0 ? "\(session.skips) skipped" : nil
+        ].compactMap(\.self)
+
+        return MathDocument(
+            title: "Session · \(Self.dateTimeFormatter.string(from: session.startedAt))",
+            subtitle: subtitleParts.joined(separator: " · "),
+            blocks: blocks,
+            workingSpace: 0
+        )
+    }
+
     private static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         formatter.timeStyle = .none
+        return formatter
+    }()
+
+    private static let dateTimeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .short
         return formatter
     }()
 

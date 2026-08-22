@@ -78,6 +78,11 @@ public struct PracticeEvent: Hashable, Sendable, Codable, Identifiable {
     /// The exact problem instance this event is about — see `GeneratedProblem.problemID`.
     /// `nil` for events with no problem, and for events written before this field existed.
     public let problemID: String?
+    /// The `(templateID, difficulty, seed)` triple's seed — with `templateID` and
+    /// `difficulty` above, enough to regenerate this event's exact problem byte-for-byte via
+    /// `ProblemTemplate.generate`. `nil` for events with no problem, and for events written
+    /// before this field existed (their problem text can no longer be recovered).
+    public let seed: UInt64?
     public let kind: PracticeEventKind
 
     public init(
@@ -89,6 +94,7 @@ public struct PracticeEvent: Hashable, Sendable, Codable, Identifiable {
         difficulty: Int?,
         templateID: TemplateID?,
         problemID: String? = nil,
+        seed: UInt64? = nil,
         kind: PracticeEventKind
     ) {
         self.id = id
@@ -99,6 +105,7 @@ public struct PracticeEvent: Hashable, Sendable, Codable, Identifiable {
         self.difficulty = difficulty
         self.templateID = templateID
         self.problemID = problemID
+        self.seed = seed
         self.kind = kind
         self.dedupeKey = DedupeKey.event(kind: kind.tag, deviceID: deviceID, ordinal: ordinal)
     }
@@ -114,6 +121,7 @@ public struct PracticeEvent: Hashable, Sendable, Codable, Identifiable {
         difficulty: Int?,
         templateID: TemplateID?,
         problemID: String? = nil,
+        seed: UInt64? = nil,
         kind: PracticeEventKind
     ) {
         self.id = id
@@ -125,6 +133,7 @@ public struct PracticeEvent: Hashable, Sendable, Codable, Identifiable {
         self.difficulty = difficulty
         self.templateID = templateID
         self.problemID = problemID
+        self.seed = seed
         self.kind = kind
     }
 }

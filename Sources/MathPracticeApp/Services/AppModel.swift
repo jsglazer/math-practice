@@ -23,6 +23,8 @@ final class AppModel {
     let deduplication: DeduplicationService
     /// `nil` on iOS: there is no `WorksheetExporting` conformance there.
     let worksheetExporter: (any WorksheetExporting)?
+    /// `nil` on iOS: there is no `SessionExporting` conformance there.
+    let sessionExporter: (any SessionExporting)?
 
     // MARK: Derived state (in-memory cache of a pure fold — never persisted)
 
@@ -58,6 +60,7 @@ final class AppModel {
         self.packImportService = PackImportService(context: context, registry: registry)
         self.deduplication = DeduplicationService(context: context)
         self.worksheetExporter = WorksheetExporterInstaller.make()
+        self.sessionExporter = SessionExporterInstaller.make()
         // The session seed is the ONE place a non-deterministic value enters, and it enters
         // the shell — never core, which only ever sees the seed it is handed.
         self.generator = RandomSource(seed: sessionSeed)
@@ -90,6 +93,17 @@ final class AppModel {
 
     var sessions: [PracticeSession] {
         SessionAggregator.sessions(from: events)
+    }
+
+    /// Regenerates the exact problem instance `entry` was posed with, when enough was
+    /// captured to do so — `nil` for entries logged before problems carried a `seed`.
+    func regenerate(_ entry: SessionEntry) -> GeneratedProblem? {
+        guard let templateID = entry.templateID,
+              let key = entry.key,
+              let difficulty = entry.difficulty,
+              let seed = entry.seed,
+              let resolved = registry.resolve(templateID) else { return nil }
+        return resolved.template.generate(topicID: key.topic, difficulty: difficulty, seed: seed)
     }
 
     var subTypesForSelectedTopic: [SubType] {
@@ -225,6 +239,22 @@ final class AppModel {
         guard !outcomes.isEmpty else { return }
         eventStore.recordWorksheetSelfReport(worksheet: worksheet, outcomes: outcomes)
         reload()
+    }
+
+    func exportSession(_ session: PracticeSession, detail: SessionExportDetail, to url: URL) async {
+        guard let sessionExporter else { return }
+        do {
+            try await sessionExporter.export(
+                session: session,
+                registry: registry,
+                detail: detail,
+                resolve: regenerate,
+                to: url
+            )
+            lastError = nil
+        } catch {
+            lastError = error.localizedDescription
+        }
     }
 
     // MARK: - Packs

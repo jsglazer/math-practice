@@ -13,9 +13,6 @@ struct DashboardView: View {
             let matrix = model.dashboard
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    NavigationLink("Sessions") {
-                        SessionsView()
-                    }
                     summary(matrix)
                     if matrix.totalAttempts == 0 {
                         ContentUnavailableView(

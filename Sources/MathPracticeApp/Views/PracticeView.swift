@@ -9,6 +9,7 @@ struct PracticeView: View {
     @Environment(AppModel.self) private var model
     @State private var showSkipPrompt = false
     @State private var skipNote = ""
+    @State private var showMarkdownSheet = false
 
     var body: some View {
         NavigationStack {
@@ -36,7 +37,8 @@ struct PracticeView: View {
                         // pull this exact problem instance back up later.
                         Text("ID \(problem.problemID)")
                             .font(.caption2.monospaced())
-                            .foregroundStyle(.tertiary)
+                            .foregroundStyle(.secondary)
+                            .textSelection(.enabled)
                     }
 
                     Section("Reveal") {
@@ -45,6 +47,10 @@ struct PracticeView: View {
                                 .disabled(model.revealState.answerShown)
                             Button(stepButtonTitle, action: model.revealStep)
                                 .disabled(!model.canRevealMoreSteps)
+                            Spacer()
+                            Button("View as Markdown", systemImage: "doc.on.clipboard") {
+                                showMarkdownSheet = true
+                            }
                         }
                         .buttonStyle(.bordered)
 
@@ -107,6 +113,9 @@ struct PracticeView: View {
                 }
                 Button("Cancel", role: .cancel) { skipNote = "" }
             }
+            .sheet(isPresented: $showMarkdownSheet) {
+                MarkdownSolutionView(markdown: markdownText)
+            }
         }
     }
 
@@ -118,6 +127,31 @@ struct PracticeView: View {
     private var appVersionString: String {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "—"
         return "v\(version)"
+    }
+
+    /// The current problem, its answer and its revealed steps, formatted as Markdown with
+    /// math wrapped in single dollar signs — Obsidian's inline-math syntax — so the whole
+    /// thing can be pasted straight into a note.
+    private var markdownText: String {
+        guard let problem = model.currentProblem else { return "" }
+        var lines: [String] = []
+        lines.append("### \(model.registry.displayName(for: problem.practiceKey)) · Level \(problem.difficulty)")
+        lines.append("")
+        lines.append("**Problem:** \(problem.instruction)")
+        lines.append("")
+        lines.append("$\(problem.promptLatex)$")
+
+        if let answer = model.revealedAnswer {
+            lines.append("")
+            lines.append("**Answer:** $\(answer)$")
+        }
+        for (index, step) in model.revealedSteps.enumerated() {
+            lines.append("")
+            lines.append("**Step \(index + 1) · \(step.title)**")
+            lines.append("")
+            lines.append("$\(step.latex)$")
+        }
+        return lines.joined(separator: "\n")
     }
 
     private var solutionBlocks: [MathBlock] {
