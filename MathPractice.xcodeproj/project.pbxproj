@@ -1,0 +1,683 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02956496055346B23F0BFEB2 /* MathPracticeCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9E668DAE20A936EACB69F27F /* MathPracticeCore */; };
+		0D4D57002ECBDBDE19602820 /* LibraryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4F61480A5CB94E87C3C9BA /* LibraryModels.swift */; };
+		132E08AF3B207E9D67BB77D5 /* DeduplicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E0B541F812DB152AD94B0E /* DeduplicationService.swift */; };
+		15B693544CC5EF7FE4429F8B /* PackImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FA40CD26CA88F408B9B970 /* PackImportService.swift */; };
+		19DF735858450784578009DF /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF576AFE82FA8DC7408F8B0 /* PracticeView.swift */; };
+		2609CAA541B946F91D8C1608 /* MathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99526EE8967DEB60093A0CA5 /* MathRenderer.swift */; };
+		2768A7A0A44F7F6529146C5D /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FEF2D607662D1D49633DB /* DashboardView.swift */; };
+		350E645EB638521F62CF77BC /* EventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8D3E318B5AFFEB919106E7 /* EventStore.swift */; };
+		398FF4D8D9AF47412915994B /* katex in Resources */ = {isa = PBXBuildFile; fileRef = 6F54EA1ADCCEDAEA70F4AAF4 /* katex */; };
+		3A2A351B62607DF5EDE78542 /* LogModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0926473ECB900B36FC4204A0 /* LogModels.swift */; };
+		3D063F4035A65D2AC2F2C729 /* WorksheetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187488CDCAEBAA356DF5CFCD /* WorksheetsView.swift */; };
+		3D33F33BD9B7C2885CA9EB53 /* EventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8D3E318B5AFFEB919106E7 /* EventStore.swift */; };
+		3F5A44FF92D3BC0AECE7CC06 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18426DF1C3B7D1D57EDCA3E /* AppModel.swift */; };
+		4322C2220A279B12A6E63B25 /* MathTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3271B69343A7DC6D8DBC064E /* MathTextView.swift */; };
+		48CEA2EDF776E792BC26CF54 /* MathTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3271B69343A7DC6D8DBC064E /* MathTextView.swift */; };
+		547BD98FC567DF4ADE3D5B4F /* MathDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1C7AF96DBB7F306FBF0AB /* MathDocument.swift */; };
+		54FBEA365665A9CA1253065E /* WorksheetExporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328C1E49F6D984CE8B90609 /* WorksheetExporting.swift */; };
+		5B59527496C9C9E6C092AEBC /* WorksheetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B088F018B04D1BF3B597B0 /* WorksheetStore.swift */; };
+		5F30E1CEB2A10C12CBAEE7D3 /* KaTeXAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA53430016646E194DA409CB /* KaTeXAssets.swift */; };
+		765F0AC3C417897CBAFFCE97 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34061659930113212A557A /* SettingsView.swift */; };
+		7A35E272AA366287C3F61D35 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF576AFE82FA8DC7408F8B0 /* PracticeView.swift */; };
+		7B85049A5A7501BCAC735AEE /* DeviceIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A849205F092A26E2F2B0DB7 /* DeviceIdentity.swift */; };
+		7D5AE88CFB647B2C14C6A9BB /* KaTeXAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA53430016646E194DA409CB /* KaTeXAssets.swift */; };
+		7F7FC954225F6BA531A33DCC /* DeduplicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E0B541F812DB152AD94B0E /* DeduplicationService.swift */; };
+		7F9C63F0C3346B1C075883B7 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F07628E40D80964914AC273 /* RootView.swift */; };
+		848CE0F1FF6210742452E6E5 /* katex in Resources */ = {isa = PBXBuildFile; fileRef = 6F54EA1ADCCEDAEA70F4AAF4 /* katex */; };
+		92940F614E5F3AE10BE11920 /* MathPracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CF28C8DD3D4164164C436F /* MathPracticeApp.swift */; };
+		94713DF1CB820961B997CB2E /* WorksheetExporterInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06739EBEDF98B708C01DA7FF /* WorksheetExporterInstaller.swift */; };
+		9C69B0C683763E2B30B68C5F /* WorksheetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B088F018B04D1BF3B597B0 /* WorksheetStore.swift */; };
+		AF7454B26316692735117489 /* LogModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0926473ECB900B36FC4204A0 /* LogModels.swift */; };
+		B47569BFF17629D66010B21D /* WorksheetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187488CDCAEBAA356DF5CFCD /* WorksheetsView.swift */; };
+		B6D4BDE9B0679771A5B68DE6 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FEF2D607662D1D49633DB /* DashboardView.swift */; };
+		BFBB091011A2026E34E4A5DF /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C58EFA870EF8178CE19D27C /* PersistenceController.swift */; };
+		C3C49DCEB92810A14B039450 /* MathDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1C7AF96DBB7F306FBF0AB /* MathDocument.swift */; };
+		CCB27A69571B4D6E9309D9E8 /* MathPracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CF28C8DD3D4164164C436F /* MathPracticeApp.swift */; };
+		CDA7890BB4F76959AD731184 /* LibraryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4F61480A5CB94E87C3C9BA /* LibraryModels.swift */; };
+		CDEBEDDF43EBFB2DCE7FF17C /* PackImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FA40CD26CA88F408B9B970 /* PackImportService.swift */; };
+		D2D67A7991CCC9868BBA8668 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34061659930113212A557A /* SettingsView.swift */; };
+		D4E409251155D77A58174B7C /* MacWorksheetExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A9117E9B925DA4C37B220 /* MacWorksheetExporter.swift */; };
+		DBB5DDEB8F4BDF46791533A0 /* MathPracticeCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9FF61486D6172A12D642B9BB /* MathPracticeCore */; };
+		E2B15CE9F2B61EE813EFE774 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F07628E40D80964914AC273 /* RootView.swift */; };
+		E7405422667486724FE99EB2 /* DeviceIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A849205F092A26E2F2B0DB7 /* DeviceIdentity.swift */; };
+		EB395BA12F697FA7A58D6B83 /* WorksheetExporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328C1E49F6D984CE8B90609 /* WorksheetExporting.swift */; };
+		EC6430FE4D21E7612CF6F6D8 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18426DF1C3B7D1D57EDCA3E /* AppModel.swift */; };
+		ED024A6BF1FE39988DF03F2A /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C58EFA870EF8178CE19D27C /* PersistenceController.swift */; };
+		F335B274850BAB4A233966D0 /* MathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99526EE8967DEB60093A0CA5 /* MathRenderer.swift */; };
+		F56E462D0F4A971CA285D816 /* WorksheetExporterInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564CD3DD592C9C3B13DAA836 /* WorksheetExporterInstaller.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		06739EBEDF98B708C01DA7FF /* WorksheetExporterInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksheetExporterInstaller.swift; sourceTree = "<group>"; };
+		0926473ECB900B36FC4204A0 /* LogModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogModels.swift; sourceTree = "<group>"; };
+		0A849205F092A26E2F2B0DB7 /* DeviceIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIdentity.swift; sourceTree = "<group>"; };
+		0C58EFA870EF8178CE19D27C /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		1070DCCCB076F6704AC522C4 /* math-practice */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "math-practice"; path = .; sourceTree = SOURCE_ROOT; };
+		187488CDCAEBAA356DF5CFCD /* WorksheetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksheetsView.swift; sourceTree = "<group>"; };
+		2BF091EF86454A9370E598B1 /* MathPractice-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "MathPractice-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F07628E40D80964914AC273 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		3271B69343A7DC6D8DBC064E /* MathTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathTextView.swift; sourceTree = "<group>"; };
+		37E0B541F812DB152AD94B0E /* DeduplicationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeduplicationService.swift; sourceTree = "<group>"; };
+		485A9117E9B925DA4C37B220 /* MacWorksheetExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacWorksheetExporter.swift; sourceTree = "<group>"; };
+		51B088F018B04D1BF3B597B0 /* WorksheetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksheetStore.swift; sourceTree = "<group>"; };
+		564CD3DD592C9C3B13DAA836 /* WorksheetExporterInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksheetExporterInstaller.swift; sourceTree = "<group>"; };
+		59FA40CD26CA88F408B9B970 /* PackImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackImportService.swift; sourceTree = "<group>"; };
+		6F54EA1ADCCEDAEA70F4AAF4 /* katex */ = {isa = PBXFileReference; lastKnownFileType = folder; name = katex; path = Sources/MathPracticeApp/Resources/katex; sourceTree = SOURCE_ROOT; };
+		74CF28C8DD3D4164164C436F /* MathPracticeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathPracticeApp.swift; sourceTree = "<group>"; };
+		846FEF2D607662D1D49633DB /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		8B8D3E318B5AFFEB919106E7 /* EventStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStore.swift; sourceTree = "<group>"; };
+		8C4F61480A5CB94E87C3C9BA /* LibraryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModels.swift; sourceTree = "<group>"; };
+		99526EE8967DEB60093A0CA5 /* MathRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathRenderer.swift; sourceTree = "<group>"; };
+		9ABDC763B9CB199D4590C26B /* MathPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA53430016646E194DA409CB /* KaTeXAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaTeXAssets.swift; sourceTree = "<group>"; };
+		CCF576AFE82FA8DC7408F8B0 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
+		DC34061659930113212A557A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E18426DF1C3B7D1D57EDCA3E /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		E328C1E49F6D984CE8B90609 /* WorksheetExporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksheetExporting.swift; sourceTree = "<group>"; };
+		FCD1C7AF96DBB7F306FBF0AB /* MathDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathDocument.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		55BEB40B08A1D4FF6BD95ED4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBB5DDEB8F4BDF46791533A0 /* MathPracticeCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8701D471E458A495073F747 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02956496055346B23F0BFEB2 /* MathPracticeCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F0CE42F85850E507226693D /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D5C1156942F2C4744B644C2F /* MathPracticeApp */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		236488A8A518A61D21CBF436 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				8C4F61480A5CB94E87C3C9BA /* LibraryModels.swift */,
+				0926473ECB900B36FC4204A0 /* LogModels.swift */,
+				0C58EFA870EF8178CE19D27C /* PersistenceController.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		2DC19BCB851CBD5AD7593E51 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				846FEF2D607662D1D49633DB /* DashboardView.swift */,
+				CCF576AFE82FA8DC7408F8B0 /* PracticeView.swift */,
+				2F07628E40D80964914AC273 /* RootView.swift */,
+				DC34061659930113212A557A /* SettingsView.swift */,
+				187488CDCAEBAA356DF5CFCD /* WorksheetsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		475473AB6EF812C3BEA34370 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2BF091EF86454A9370E598B1 /* MathPractice-iOS.app */,
+				9ABDC763B9CB199D4590C26B /* MathPractice.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		59F13C3372F175BE6DCFB597 = {
+			isa = PBXGroup;
+			children = (
+				BDF926BC96BEE9E951D4A48E /* Packages */,
+				0F0CE42F85850E507226693D /* Sources */,
+				475473AB6EF812C3BEA34370 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7C51A4B21957A80186339189 /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				CA53430016646E194DA409CB /* KaTeXAssets.swift */,
+				FCD1C7AF96DBB7F306FBF0AB /* MathDocument.swift */,
+				99526EE8967DEB60093A0CA5 /* MathRenderer.swift */,
+				3271B69343A7DC6D8DBC064E /* MathTextView.swift */,
+			);
+			path = Rendering;
+			sourceTree = "<group>";
+		};
+		9FEA1C6C9A5EA639191C6BF0 /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				A8DFD441D8A10566D1C55D0A /* iOS */,
+				DBF50214CB370118EB37C003 /* macOS */,
+				E328C1E49F6D984CE8B90609 /* WorksheetExporting.swift */,
+			);
+			path = Export;
+			sourceTree = "<group>";
+		};
+		A8DFD441D8A10566D1C55D0A /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				564CD3DD592C9C3B13DAA836 /* WorksheetExporterInstaller.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		B91F2F16A32CE1110CD73FE4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6F54EA1ADCCEDAEA70F4AAF4 /* katex */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BDF926BC96BEE9E951D4A48E /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				1070DCCCB076F6704AC522C4 /* math-practice */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		C2FB726C7ADEE29E9938D634 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E18426DF1C3B7D1D57EDCA3E /* AppModel.swift */,
+				37E0B541F812DB152AD94B0E /* DeduplicationService.swift */,
+				0A849205F092A26E2F2B0DB7 /* DeviceIdentity.swift */,
+				8B8D3E318B5AFFEB919106E7 /* EventStore.swift */,
+				59FA40CD26CA88F408B9B970 /* PackImportService.swift */,
+				51B088F018B04D1BF3B597B0 /* WorksheetStore.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D5C1156942F2C4744B644C2F /* MathPracticeApp */ = {
+			isa = PBXGroup;
+			children = (
+				9FEA1C6C9A5EA639191C6BF0 /* Export */,
+				236488A8A518A61D21CBF436 /* Persistence */,
+				7C51A4B21957A80186339189 /* Rendering */,
+				B91F2F16A32CE1110CD73FE4 /* Resources */,
+				C2FB726C7ADEE29E9938D634 /* Services */,
+				2DC19BCB851CBD5AD7593E51 /* Views */,
+				74CF28C8DD3D4164164C436F /* MathPracticeApp.swift */,
+			);
+			path = MathPracticeApp;
+			sourceTree = "<group>";
+		};
+		DBF50214CB370118EB37C003 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				485A9117E9B925DA4C37B220 /* MacWorksheetExporter.swift */,
+				06739EBEDF98B708C01DA7FF /* WorksheetExporterInstaller.swift */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		56ED508D8D334DB1B5CD699E /* MathPractice-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CFFE47D82E168A630450826 /* Build configuration list for PBXNativeTarget "MathPractice-iOS" */;
+			buildPhases = (
+				4308639C435262F090636ACD /* Sources */,
+				6A7CBBAC3866DC26C4B68E12 /* Resources */,
+				F8701D471E458A495073F747 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MathPractice-iOS";
+			packageProductDependencies = (
+				9E668DAE20A936EACB69F27F /* MathPracticeCore */,
+			);
+			productName = "MathPractice-iOS";
+			productReference = 2BF091EF86454A9370E598B1 /* MathPractice-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		838A672E677A2159F765F7F7 /* MathPractice */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44A7CB167BC6E67C99F71489 /* Build configuration list for PBXNativeTarget "MathPractice" */;
+			buildPhases = (
+				12AD96DA095216A68463DF8B /* Sources */,
+				29CC703CE1F47743C6F230DF /* Resources */,
+				55BEB40B08A1D4FF6BD95ED4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MathPractice;
+			packageProductDependencies = (
+				9FF61486D6172A12D642B9BB /* MathPracticeCore */,
+			);
+			productName = MathPractice;
+			productReference = 9ABDC763B9CB199D4590C26B /* MathPractice.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		538B02093A8F8C478CFEEABA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					56ED508D8D334DB1B5CD699E = {
+						DevelopmentTeam = PWGXN26URQ;
+						ProvisioningStyle = Automatic;
+					};
+					838A672E677A2159F765F7F7 = {
+						DevelopmentTeam = PWGXN26URQ;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 9B7424D989D9841FC6DF05A0 /* Build configuration list for PBXProject "MathPractice" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 59F13C3372F175BE6DCFB597;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				48B8F600A09F07A32C9921B3 /* XCLocalSwiftPackageReference "." */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 475473AB6EF812C3BEA34370 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				838A672E677A2159F765F7F7 /* MathPractice */,
+				56ED508D8D334DB1B5CD699E /* MathPractice-iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		29CC703CE1F47743C6F230DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				398FF4D8D9AF47412915994B /* katex in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A7CBBAC3866DC26C4B68E12 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				848CE0F1FF6210742452E6E5 /* katex in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		12AD96DA095216A68463DF8B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC6430FE4D21E7612CF6F6D8 /* AppModel.swift in Sources */,
+				2768A7A0A44F7F6529146C5D /* DashboardView.swift in Sources */,
+				132E08AF3B207E9D67BB77D5 /* DeduplicationService.swift in Sources */,
+				7B85049A5A7501BCAC735AEE /* DeviceIdentity.swift in Sources */,
+				3D33F33BD9B7C2885CA9EB53 /* EventStore.swift in Sources */,
+				5F30E1CEB2A10C12CBAEE7D3 /* KaTeXAssets.swift in Sources */,
+				CDA7890BB4F76959AD731184 /* LibraryModels.swift in Sources */,
+				3A2A351B62607DF5EDE78542 /* LogModels.swift in Sources */,
+				D4E409251155D77A58174B7C /* MacWorksheetExporter.swift in Sources */,
+				547BD98FC567DF4ADE3D5B4F /* MathDocument.swift in Sources */,
+				CCB27A69571B4D6E9309D9E8 /* MathPracticeApp.swift in Sources */,
+				F335B274850BAB4A233966D0 /* MathRenderer.swift in Sources */,
+				4322C2220A279B12A6E63B25 /* MathTextView.swift in Sources */,
+				CDEBEDDF43EBFB2DCE7FF17C /* PackImportService.swift in Sources */,
+				BFBB091011A2026E34E4A5DF /* PersistenceController.swift in Sources */,
+				7A35E272AA366287C3F61D35 /* PracticeView.swift in Sources */,
+				E2B15CE9F2B61EE813EFE774 /* RootView.swift in Sources */,
+				D2D67A7991CCC9868BBA8668 /* SettingsView.swift in Sources */,
+				94713DF1CB820961B997CB2E /* WorksheetExporterInstaller.swift in Sources */,
+				EB395BA12F697FA7A58D6B83 /* WorksheetExporting.swift in Sources */,
+				5B59527496C9C9E6C092AEBC /* WorksheetStore.swift in Sources */,
+				B47569BFF17629D66010B21D /* WorksheetsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4308639C435262F090636ACD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F5A44FF92D3BC0AECE7CC06 /* AppModel.swift in Sources */,
+				B6D4BDE9B0679771A5B68DE6 /* DashboardView.swift in Sources */,
+				7F7FC954225F6BA531A33DCC /* DeduplicationService.swift in Sources */,
+				E7405422667486724FE99EB2 /* DeviceIdentity.swift in Sources */,
+				350E645EB638521F62CF77BC /* EventStore.swift in Sources */,
+				7D5AE88CFB647B2C14C6A9BB /* KaTeXAssets.swift in Sources */,
+				0D4D57002ECBDBDE19602820 /* LibraryModels.swift in Sources */,
+				AF7454B26316692735117489 /* LogModels.swift in Sources */,
+				C3C49DCEB92810A14B039450 /* MathDocument.swift in Sources */,
+				92940F614E5F3AE10BE11920 /* MathPracticeApp.swift in Sources */,
+				2609CAA541B946F91D8C1608 /* MathRenderer.swift in Sources */,
+				48CEA2EDF776E792BC26CF54 /* MathTextView.swift in Sources */,
+				15B693544CC5EF7FE4429F8B /* PackImportService.swift in Sources */,
+				ED024A6BF1FE39988DF03F2A /* PersistenceController.swift in Sources */,
+				19DF735858450784578009DF /* PracticeView.swift in Sources */,
+				7F9C63F0C3346B1C075883B7 /* RootView.swift in Sources */,
+				765F0AC3C417897CBAFFCE97 /* SettingsView.swift in Sources */,
+				F56E462D0F4A971CA285D816 /* WorksheetExporterInstaller.swift in Sources */,
+				54FBEA365665A9CA1253065E /* WorksheetExporting.swift in Sources */,
+				9C69B0C683763E2B30B68C5F /* WorksheetStore.swift in Sources */,
+				3D063F4035A65D2AC2F2C729 /* WorksheetsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0BCAB848DBBC780C23834E1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = PWGXN26URQ;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		2AAEAB0E5003E727F023E1E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = PWGXN26URQ;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		5A288E48584B30856E51ECCB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MathPractice.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MathPractice;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026 Josh Glazer";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jsglazer.MathPractice;
+				PRODUCT_NAME = MathPractice;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		8683119C2DA41EFAFBC338EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "MathPractice-iOS.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MathPractice;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026 Josh Glazer";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jsglazer.MathPractice;
+				PRODUCT_NAME = MathPractice;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A4334C8B1DE2E5264C1CBBBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "MathPractice-iOS.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MathPractice;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026 Josh Glazer";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jsglazer.MathPractice;
+				PRODUCT_NAME = MathPractice;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A7F4A4C00D8BDD326A1D19D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MathPractice.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MathPractice;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026 Josh Glazer";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jsglazer.MathPractice;
+				PRODUCT_NAME = MathPractice;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		44A7CB167BC6E67C99F71489 /* Build configuration list for PBXNativeTarget "MathPractice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7F4A4C00D8BDD326A1D19D7 /* Debug */,
+				5A288E48584B30856E51ECCB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		6CFFE47D82E168A630450826 /* Build configuration list for PBXNativeTarget "MathPractice-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4334C8B1DE2E5264C1CBBBE /* Debug */,
+				8683119C2DA41EFAFBC338EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9B7424D989D9841FC6DF05A0 /* Build configuration list for PBXProject "MathPractice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0BCAB848DBBC780C23834E1D /* Debug */,
+				2AAEAB0E5003E727F023E1E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		48B8F600A09F07A32C9921B3 /* XCLocalSwiftPackageReference "." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = .;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9E668DAE20A936EACB69F27F /* MathPracticeCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MathPracticeCore;
+		};
+		9FF61486D6172A12D642B9BB /* MathPracticeCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MathPracticeCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 538B02093A8F8C478CFEEABA /* Project object */;
+}
