@@ -21,6 +21,7 @@ Most maths apps are answer-entry quiz engines: they want the answer typed in, th
 - **PDF worksheets (macOS).** Name a sheet, export it, work it on paper, then come back and click Right/Wrong by question number. The printed numbers and the in-app rows are the same ordinals by construction.
 - **Problem-pack import.** Drop in a JSON pack of LLM-authored problems for cases templates handle poorly. Packs sync, are validated wholesale, and are versioned.
 - **Multi-device sync via CloudKit.** Two Macs and an iPhone, some online and some not, converge on the same state — see [How sync works](#how-sync-works).
+- **App version in the toolbar.** The running build's version number shows quietly in grey next to Skip, so you always know what you're on without opening About.
 
 **v1 topic scope is derivatives.** Integrals, limits and advanced algebra are topics 2, 3 and 4, and the app is built so adding one is a new directory plus a single line in `TopicRegistry.standard` — a claim the test suite verifies by registering a topic the app has never heard of and driving the selector, the router, the ladder and the dashboard entirely through it.
 
