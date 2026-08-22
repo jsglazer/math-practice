@@ -1,6 +1,6 @@
 # MathPractice
 
-[![GitHub release](https://img.shields.io/github/v/release/jsglazer/math-practice?logo=github)](https://github.com/jsglazer/math-practice/releases) [![Swift 6.0](https://img.shields.io/badge/Swift-6.0-F05138?logo=swift&logoColor=white)](https://swift.org) [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/jsglazer/math-practice/blob/main/LICENSE) [![Made with Claude](https://img.shields.io/badge/Made_with-Claude-D97756?logo=anthropic)](https://claude.ai) [![Gemini Flash Antigravity](https://img.shields.io/badge/Gemini%20Flash-Antigravity-4f86f7?logo=google-gemini&logoColor=white)](https://github.com/google-gemini)
+[![GitHub release](https://img.shields.io/github/v/release/jsglazer/math-practice?logo=github)](https://github.com/jsglazer/math-practice/releases) [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/jsglazer/math-practice/blob/main/LICENSE) [![Made with Claude](https://img.shields.io/badge/Made_with-Claude-D97756?logo=anthropic)](https://claude.ai) [![Swift 6.0](https://img.shields.io/badge/Swift-6.0-F05138?logo=swift&logoColor=white)](https://swift.org) [![Gemini Flash Antigravity](https://img.shields.io/badge/Gemini%20Flash-Antigravity-4f86f7?logo=google-gemini&logoColor=white)](https://github.com/google-gemini)
 
 A calculus drill app for macOS and iOS built around working problems **on paper** — not typing answers into a screen.
 
@@ -11,11 +11,13 @@ Most maths apps are answer-entry quiz engines: they want the answer typed in, th
 ## Features
 
 - **Never asks for the answer.** There is no input field anywhere in the app, and no grading. Correctness is a self-reported `Right`/`Wrong` — the app is a drill partner, not an examiner.
-- **Incremental reveal.** `Show next step` releases exactly one further line of the derivation. `Show answer` releases the answer. Once the answer is out there is nothing left to protect, so a step request then returns the complete worked solution at once.
+- **Incremental reveal, in one selectable pane.** `Show next step` releases exactly one further line of the derivation. `Show answer` releases the answer. Once the answer is out there is nothing left to protect, so a step request then returns the complete worked solution at once — and the answer plus every revealed step render together in one pane, so the whole derivation can be selected and copied in a single drag.
+- **Skip, with a note.** A problem that's off-topic today can be skipped instead of worked, with an optional note explaining why — skips are logged and reviewable but never touch the difficulty ladder.
 - **Adaptive difficulty, 1–10, per `(topic, sub-type)`.** The chain rule tracks separately from the power rule, because being good at one says nothing about the other.
 - **Configurable ladder.** Harder after *N* correct in a row, easier after *M* wrong, with a hold period so one bad patch does not drop you three levels.
-- **16 derivative templates** across power, product, quotient, chain, trigonometric, and exponential/logarithmic rules — every one of them verified against SymPy before it ships (see [Correctness](#correctness)).
-- **Progress matrix.** Topic × sub-type × difficulty, showing where you are strong and where you are not. Every number is folded out of the log on the spot; nothing on that screen is stored.
+- **16 derivative templates** across power, product, quotient, chain, trigonometric, and exponential/logarithmic rules — every one of them verified against SymPy before it ships (see [Correctness](#correctness)). Quotient-rule answers that don't reduce to a closed form by simplification alone (a distributed numerator) are expanded and collected, not left half-factored.
+- **Every problem carries a short, stable ID.** Deterministic from `(template, difficulty, seed)`, shown right under the problem and logged with every attempt or skip — enough to reference one exact problem later without the app persisting anything extra for it.
+- **Progress matrix and session history.** Topic × sub-type × difficulty, showing where you are strong and where you are not, plus a list of past practice sessions (grouped by a 30-minute gap in activity) you can open and review problem by problem. Every number is folded out of the log on the spot; nothing on that screen is stored beyond the event log itself.
 - **PDF worksheets (macOS).** Name a sheet, export it, work it on paper, then come back and click Right/Wrong by question number. The printed numbers and the in-app rows are the same ordinals by construction.
 - **Problem-pack import.** Drop in a JSON pack of LLM-authored problems for cases templates handle poorly. Packs sync, are validated wholesale, and are versioned.
 - **Multi-device sync via CloudKit.** Two Macs and an iPhone, some online and some not, converge on the same state — see [How sync works](#how-sync-works).
@@ -56,6 +58,7 @@ Sources/MathPracticeCore/     pure domain logic — no SwiftUI, WebKit, SwiftDat
   Dedup/                      dedupe keys and the order-independent survivor rule
   Reveal/                     the disclosure state machine
   Dashboard/                  the progress matrix aggregation
+  Sessions/                   groups the event stream into reviewable practice sessions
   Packs/  Worksheets/  Selection/  Random/
 
 Sources/MathPracticeApp/      the OS shell
