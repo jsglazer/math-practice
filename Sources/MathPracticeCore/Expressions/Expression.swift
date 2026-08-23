@@ -33,6 +33,7 @@ public indirect enum Expression: Hashable, Sendable {
 
 public extension Expression {
     static let x = Expression.symbol("x")
+    static let y = Expression.symbol("y")
     static let zero = Expression.constant(.zero)
     static let one = Expression.constant(.one)
 

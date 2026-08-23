@@ -47,7 +47,7 @@ struct TopicRegistryTests {
     func standardRegistry() {
         #expect(TopicRegistry.standard.topics.count == 1)
         #expect(TopicRegistry.standard.topic(.derivatives) != nil)
-        #expect(TopicRegistry.standard.practiceKeys.count == 6)
+        #expect(TopicRegistry.standard.practiceKeys.count == 7)
     }
 
     // MARK: - Driving the selector through the fake topic

@@ -34,10 +34,12 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 GOLDEN_PATH = REPO_ROOT / "Tests" / "MathPracticeCoreTests" / "Golden" / "templates.json"
 
 X = sympy.Symbol("x", real=True)
+Y = sympy.Symbol("y", real=True)
 
 # The only names a canonical expression may use. Anything else is a schema violation.
 NAMESPACE = {
     "x": X,
+    "y": Y,
     "Rational": sympy.Rational,
     "sin": sympy.sin,
     "cos": sympy.cos,
@@ -62,6 +64,16 @@ def parse(text: str, where: str):
         raise VerificationError(f"{where}: cannot parse {text!r} ({error})") from error
 
 
+PROBES = (
+    sympy.Rational(2, 7),
+    sympy.Rational(3, 5),
+    sympy.Rational(11, 4),
+    sympy.Rational(9, 2),
+    sympy.Rational(5, 3),
+    sympy.Rational(7, 11),
+)
+
+
 def equivalent(left, right) -> bool:
     """Symbolic equality, with a numeric fallback for stubborn trig/radical forms."""
     difference = sympy.simplify(sympy.together(left - right))
@@ -70,10 +82,18 @@ def equivalent(left, right) -> bool:
     difference = sympy.simplify(sympy.expand_trig(sympy.expand(difference)))
     if difference == 0:
         return True
-    # A last resort: agree to 25 digits at several points that avoid the usual poles.
-    for probe in (sympy.Rational(2, 7), sympy.Rational(3, 5), sympy.Rational(11, 4), sympy.Rational(9, 2)):
+    # A last resort: agree to 25 digits at several probe assignments that avoid the usual
+    # poles, over every free symbol left in the difference (x alone, or x and y together).
+    free_symbols = sorted(difference.free_symbols, key=lambda symbol: symbol.name)
+    if not free_symbols:
+        return False
+    for offset in range(4):
+        substitution = {
+            symbol: PROBES[(index + offset) % len(PROBES)]
+            for index, symbol in enumerate(free_symbols)
+        }
         try:
-            value = complex(difference.subs(X, probe).evalf(25))
+            value = complex(difference.subs(substitution).evalf(25))
         except (TypeError, ValueError):
             return False
         if abs(value) > 1e-18:
@@ -99,13 +119,14 @@ def verify_record(record: dict, position: int) -> None:
     answer = parse(record["canonicalAnswer"], f"{where} answer")
 
     rule = record.get("verificationRule")
-    if rule != "derivative":
+    variable = {"derivative": X, "partial-x": X, "partial-y": Y}.get(rule)
+    if variable is None:
         raise VerificationError(f"{where}: unsupported verification rule {rule!r}")
 
-    derivative = sympy.diff(problem, X)
+    derivative = sympy.diff(problem, variable)
     if not equivalent(derivative, answer):
         raise VerificationError(
-            f"{where}: d/dx[{record['canonicalPrompt']}] = {sympy.simplify(derivative)} "
+            f"{where}: d/d{variable}[{record['canonicalPrompt']}] = {sympy.simplify(derivative)} "
             f"but the template says {sympy.simplify(answer)}"
         )
 

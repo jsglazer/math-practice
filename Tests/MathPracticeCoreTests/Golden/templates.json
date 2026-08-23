@@ -7484,6 +7484,4092 @@
       "templateID" : "derivatives.exp-log.logarithm",
       "topicID" : "derivatives",
       "verificationRule" : "derivative"
+    },
+    {
+      "answerLatex" : "9 x^{2} y^{2} + 9 x^{2}",
+      "canonicalAnswer" : "((9*(x)**(2)*(y)**(2)) + (9*(x)**(2)))",
+      "canonicalPrompt" : "((3*(x)**(3)*(y)**(2)) + (3*(x)**(3)) + (3*(y)**(3)))",
+      "difficulty" : 1,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 3
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : 3
+        },
+        {
+          "name" : "p",
+          "value" : 3
+        },
+        {
+          "name" : "c",
+          "value" : 3
+        },
+        {
+          "name" : "q",
+          "value" : 3
+        }
+      ],
+      "problemID" : "MVUK7027",
+      "promptLatex" : "3 x^{3} y^{2} + 3 x^{3} + 3 y^{3}",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[k x^{p} y^{q}\\right] = k p\\, x^{p-1} y^{q}",
+          "title" : "Differentiate term by term, holding y constant"
+        },
+        {
+          "canonical" : "(9*(x)**(2)*(y)**(2))",
+          "latex" : "9 x^{2} y^{2}",
+          "title" : "Differentiate 3 x^{3} y^{2}"
+        },
+        {
+          "canonical" : "(9*(x)**(2))",
+          "latex" : "9 x^{2}",
+          "title" : "Differentiate 3 x^{3}"
+        },
+        {
+          "latex" : "0",
+          "title" : "3 y^{3} has no x in it, so it is constant here"
+        },
+        {
+          "canonical" : "((9*(x)**(2)*(y)**(2)) + (9*(x)**(2)))",
+          "latex" : "9 x^{2} y^{2} + 9 x^{2}",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.polynomial-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "2 x y^{2} + 2 x",
+      "canonicalAnswer" : "((2*x*(y)**(2)) + (2*x))",
+      "canonicalPrompt" : "(((x)**(2)*(y)**(2)) + (x)**(2) + (y)**(2))",
+      "difficulty" : 1,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 1
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : 1
+        },
+        {
+          "name" : "p",
+          "value" : 2
+        },
+        {
+          "name" : "c",
+          "value" : 1
+        },
+        {
+          "name" : "q",
+          "value" : 2
+        }
+      ],
+      "problemID" : "ZW5YBH6Z",
+      "promptLatex" : "x^{2} y^{2} + x^{2} + y^{2}",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[k x^{p} y^{q}\\right] = k p\\, x^{p-1} y^{q}",
+          "title" : "Differentiate term by term, holding y constant"
+        },
+        {
+          "canonical" : "(2*x*(y)**(2))",
+          "latex" : "2 x y^{2}",
+          "title" : "Differentiate x^{2} y^{2}"
+        },
+        {
+          "canonical" : "(2*x)",
+          "latex" : "2 x",
+          "title" : "Differentiate x^{2}"
+        },
+        {
+          "latex" : "0",
+          "title" : "y^{2} has no x in it, so it is constant here"
+        },
+        {
+          "canonical" : "((2*x*(y)**(2)) + (2*x))",
+          "latex" : "2 x y^{2} + 2 x",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.polynomial-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "4 x y^{3} + 4 x",
+      "canonicalAnswer" : "((4*x*(y)**(3)) + (4*x))",
+      "canonicalPrompt" : "((2*(x)**(2)*(y)**(3)) + (2*(x)**(2)) + (y)**(2))",
+      "difficulty" : 1,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 2
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "m",
+          "value" : 3
+        },
+        {
+          "name" : "b",
+          "value" : 2
+        },
+        {
+          "name" : "p",
+          "value" : 2
+        },
+        {
+          "name" : "c",
+          "value" : 1
+        },
+        {
+          "name" : "q",
+          "value" : 2
+        }
+      ],
+      "problemID" : "Q62KD087",
+      "promptLatex" : "2 x^{2} y^{3} + 2 x^{2} + y^{2}",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[k x^{p} y^{q}\\right] = k p\\, x^{p-1} y^{q}",
+          "title" : "Differentiate term by term, holding y constant"
+        },
+        {
+          "canonical" : "(4*x*(y)**(3))",
+          "latex" : "4 x y^{3}",
+          "title" : "Differentiate 2 x^{2} y^{3}"
+        },
+        {
+          "canonical" : "(4*x)",
+          "latex" : "4 x",
+          "title" : "Differentiate 2 x^{2}"
+        },
+        {
+          "latex" : "0",
+          "title" : "y^{2} has no x in it, so it is constant here"
+        },
+        {
+          "canonical" : "((4*x*(y)**(3)) + (4*x))",
+          "latex" : "4 x y^{3} + 4 x",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.polynomial-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-20 x^{3} y^{2} - 8 x",
+      "canonicalAnswer" : "((-20*(x)**(3)*(y)**(2)) + (-8*x))",
+      "canonicalPrompt" : "((-5*(x)**(4)*(y)**(2)) + (-4*(x)**(2)) + (5*(y)**(2)))",
+      "difficulty" : 4,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -5
+        },
+        {
+          "name" : "n",
+          "value" : 4
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : -4
+        },
+        {
+          "name" : "p",
+          "value" : 2
+        },
+        {
+          "name" : "c",
+          "value" : 5
+        },
+        {
+          "name" : "q",
+          "value" : 2
+        }
+      ],
+      "problemID" : "UCTUEKDY",
+      "promptLatex" : "-5 x^{4} y^{2} - 4 x^{2} + 5 y^{2}",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[k x^{p} y^{q}\\right] = k p\\, x^{p-1} y^{q}",
+          "title" : "Differentiate term by term, holding y constant"
+        },
+        {
+          "canonical" : "(-20*(x)**(3)*(y)**(2))",
+          "latex" : "-20 x^{3} y^{2}",
+          "title" : "Differentiate -5 x^{4} y^{2}"
+        },
+        {
+          "canonical" : "(-8*x)",
+          "latex" : "-8 x",
+          "title" : "Differentiate -4 x^{2}"
+        },
+        {
+          "latex" : "0",
+          "title" : "5 y^{2} has no x in it, so it is constant here"
+        },
+        {
+          "canonical" : "((-20*(x)**(3)*(y)**(2)) + (-8*x))",
+          "latex" : "-20 x^{3} y^{2} - 8 x",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.polynomial-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "10 x y^{2} + 6 x^{2}",
+      "canonicalAnswer" : "((10*x*(y)**(2)) + (6*(x)**(2)))",
+      "canonicalPrompt" : "((5*(x)**(2)*(y)**(2)) + (2*(x)**(3)) + (-2*(y)**(2)))",
+      "difficulty" : 4,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 5
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : 2
+        },
+        {
+          "name" : "p",
+          "value" : 3
+        },
+        {
+          "name" : "c",
+          "value" : -2
+        },
+        {
+          "name" : "q",
+          "value" : 2
+        }
+      ],
+      "problemID" : "S8UR120N",
+      "promptLatex" : "5 x^{2} y^{2} + 2 x^{3} - 2 y^{2}",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[k x^{p} y^{q}\\right] = k p\\, x^{p-1} y^{q}",
+          "title" : "Differentiate term by term, holding y constant"
+        },
+        {
+          "canonical" : "(10*x*(y)**(2))",
+          "latex" : "10 x y^{2}",
+          "title" : "Differentiate 5 x^{2} y^{2}"
+        },
+        {
+          "canonical" : "(6*(x)**(2))",
+          "latex" : "6 x^{2}",
+          "title" : "Differentiate 2 x^{3}"
+        },
+        {
+          "latex" : "0",
+          "title" : "-2 y^{2} has no x in it, so it is constant here"
+        },
+        {
+          "canonical" : "((10*x*(y)**(2)) + (6*(x)**(2)))",
+          "latex" : "10 x y^{2} + 6 x^{2}",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.polynomial-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-3 x^{2} y^{3} - 6 x",
+      "canonicalAnswer" : "((-3*(x)**(2)*(y)**(3)) + (-6*x))",
+      "canonicalPrompt" : "((-1*(x)**(3)*(y)**(3)) + (-3*(x)**(2)) + (5*(y)**(2)))",
+      "difficulty" : 4,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -1
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "m",
+          "value" : 3
+        },
+        {
+          "name" : "b",
+          "value" : -3
+        },
+        {
+          "name" : "p",
+          "value" : 2
+        },
+        {
+          "name" : "c",
+          "value" : 5
+        },
+        {
+          "name" : "q",
+          "value" : 2
+        }
+      ],
+      "problemID" : "K1FLAGYC",
+      "promptLatex" : "-x^{3} y^{3} - 3 x^{2} + 5 y^{2}",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[k x^{p} y^{q}\\right] = k p\\, x^{p-1} y^{q}",
+          "title" : "Differentiate term by term, holding y constant"
+        },
+        {
+          "canonical" : "(-3*(x)**(2)*(y)**(3))",
+          "latex" : "-3 x^{2} y^{3}",
+          "title" : "Differentiate -x^{3} y^{3}"
+        },
+        {
+          "canonical" : "(-6*x)",
+          "latex" : "-6 x",
+          "title" : "Differentiate -3 x^{2}"
+        },
+        {
+          "latex" : "0",
+          "title" : "5 y^{2} has no x in it, so it is constant here"
+        },
+        {
+          "canonical" : "((-3*(x)**(2)*(y)**(3)) + (-6*x))",
+          "latex" : "-3 x^{2} y^{3} - 6 x",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.polynomial-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-48 x^{5} y^{2} + 12 x^{2}",
+      "canonicalAnswer" : "((-48*(x)**(5)*(y)**(2)) + (12*(x)**(2)))",
+      "canonicalPrompt" : "((-8*(x)**(6)*(y)**(2)) + (4*(x)**(3)) + (-8*(y)**(2)))",
+      "difficulty" : 8,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -8
+        },
+        {
+          "name" : "n",
+          "value" : 6
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : 4
+        },
+        {
+          "name" : "p",
+          "value" : 3
+        },
+        {
+          "name" : "c",
+          "value" : -8
+        },
+        {
+          "name" : "q",
+          "value" : 2
+        }
+      ],
+      "problemID" : "LYLJH2ME",
+      "promptLatex" : "-8 x^{6} y^{2} + 4 x^{3} - 8 y^{2}",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[k x^{p} y^{q}\\right] = k p\\, x^{p-1} y^{q}",
+          "title" : "Differentiate term by term, holding y constant"
+        },
+        {
+          "canonical" : "(-48*(x)**(5)*(y)**(2))",
+          "latex" : "-48 x^{5} y^{2}",
+          "title" : "Differentiate -8 x^{6} y^{2}"
+        },
+        {
+          "canonical" : "(12*(x)**(2))",
+          "latex" : "12 x^{2}",
+          "title" : "Differentiate 4 x^{3}"
+        },
+        {
+          "latex" : "0",
+          "title" : "-8 y^{2} has no x in it, so it is constant here"
+        },
+        {
+          "canonical" : "((-48*(x)**(5)*(y)**(2)) + (12*(x)**(2)))",
+          "latex" : "-48 x^{5} y^{2} + 12 x^{2}",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.polynomial-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-6 x^{5} y^{3} - 42 x^{5}",
+      "canonicalAnswer" : "((-6*(x)**(5)*(y)**(3)) + (-42*(x)**(5)))",
+      "canonicalPrompt" : "((-1*(x)**(6)*(y)**(3)) + (-7*(x)**(6)) + (-4*(y)**(5)))",
+      "difficulty" : 8,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -1
+        },
+        {
+          "name" : "n",
+          "value" : 6
+        },
+        {
+          "name" : "m",
+          "value" : 3
+        },
+        {
+          "name" : "b",
+          "value" : -7
+        },
+        {
+          "name" : "p",
+          "value" : 6
+        },
+        {
+          "name" : "c",
+          "value" : -4
+        },
+        {
+          "name" : "q",
+          "value" : 5
+        }
+      ],
+      "problemID" : "YZXWMKR6",
+      "promptLatex" : "-x^{6} y^{3} - 7 x^{6} - 4 y^{5}",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[k x^{p} y^{q}\\right] = k p\\, x^{p-1} y^{q}",
+          "title" : "Differentiate term by term, holding y constant"
+        },
+        {
+          "canonical" : "(-6*(x)**(5)*(y)**(3))",
+          "latex" : "-6 x^{5} y^{3}",
+          "title" : "Differentiate -x^{6} y^{3}"
+        },
+        {
+          "canonical" : "(-42*(x)**(5))",
+          "latex" : "-42 x^{5}",
+          "title" : "Differentiate -7 x^{6}"
+        },
+        {
+          "latex" : "0",
+          "title" : "-4 y^{5} has no x in it, so it is constant here"
+        },
+        {
+          "canonical" : "((-6*(x)**(5)*(y)**(3)) + (-42*(x)**(5)))",
+          "latex" : "-6 x^{5} y^{3} - 42 x^{5}",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.polynomial-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-15 x^{4} y^{2} + 40 x^{4}",
+      "canonicalAnswer" : "((-15*(x)**(4)*(y)**(2)) + (40*(x)**(4)))",
+      "canonicalPrompt" : "((-3*(x)**(5)*(y)**(2)) + (8*(x)**(5)) + (7*(y)**(2)))",
+      "difficulty" : 8,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -3
+        },
+        {
+          "name" : "n",
+          "value" : 5
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : 8
+        },
+        {
+          "name" : "p",
+          "value" : 5
+        },
+        {
+          "name" : "c",
+          "value" : 7
+        },
+        {
+          "name" : "q",
+          "value" : 2
+        }
+      ],
+      "problemID" : "KK9UAA4L",
+      "promptLatex" : "-3 x^{5} y^{2} + 8 x^{5} + 7 y^{2}",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[k x^{p} y^{q}\\right] = k p\\, x^{p-1} y^{q}",
+          "title" : "Differentiate term by term, holding y constant"
+        },
+        {
+          "canonical" : "(-15*(x)**(4)*(y)**(2))",
+          "latex" : "-15 x^{4} y^{2}",
+          "title" : "Differentiate -3 x^{5} y^{2}"
+        },
+        {
+          "canonical" : "(40*(x)**(4))",
+          "latex" : "40 x^{4}",
+          "title" : "Differentiate 8 x^{5}"
+        },
+        {
+          "latex" : "0",
+          "title" : "7 y^{2} has no x in it, so it is constant here"
+        },
+        {
+          "canonical" : "((-15*(x)**(4)*(y)**(2)) + (40*(x)**(4)))",
+          "latex" : "-15 x^{4} y^{2} + 40 x^{4}",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.polynomial-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "6 x^{3} y + 9 y^{2}",
+      "canonicalAnswer" : "((6*(x)**(3)*y) + (9*(y)**(2)))",
+      "canonicalPrompt" : "((3*(x)**(3)*(y)**(2)) + (3*(x)**(3)) + (3*(y)**(3)))",
+      "difficulty" : 1,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 3
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : 3
+        },
+        {
+          "name" : "p",
+          "value" : 3
+        },
+        {
+          "name" : "c",
+          "value" : 3
+        },
+        {
+          "name" : "q",
+          "value" : 3
+        }
+      ],
+      "problemID" : "AVWFRKCX",
+      "promptLatex" : "3 x^{3} y^{2} + 3 x^{3} + 3 y^{3}",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[k x^{p} y^{q}\\right] = k q\\, x^{p} y^{q-1}",
+          "title" : "Differentiate term by term, holding x constant"
+        },
+        {
+          "canonical" : "(6*(x)**(3)*y)",
+          "latex" : "6 x^{3} y",
+          "title" : "Differentiate 3 x^{3} y^{2}"
+        },
+        {
+          "canonical" : "(9*(y)**(2))",
+          "latex" : "9 y^{2}",
+          "title" : "Differentiate 3 y^{3}"
+        },
+        {
+          "latex" : "0",
+          "title" : "3 x^{3} has no y in it, so it is constant here"
+        },
+        {
+          "canonical" : "((6*(x)**(3)*y) + (9*(y)**(2)))",
+          "latex" : "6 x^{3} y + 9 y^{2}",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.polynomial-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "2 x^{2} y + 2 y",
+      "canonicalAnswer" : "((2*(x)**(2)*y) + (2*y))",
+      "canonicalPrompt" : "(((x)**(2)*(y)**(2)) + (x)**(2) + (y)**(2))",
+      "difficulty" : 1,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 1
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : 1
+        },
+        {
+          "name" : "p",
+          "value" : 2
+        },
+        {
+          "name" : "c",
+          "value" : 1
+        },
+        {
+          "name" : "q",
+          "value" : 2
+        }
+      ],
+      "problemID" : "NW7UV2HP",
+      "promptLatex" : "x^{2} y^{2} + x^{2} + y^{2}",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[k x^{p} y^{q}\\right] = k q\\, x^{p} y^{q-1}",
+          "title" : "Differentiate term by term, holding x constant"
+        },
+        {
+          "canonical" : "(2*(x)**(2)*y)",
+          "latex" : "2 x^{2} y",
+          "title" : "Differentiate x^{2} y^{2}"
+        },
+        {
+          "canonical" : "(2*y)",
+          "latex" : "2 y",
+          "title" : "Differentiate y^{2}"
+        },
+        {
+          "latex" : "0",
+          "title" : "x^{2} has no y in it, so it is constant here"
+        },
+        {
+          "canonical" : "((2*(x)**(2)*y) + (2*y))",
+          "latex" : "2 x^{2} y + 2 y",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.polynomial-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "6 x^{2} y^{2} + 2 y",
+      "canonicalAnswer" : "((6*(x)**(2)*(y)**(2)) + (2*y))",
+      "canonicalPrompt" : "((2*(x)**(2)*(y)**(3)) + (2*(x)**(2)) + (y)**(2))",
+      "difficulty" : 1,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 2
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "m",
+          "value" : 3
+        },
+        {
+          "name" : "b",
+          "value" : 2
+        },
+        {
+          "name" : "p",
+          "value" : 2
+        },
+        {
+          "name" : "c",
+          "value" : 1
+        },
+        {
+          "name" : "q",
+          "value" : 2
+        }
+      ],
+      "problemID" : "ZN0ELJQQ",
+      "promptLatex" : "2 x^{2} y^{3} + 2 x^{2} + y^{2}",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[k x^{p} y^{q}\\right] = k q\\, x^{p} y^{q-1}",
+          "title" : "Differentiate term by term, holding x constant"
+        },
+        {
+          "canonical" : "(6*(x)**(2)*(y)**(2))",
+          "latex" : "6 x^{2} y^{2}",
+          "title" : "Differentiate 2 x^{2} y^{3}"
+        },
+        {
+          "canonical" : "(2*y)",
+          "latex" : "2 y",
+          "title" : "Differentiate y^{2}"
+        },
+        {
+          "latex" : "0",
+          "title" : "2 x^{2} has no y in it, so it is constant here"
+        },
+        {
+          "canonical" : "((6*(x)**(2)*(y)**(2)) + (2*y))",
+          "latex" : "6 x^{2} y^{2} + 2 y",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.polynomial-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-10 x^{4} y + 10 y",
+      "canonicalAnswer" : "((-10*(x)**(4)*y) + (10*y))",
+      "canonicalPrompt" : "((-5*(x)**(4)*(y)**(2)) + (-4*(x)**(2)) + (5*(y)**(2)))",
+      "difficulty" : 4,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -5
+        },
+        {
+          "name" : "n",
+          "value" : 4
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : -4
+        },
+        {
+          "name" : "p",
+          "value" : 2
+        },
+        {
+          "name" : "c",
+          "value" : 5
+        },
+        {
+          "name" : "q",
+          "value" : 2
+        }
+      ],
+      "problemID" : "TCSKU4LS",
+      "promptLatex" : "-5 x^{4} y^{2} - 4 x^{2} + 5 y^{2}",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[k x^{p} y^{q}\\right] = k q\\, x^{p} y^{q-1}",
+          "title" : "Differentiate term by term, holding x constant"
+        },
+        {
+          "canonical" : "(-10*(x)**(4)*y)",
+          "latex" : "-10 x^{4} y",
+          "title" : "Differentiate -5 x^{4} y^{2}"
+        },
+        {
+          "canonical" : "(10*y)",
+          "latex" : "10 y",
+          "title" : "Differentiate 5 y^{2}"
+        },
+        {
+          "latex" : "0",
+          "title" : "-4 x^{2} has no y in it, so it is constant here"
+        },
+        {
+          "canonical" : "((-10*(x)**(4)*y) + (10*y))",
+          "latex" : "-10 x^{4} y + 10 y",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.polynomial-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "10 x^{2} y - 4 y",
+      "canonicalAnswer" : "((10*(x)**(2)*y) + (-4*y))",
+      "canonicalPrompt" : "((5*(x)**(2)*(y)**(2)) + (2*(x)**(3)) + (-2*(y)**(2)))",
+      "difficulty" : 4,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 5
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : 2
+        },
+        {
+          "name" : "p",
+          "value" : 3
+        },
+        {
+          "name" : "c",
+          "value" : -2
+        },
+        {
+          "name" : "q",
+          "value" : 2
+        }
+      ],
+      "problemID" : "R8TGFM6G",
+      "promptLatex" : "5 x^{2} y^{2} + 2 x^{3} - 2 y^{2}",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[k x^{p} y^{q}\\right] = k q\\, x^{p} y^{q-1}",
+          "title" : "Differentiate term by term, holding x constant"
+        },
+        {
+          "canonical" : "(10*(x)**(2)*y)",
+          "latex" : "10 x^{2} y",
+          "title" : "Differentiate 5 x^{2} y^{2}"
+        },
+        {
+          "canonical" : "(-4*y)",
+          "latex" : "-4 y",
+          "title" : "Differentiate -2 y^{2}"
+        },
+        {
+          "latex" : "0",
+          "title" : "2 x^{3} has no y in it, so it is constant here"
+        },
+        {
+          "canonical" : "((10*(x)**(2)*y) + (-4*y))",
+          "latex" : "10 x^{2} y - 4 y",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.polynomial-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-3 x^{3} y^{2} + 10 y",
+      "canonicalAnswer" : "((-3*(x)**(3)*(y)**(2)) + (10*y))",
+      "canonicalPrompt" : "((-1*(x)**(3)*(y)**(3)) + (-3*(x)**(2)) + (5*(y)**(2)))",
+      "difficulty" : 4,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -1
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "m",
+          "value" : 3
+        },
+        {
+          "name" : "b",
+          "value" : -3
+        },
+        {
+          "name" : "p",
+          "value" : 2
+        },
+        {
+          "name" : "c",
+          "value" : 5
+        },
+        {
+          "name" : "q",
+          "value" : 2
+        }
+      ],
+      "problemID" : "CYKQXGFC",
+      "promptLatex" : "-x^{3} y^{3} - 3 x^{2} + 5 y^{2}",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[k x^{p} y^{q}\\right] = k q\\, x^{p} y^{q-1}",
+          "title" : "Differentiate term by term, holding x constant"
+        },
+        {
+          "canonical" : "(-3*(x)**(3)*(y)**(2))",
+          "latex" : "-3 x^{3} y^{2}",
+          "title" : "Differentiate -x^{3} y^{3}"
+        },
+        {
+          "canonical" : "(10*y)",
+          "latex" : "10 y",
+          "title" : "Differentiate 5 y^{2}"
+        },
+        {
+          "latex" : "0",
+          "title" : "-3 x^{2} has no y in it, so it is constant here"
+        },
+        {
+          "canonical" : "((-3*(x)**(3)*(y)**(2)) + (10*y))",
+          "latex" : "-3 x^{3} y^{2} + 10 y",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.polynomial-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-16 x^{6} y - 16 y",
+      "canonicalAnswer" : "((-16*(x)**(6)*y) + (-16*y))",
+      "canonicalPrompt" : "((-8*(x)**(6)*(y)**(2)) + (4*(x)**(3)) + (-8*(y)**(2)))",
+      "difficulty" : 8,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -8
+        },
+        {
+          "name" : "n",
+          "value" : 6
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : 4
+        },
+        {
+          "name" : "p",
+          "value" : 3
+        },
+        {
+          "name" : "c",
+          "value" : -8
+        },
+        {
+          "name" : "q",
+          "value" : 2
+        }
+      ],
+      "problemID" : "BS4HFHTP",
+      "promptLatex" : "-8 x^{6} y^{2} + 4 x^{3} - 8 y^{2}",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[k x^{p} y^{q}\\right] = k q\\, x^{p} y^{q-1}",
+          "title" : "Differentiate term by term, holding x constant"
+        },
+        {
+          "canonical" : "(-16*(x)**(6)*y)",
+          "latex" : "-16 x^{6} y",
+          "title" : "Differentiate -8 x^{6} y^{2}"
+        },
+        {
+          "canonical" : "(-16*y)",
+          "latex" : "-16 y",
+          "title" : "Differentiate -8 y^{2}"
+        },
+        {
+          "latex" : "0",
+          "title" : "4 x^{3} has no y in it, so it is constant here"
+        },
+        {
+          "canonical" : "((-16*(x)**(6)*y) + (-16*y))",
+          "latex" : "-16 x^{6} y - 16 y",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.polynomial-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-3 x^{6} y^{2} - 20 y^{4}",
+      "canonicalAnswer" : "((-3*(x)**(6)*(y)**(2)) + (-20*(y)**(4)))",
+      "canonicalPrompt" : "((-1*(x)**(6)*(y)**(3)) + (-7*(x)**(6)) + (-4*(y)**(5)))",
+      "difficulty" : 8,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -1
+        },
+        {
+          "name" : "n",
+          "value" : 6
+        },
+        {
+          "name" : "m",
+          "value" : 3
+        },
+        {
+          "name" : "b",
+          "value" : -7
+        },
+        {
+          "name" : "p",
+          "value" : 6
+        },
+        {
+          "name" : "c",
+          "value" : -4
+        },
+        {
+          "name" : "q",
+          "value" : 5
+        }
+      ],
+      "problemID" : "PTFVK0YF",
+      "promptLatex" : "-x^{6} y^{3} - 7 x^{6} - 4 y^{5}",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[k x^{p} y^{q}\\right] = k q\\, x^{p} y^{q-1}",
+          "title" : "Differentiate term by term, holding x constant"
+        },
+        {
+          "canonical" : "(-3*(x)**(6)*(y)**(2))",
+          "latex" : "-3 x^{6} y^{2}",
+          "title" : "Differentiate -x^{6} y^{3}"
+        },
+        {
+          "canonical" : "(-20*(y)**(4))",
+          "latex" : "-20 y^{4}",
+          "title" : "Differentiate -4 y^{5}"
+        },
+        {
+          "latex" : "0",
+          "title" : "-7 x^{6} has no y in it, so it is constant here"
+        },
+        {
+          "canonical" : "((-3*(x)**(6)*(y)**(2)) + (-20*(y)**(4)))",
+          "latex" : "-3 x^{6} y^{2} - 20 y^{4}",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.polynomial-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-6 x^{5} y + 14 y",
+      "canonicalAnswer" : "((-6*(x)**(5)*y) + (14*y))",
+      "canonicalPrompt" : "((-3*(x)**(5)*(y)**(2)) + (8*(x)**(5)) + (7*(y)**(2)))",
+      "difficulty" : 8,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -3
+        },
+        {
+          "name" : "n",
+          "value" : 5
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : 8
+        },
+        {
+          "name" : "p",
+          "value" : 5
+        },
+        {
+          "name" : "c",
+          "value" : 7
+        },
+        {
+          "name" : "q",
+          "value" : 2
+        }
+      ],
+      "problemID" : "4AT4P8UB",
+      "promptLatex" : "-3 x^{5} y^{2} + 8 x^{5} + 7 y^{2}",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[k x^{p} y^{q}\\right] = k q\\, x^{p} y^{q-1}",
+          "title" : "Differentiate term by term, holding x constant"
+        },
+        {
+          "canonical" : "(-6*(x)**(5)*y)",
+          "latex" : "-6 x^{5} y",
+          "title" : "Differentiate -3 x^{5} y^{2}"
+        },
+        {
+          "canonical" : "(14*y)",
+          "latex" : "14 y",
+          "title" : "Differentiate 7 y^{2}"
+        },
+        {
+          "latex" : "0",
+          "title" : "8 x^{5} has no y in it, so it is constant here"
+        },
+        {
+          "canonical" : "((-6*(x)**(5)*y) + (14*y))",
+          "latex" : "-6 x^{5} y + 14 y",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.polynomial-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "12 x^{2} \\left(2 y^{2} + 1\\right)",
+      "canonicalAnswer" : "(12*(x)**(2)*((2*(y)**(2)) + 1))",
+      "canonicalPrompt" : "(((4*(x)**(3)) + -1)*((2*(y)**(2)) + 1))",
+      "difficulty" : 3,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 4
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "p",
+          "value" : -1
+        },
+        {
+          "name" : "b",
+          "value" : 2
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "q",
+          "value" : 1
+        }
+      ],
+      "problemID" : "2D1QMF3B",
+      "promptLatex" : "\\left(4 x^{3} - 1\\right) \\left(2 y^{2} + 1\\right)",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "u = 4 x^{3} - 1,\\quad v = 2 y^{2} + 1",
+          "title" : "Name the two factors"
+        },
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[u \\cdot v\\right] = \\frac{\\partial u}{\\partial x} \\cdot v",
+          "title" : "Holding y constant, v is a constant multiplier"
+        },
+        {
+          "canonical" : "(12*(x)**(2))",
+          "latex" : "12 x^{2}",
+          "title" : "Differentiate u with respect to x"
+        },
+        {
+          "canonical" : "(12*(x)**(2)*((2*(y)**(2)) + 1))",
+          "latex" : "12 x^{2} \\left(2 y^{2} + 1\\right)",
+          "title" : "Multiply by v"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.product-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-6 x \\left(-5 y^{3} - 1\\right)",
+      "canonicalAnswer" : "(-6*x*((-5*(y)**(3)) + -1))",
+      "canonicalPrompt" : "(((-3*(x)**(2)) + -4)*((-5*(y)**(3)) + -1))",
+      "difficulty" : 3,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -3
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "p",
+          "value" : -4
+        },
+        {
+          "name" : "b",
+          "value" : -5
+        },
+        {
+          "name" : "m",
+          "value" : 3
+        },
+        {
+          "name" : "q",
+          "value" : -1
+        }
+      ],
+      "problemID" : "092M8YP0",
+      "promptLatex" : "\\left(-3 x^{2} - 4\\right) \\left(-5 y^{3} - 1\\right)",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "u = -3 x^{2} - 4,\\quad v = -5 y^{3} - 1",
+          "title" : "Name the two factors"
+        },
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[u \\cdot v\\right] = \\frac{\\partial u}{\\partial x} \\cdot v",
+          "title" : "Holding y constant, v is a constant multiplier"
+        },
+        {
+          "canonical" : "(-6*x)",
+          "latex" : "-6 x",
+          "title" : "Differentiate u with respect to x"
+        },
+        {
+          "canonical" : "(-6*x*((-5*(y)**(3)) + -1))",
+          "latex" : "-6 x \\left(-5 y^{3} - 1\\right)",
+          "title" : "Multiply by v"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.product-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-3 x^{2} \\left(4 y^{2} - 1\\right)",
+      "canonicalAnswer" : "(-3*(x)**(2)*((4*(y)**(2)) + -1))",
+      "canonicalPrompt" : "(((-1*(x)**(3)) + -3)*((4*(y)**(2)) + -1))",
+      "difficulty" : 3,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -1
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "p",
+          "value" : -3
+        },
+        {
+          "name" : "b",
+          "value" : 4
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "q",
+          "value" : -1
+        }
+      ],
+      "problemID" : "VLZ30QA6",
+      "promptLatex" : "\\left(-x^{3} - 3\\right) \\left(4 y^{2} - 1\\right)",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "u = -x^{3} - 3,\\quad v = 4 y^{2} - 1",
+          "title" : "Name the two factors"
+        },
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[u \\cdot v\\right] = \\frac{\\partial u}{\\partial x} \\cdot v",
+          "title" : "Holding y constant, v is a constant multiplier"
+        },
+        {
+          "canonical" : "(-3*(x)**(2))",
+          "latex" : "-3 x^{2}",
+          "title" : "Differentiate u with respect to x"
+        },
+        {
+          "canonical" : "(-3*(x)**(2)*((4*(y)**(2)) + -1))",
+          "latex" : "-3 x^{2} \\left(4 y^{2} - 1\\right)",
+          "title" : "Multiply by v"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.product-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "10 x^{4} \\left(4 y^{3} + 1\\right)",
+      "canonicalAnswer" : "(10*(x)**(4)*((4*(y)**(3)) + 1))",
+      "canonicalPrompt" : "(((2*(x)**(5)) + -7)*((4*(y)**(3)) + 1))",
+      "difficulty" : 6,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 2
+        },
+        {
+          "name" : "n",
+          "value" : 5
+        },
+        {
+          "name" : "p",
+          "value" : -7
+        },
+        {
+          "name" : "b",
+          "value" : 4
+        },
+        {
+          "name" : "m",
+          "value" : 3
+        },
+        {
+          "name" : "q",
+          "value" : 1
+        }
+      ],
+      "problemID" : "FEVMM48S",
+      "promptLatex" : "\\left(2 x^{5} - 7\\right) \\left(4 y^{3} + 1\\right)",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "u = 2 x^{5} - 7,\\quad v = 4 y^{3} + 1",
+          "title" : "Name the two factors"
+        },
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[u \\cdot v\\right] = \\frac{\\partial u}{\\partial x} \\cdot v",
+          "title" : "Holding y constant, v is a constant multiplier"
+        },
+        {
+          "canonical" : "(10*(x)**(4))",
+          "latex" : "10 x^{4}",
+          "title" : "Differentiate u with respect to x"
+        },
+        {
+          "canonical" : "(10*(x)**(4)*((4*(y)**(3)) + 1))",
+          "latex" : "10 x^{4} \\left(4 y^{3} + 1\\right)",
+          "title" : "Multiply by v"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.product-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-16 x \\left(3 y^{4} - 7\\right)",
+      "canonicalAnswer" : "(-16*x*((3*(y)**(4)) + -7))",
+      "canonicalPrompt" : "(((-8*(x)**(2)) + -1)*((3*(y)**(4)) + -7))",
+      "difficulty" : 6,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -8
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "p",
+          "value" : -1
+        },
+        {
+          "name" : "b",
+          "value" : 3
+        },
+        {
+          "name" : "m",
+          "value" : 4
+        },
+        {
+          "name" : "q",
+          "value" : -7
+        }
+      ],
+      "problemID" : "TF60SMCJ",
+      "promptLatex" : "\\left(-8 x^{2} - 1\\right) \\left(3 y^{4} - 7\\right)",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "u = -8 x^{2} - 1,\\quad v = 3 y^{4} - 7",
+          "title" : "Name the two factors"
+        },
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[u \\cdot v\\right] = \\frac{\\partial u}{\\partial x} \\cdot v",
+          "title" : "Holding y constant, v is a constant multiplier"
+        },
+        {
+          "canonical" : "(-16*x)",
+          "latex" : "-16 x",
+          "title" : "Differentiate u with respect to x"
+        },
+        {
+          "canonical" : "(-16*x*((3*(y)**(4)) + -7))",
+          "latex" : "-16 x \\left(3 y^{4} - 7\\right)",
+          "title" : "Multiply by v"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.product-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "20 x^{3} \\left(8 y^{2} - 4\\right)",
+      "canonicalAnswer" : "(20*(x)**(3)*((8*(y)**(2)) + -4))",
+      "canonicalPrompt" : "(((5*(x)**(4)) + 3)*((8*(y)**(2)) + -4))",
+      "difficulty" : 6,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 5
+        },
+        {
+          "name" : "n",
+          "value" : 4
+        },
+        {
+          "name" : "p",
+          "value" : 3
+        },
+        {
+          "name" : "b",
+          "value" : 8
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "q",
+          "value" : -4
+        }
+      ],
+      "problemID" : "GEGR1EXF",
+      "promptLatex" : "\\left(5 x^{4} + 3\\right) \\left(8 y^{2} - 4\\right)",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "u = 5 x^{4} + 3,\\quad v = 8 y^{2} - 4",
+          "title" : "Name the two factors"
+        },
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[u \\cdot v\\right] = \\frac{\\partial u}{\\partial x} \\cdot v",
+          "title" : "Holding y constant, v is a constant multiplier"
+        },
+        {
+          "canonical" : "(20*(x)**(3))",
+          "latex" : "20 x^{3}",
+          "title" : "Differentiate u with respect to x"
+        },
+        {
+          "canonical" : "(20*(x)**(3)*((8*(y)**(2)) + -4))",
+          "latex" : "20 x^{3} \\left(8 y^{2} - 4\\right)",
+          "title" : "Multiply by v"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.product-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-24 x^{2} \\left(9 y^{5} - 8\\right)",
+      "canonicalAnswer" : "(-24*(x)**(2)*((9*(y)**(5)) + -8))",
+      "canonicalPrompt" : "(((-8*(x)**(3)) + 5)*((9*(y)**(5)) + -8))",
+      "difficulty" : 9,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -8
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "p",
+          "value" : 5
+        },
+        {
+          "name" : "b",
+          "value" : 9
+        },
+        {
+          "name" : "m",
+          "value" : 5
+        },
+        {
+          "name" : "q",
+          "value" : -8
+        }
+      ],
+      "problemID" : "6JZJDQK4",
+      "promptLatex" : "\\left(-8 x^{3} + 5\\right) \\left(9 y^{5} - 8\\right)",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "u = -8 x^{3} + 5,\\quad v = 9 y^{5} - 8",
+          "title" : "Name the two factors"
+        },
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[u \\cdot v\\right] = \\frac{\\partial u}{\\partial x} \\cdot v",
+          "title" : "Holding y constant, v is a constant multiplier"
+        },
+        {
+          "canonical" : "(-24*(x)**(2))",
+          "latex" : "-24 x^{2}",
+          "title" : "Differentiate u with respect to x"
+        },
+        {
+          "canonical" : "(-24*(x)**(2)*((9*(y)**(5)) + -8))",
+          "latex" : "-24 x^{2} \\left(9 y^{5} - 8\\right)",
+          "title" : "Multiply by v"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.product-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-20 x \\left(10 y^{6} - 4\\right)",
+      "canonicalAnswer" : "(-20*x*((10*(y)**(6)) + -4))",
+      "canonicalPrompt" : "(((-10*(x)**(2)) + -10)*((10*(y)**(6)) + -4))",
+      "difficulty" : 9,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -10
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "p",
+          "value" : -10
+        },
+        {
+          "name" : "b",
+          "value" : 10
+        },
+        {
+          "name" : "m",
+          "value" : 6
+        },
+        {
+          "name" : "q",
+          "value" : -4
+        }
+      ],
+      "problemID" : "UGN697FC",
+      "promptLatex" : "\\left(-10 x^{2} - 10\\right) \\left(10 y^{6} - 4\\right)",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "u = -10 x^{2} - 10,\\quad v = 10 y^{6} - 4",
+          "title" : "Name the two factors"
+        },
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[u \\cdot v\\right] = \\frac{\\partial u}{\\partial x} \\cdot v",
+          "title" : "Holding y constant, v is a constant multiplier"
+        },
+        {
+          "canonical" : "(-20*x)",
+          "latex" : "-20 x",
+          "title" : "Differentiate u with respect to x"
+        },
+        {
+          "canonical" : "(-20*x*((10*(y)**(6)) + -4))",
+          "latex" : "-20 x \\left(10 y^{6} - 4\\right)",
+          "title" : "Multiply by v"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.product-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "30 x^{5} \\left(-11 y^{2} - 1\\right)",
+      "canonicalAnswer" : "(30*(x)**(5)*((-11*(y)**(2)) + -1))",
+      "canonicalPrompt" : "(((5*(x)**(6)) + 9)*((-11*(y)**(2)) + -1))",
+      "difficulty" : 9,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 5
+        },
+        {
+          "name" : "n",
+          "value" : 6
+        },
+        {
+          "name" : "p",
+          "value" : 9
+        },
+        {
+          "name" : "b",
+          "value" : -11
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "q",
+          "value" : -1
+        }
+      ],
+      "problemID" : "9H80USGR",
+      "promptLatex" : "\\left(5 x^{6} + 9\\right) \\left(-11 y^{2} - 1\\right)",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "u = 5 x^{6} + 9,\\quad v = -11 y^{2} - 1",
+          "title" : "Name the two factors"
+        },
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[u \\cdot v\\right] = \\frac{\\partial u}{\\partial x} \\cdot v",
+          "title" : "Holding y constant, v is a constant multiplier"
+        },
+        {
+          "canonical" : "(30*(x)**(5))",
+          "latex" : "30 x^{5}",
+          "title" : "Differentiate u with respect to x"
+        },
+        {
+          "canonical" : "(30*(x)**(5)*((-11*(y)**(2)) + -1))",
+          "latex" : "30 x^{5} \\left(-11 y^{2} - 1\\right)",
+          "title" : "Multiply by v"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.product-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "4 \\left(4 x^{3} - 1\\right) y",
+      "canonicalAnswer" : "(4*((4*(x)**(3)) + -1)*y)",
+      "canonicalPrompt" : "(((4*(x)**(3)) + -1)*((2*(y)**(2)) + 1))",
+      "difficulty" : 3,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 4
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "p",
+          "value" : -1
+        },
+        {
+          "name" : "b",
+          "value" : 2
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "q",
+          "value" : 1
+        }
+      ],
+      "problemID" : "VR97FK8D",
+      "promptLatex" : "\\left(4 x^{3} - 1\\right) \\left(2 y^{2} + 1\\right)",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "u = 4 x^{3} - 1,\\quad v = 2 y^{2} + 1",
+          "title" : "Name the two factors"
+        },
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[u \\cdot v\\right] = u \\cdot \\frac{\\partial v}{\\partial y}",
+          "title" : "Holding x constant, u is a constant multiplier"
+        },
+        {
+          "canonical" : "(4*y)",
+          "latex" : "4 y",
+          "title" : "Differentiate v with respect to y"
+        },
+        {
+          "canonical" : "(4*((4*(x)**(3)) + -1)*y)",
+          "latex" : "4 \\left(4 x^{3} - 1\\right) y",
+          "title" : "Multiply by u"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.product-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-15 \\left(-3 x^{2} - 4\\right) y^{2}",
+      "canonicalAnswer" : "(-15*((-3*(x)**(2)) + -4)*(y)**(2))",
+      "canonicalPrompt" : "(((-3*(x)**(2)) + -4)*((-5*(y)**(3)) + -1))",
+      "difficulty" : 3,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -3
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "p",
+          "value" : -4
+        },
+        {
+          "name" : "b",
+          "value" : -5
+        },
+        {
+          "name" : "m",
+          "value" : 3
+        },
+        {
+          "name" : "q",
+          "value" : -1
+        }
+      ],
+      "problemID" : "TMA422V2",
+      "promptLatex" : "\\left(-3 x^{2} - 4\\right) \\left(-5 y^{3} - 1\\right)",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "u = -3 x^{2} - 4,\\quad v = -5 y^{3} - 1",
+          "title" : "Name the two factors"
+        },
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[u \\cdot v\\right] = u \\cdot \\frac{\\partial v}{\\partial y}",
+          "title" : "Holding x constant, u is a constant multiplier"
+        },
+        {
+          "canonical" : "(-15*(y)**(2))",
+          "latex" : "-15 y^{2}",
+          "title" : "Differentiate v with respect to y"
+        },
+        {
+          "canonical" : "(-15*((-3*(x)**(2)) + -4)*(y)**(2))",
+          "latex" : "-15 \\left(-3 x^{2} - 4\\right) y^{2}",
+          "title" : "Multiply by u"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.product-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "8 \\left(-x^{3} - 3\\right) y",
+      "canonicalAnswer" : "(8*((-1*(x)**(3)) + -3)*y)",
+      "canonicalPrompt" : "(((-1*(x)**(3)) + -3)*((4*(y)**(2)) + -1))",
+      "difficulty" : 3,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -1
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "p",
+          "value" : -3
+        },
+        {
+          "name" : "b",
+          "value" : 4
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "q",
+          "value" : -1
+        }
+      ],
+      "problemID" : "YUQR677N",
+      "promptLatex" : "\\left(-x^{3} - 3\\right) \\left(4 y^{2} - 1\\right)",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "u = -x^{3} - 3,\\quad v = 4 y^{2} - 1",
+          "title" : "Name the two factors"
+        },
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[u \\cdot v\\right] = u \\cdot \\frac{\\partial v}{\\partial y}",
+          "title" : "Holding x constant, u is a constant multiplier"
+        },
+        {
+          "canonical" : "(8*y)",
+          "latex" : "8 y",
+          "title" : "Differentiate v with respect to y"
+        },
+        {
+          "canonical" : "(8*((-1*(x)**(3)) + -3)*y)",
+          "latex" : "8 \\left(-x^{3} - 3\\right) y",
+          "title" : "Multiply by u"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.product-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "12 \\left(2 x^{5} - 7\\right) y^{2}",
+      "canonicalAnswer" : "(12*((2*(x)**(5)) + -7)*(y)**(2))",
+      "canonicalPrompt" : "(((2*(x)**(5)) + -7)*((4*(y)**(3)) + 1))",
+      "difficulty" : 6,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 2
+        },
+        {
+          "name" : "n",
+          "value" : 5
+        },
+        {
+          "name" : "p",
+          "value" : -7
+        },
+        {
+          "name" : "b",
+          "value" : 4
+        },
+        {
+          "name" : "m",
+          "value" : 3
+        },
+        {
+          "name" : "q",
+          "value" : 1
+        }
+      ],
+      "problemID" : "LED3MAM0",
+      "promptLatex" : "\\left(2 x^{5} - 7\\right) \\left(4 y^{3} + 1\\right)",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "u = 2 x^{5} - 7,\\quad v = 4 y^{3} + 1",
+          "title" : "Name the two factors"
+        },
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[u \\cdot v\\right] = u \\cdot \\frac{\\partial v}{\\partial y}",
+          "title" : "Holding x constant, u is a constant multiplier"
+        },
+        {
+          "canonical" : "(12*(y)**(2))",
+          "latex" : "12 y^{2}",
+          "title" : "Differentiate v with respect to y"
+        },
+        {
+          "canonical" : "(12*((2*(x)**(5)) + -7)*(y)**(2))",
+          "latex" : "12 \\left(2 x^{5} - 7\\right) y^{2}",
+          "title" : "Multiply by u"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.product-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "12 \\left(-8 x^{2} - 1\\right) y^{3}",
+      "canonicalAnswer" : "(12*((-8*(x)**(2)) + -1)*(y)**(3))",
+      "canonicalPrompt" : "(((-8*(x)**(2)) + -1)*((3*(y)**(4)) + -7))",
+      "difficulty" : 6,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -8
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "p",
+          "value" : -1
+        },
+        {
+          "name" : "b",
+          "value" : 3
+        },
+        {
+          "name" : "m",
+          "value" : 4
+        },
+        {
+          "name" : "q",
+          "value" : -7
+        }
+      ],
+      "problemID" : "YFQFRTRS",
+      "promptLatex" : "\\left(-8 x^{2} - 1\\right) \\left(3 y^{4} - 7\\right)",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "u = -8 x^{2} - 1,\\quad v = 3 y^{4} - 7",
+          "title" : "Name the two factors"
+        },
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[u \\cdot v\\right] = u \\cdot \\frac{\\partial v}{\\partial y}",
+          "title" : "Holding x constant, u is a constant multiplier"
+        },
+        {
+          "canonical" : "(12*(y)**(3))",
+          "latex" : "12 y^{3}",
+          "title" : "Differentiate v with respect to y"
+        },
+        {
+          "canonical" : "(12*((-8*(x)**(2)) + -1)*(y)**(3))",
+          "latex" : "12 \\left(-8 x^{2} - 1\\right) y^{3}",
+          "title" : "Multiply by u"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.product-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "16 \\left(5 x^{4} + 3\\right) y",
+      "canonicalAnswer" : "(16*((5*(x)**(4)) + 3)*y)",
+      "canonicalPrompt" : "(((5*(x)**(4)) + 3)*((8*(y)**(2)) + -4))",
+      "difficulty" : 6,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 5
+        },
+        {
+          "name" : "n",
+          "value" : 4
+        },
+        {
+          "name" : "p",
+          "value" : 3
+        },
+        {
+          "name" : "b",
+          "value" : 8
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "q",
+          "value" : -4
+        }
+      ],
+      "problemID" : "5UGPJU5Y",
+      "promptLatex" : "\\left(5 x^{4} + 3\\right) \\left(8 y^{2} - 4\\right)",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "u = 5 x^{4} + 3,\\quad v = 8 y^{2} - 4",
+          "title" : "Name the two factors"
+        },
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[u \\cdot v\\right] = u \\cdot \\frac{\\partial v}{\\partial y}",
+          "title" : "Holding x constant, u is a constant multiplier"
+        },
+        {
+          "canonical" : "(16*y)",
+          "latex" : "16 y",
+          "title" : "Differentiate v with respect to y"
+        },
+        {
+          "canonical" : "(16*((5*(x)**(4)) + 3)*y)",
+          "latex" : "16 \\left(5 x^{4} + 3\\right) y",
+          "title" : "Multiply by u"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.product-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "45 \\left(-8 x^{3} + 5\\right) y^{4}",
+      "canonicalAnswer" : "(45*((-8*(x)**(3)) + 5)*(y)**(4))",
+      "canonicalPrompt" : "(((-8*(x)**(3)) + 5)*((9*(y)**(5)) + -8))",
+      "difficulty" : 9,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -8
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "p",
+          "value" : 5
+        },
+        {
+          "name" : "b",
+          "value" : 9
+        },
+        {
+          "name" : "m",
+          "value" : 5
+        },
+        {
+          "name" : "q",
+          "value" : -8
+        }
+      ],
+      "problemID" : "H652STZ1",
+      "promptLatex" : "\\left(-8 x^{3} + 5\\right) \\left(9 y^{5} - 8\\right)",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "u = -8 x^{3} + 5,\\quad v = 9 y^{5} - 8",
+          "title" : "Name the two factors"
+        },
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[u \\cdot v\\right] = u \\cdot \\frac{\\partial v}{\\partial y}",
+          "title" : "Holding x constant, u is a constant multiplier"
+        },
+        {
+          "canonical" : "(45*(y)**(4))",
+          "latex" : "45 y^{4}",
+          "title" : "Differentiate v with respect to y"
+        },
+        {
+          "canonical" : "(45*((-8*(x)**(3)) + 5)*(y)**(4))",
+          "latex" : "45 \\left(-8 x^{3} + 5\\right) y^{4}",
+          "title" : "Multiply by u"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.product-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "60 \\left(-10 x^{2} - 10\\right) y^{5}",
+      "canonicalAnswer" : "(60*((-10*(x)**(2)) + -10)*(y)**(5))",
+      "canonicalPrompt" : "(((-10*(x)**(2)) + -10)*((10*(y)**(6)) + -4))",
+      "difficulty" : 9,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -10
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "p",
+          "value" : -10
+        },
+        {
+          "name" : "b",
+          "value" : 10
+        },
+        {
+          "name" : "m",
+          "value" : 6
+        },
+        {
+          "name" : "q",
+          "value" : -4
+        }
+      ],
+      "problemID" : "55UPMAV9",
+      "promptLatex" : "\\left(-10 x^{2} - 10\\right) \\left(10 y^{6} - 4\\right)",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "u = -10 x^{2} - 10,\\quad v = 10 y^{6} - 4",
+          "title" : "Name the two factors"
+        },
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[u \\cdot v\\right] = u \\cdot \\frac{\\partial v}{\\partial y}",
+          "title" : "Holding x constant, u is a constant multiplier"
+        },
+        {
+          "canonical" : "(60*(y)**(5))",
+          "latex" : "60 y^{5}",
+          "title" : "Differentiate v with respect to y"
+        },
+        {
+          "canonical" : "(60*((-10*(x)**(2)) + -10)*(y)**(5))",
+          "latex" : "60 \\left(-10 x^{2} - 10\\right) y^{5}",
+          "title" : "Multiply by u"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.product-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-22 \\left(5 x^{6} + 9\\right) y",
+      "canonicalAnswer" : "(-22*((5*(x)**(6)) + 9)*y)",
+      "canonicalPrompt" : "(((5*(x)**(6)) + 9)*((-11*(y)**(2)) + -1))",
+      "difficulty" : 9,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 5
+        },
+        {
+          "name" : "n",
+          "value" : 6
+        },
+        {
+          "name" : "p",
+          "value" : 9
+        },
+        {
+          "name" : "b",
+          "value" : -11
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        },
+        {
+          "name" : "q",
+          "value" : -1
+        }
+      ],
+      "problemID" : "CX41Q5D9",
+      "promptLatex" : "\\left(5 x^{6} + 9\\right) \\left(-11 y^{2} - 1\\right)",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "u = 5 x^{6} + 9,\\quad v = -11 y^{2} - 1",
+          "title" : "Name the two factors"
+        },
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[u \\cdot v\\right] = u \\cdot \\frac{\\partial v}{\\partial y}",
+          "title" : "Holding x constant, u is a constant multiplier"
+        },
+        {
+          "canonical" : "(-22*y)",
+          "latex" : "-22 y",
+          "title" : "Differentiate v with respect to y"
+        },
+        {
+          "canonical" : "(-22*((5*(x)**(6)) + 9)*y)",
+          "latex" : "-22 \\left(5 x^{6} + 9\\right) y",
+          "title" : "Multiply by u"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.product-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-20 x^{3} e^{2 y}",
+      "canonicalAnswer" : "(-20*(x)**(3)*exp((2*y)))",
+      "canonicalPrompt" : "(-5*(x)**(4)*exp((2*y)))",
+      "difficulty" : 4,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -5
+        },
+        {
+          "name" : "n",
+          "value" : 4
+        },
+        {
+          "name" : "k",
+          "value" : 2
+        }
+      ],
+      "problemID" : "VY6WV5JX",
+      "promptLatex" : "-5 x^{4} e^{2 y}",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[a x^{n} e^{ky}\\right] = a n\\, x^{n-1} e^{ky}",
+          "title" : "Holding y constant, e^{ky} is a constant multiplier"
+        },
+        {
+          "canonical" : "(-20*(x)**(3))",
+          "latex" : "-20 x^{3}",
+          "title" : "Differentiate the power of x"
+        },
+        {
+          "canonical" : "(-20*(x)**(3)*exp((2*y)))",
+          "latex" : "-20 x^{3} e^{2 y}",
+          "title" : "Multiply by e^{2 y}"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.exponential-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "10 x e^{-3 y}",
+      "canonicalAnswer" : "(10*x*exp((-3*y)))",
+      "canonicalPrompt" : "(5*(x)**(2)*exp((-3*y)))",
+      "difficulty" : 4,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 5
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "k",
+          "value" : -3
+        }
+      ],
+      "problemID" : "X26Z8PX7",
+      "promptLatex" : "5 x^{2} e^{-3 y}",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[a x^{n} e^{ky}\\right] = a n\\, x^{n-1} e^{ky}",
+          "title" : "Holding y constant, e^{ky} is a constant multiplier"
+        },
+        {
+          "canonical" : "(10*x)",
+          "latex" : "10 x",
+          "title" : "Differentiate the power of x"
+        },
+        {
+          "canonical" : "(10*x*exp((-3*y)))",
+          "latex" : "10 x e^{-3 y}",
+          "title" : "Multiply by e^{-3 y}"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.exponential-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-3 x^{2} e^{y}",
+      "canonicalAnswer" : "(-3*(x)**(2)*exp(y))",
+      "canonicalPrompt" : "(-1*(x)**(3)*exp(y))",
+      "difficulty" : 4,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -1
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "k",
+          "value" : 1
+        }
+      ],
+      "problemID" : "SNY3PNKX",
+      "promptLatex" : "-x^{3} e^{y}",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[a x^{n} e^{ky}\\right] = a n\\, x^{n-1} e^{ky}",
+          "title" : "Holding y constant, e^{ky} is a constant multiplier"
+        },
+        {
+          "canonical" : "(-3*(x)**(2))",
+          "latex" : "-3 x^{2}",
+          "title" : "Differentiate the power of x"
+        },
+        {
+          "canonical" : "(-3*(x)**(2)*exp(y))",
+          "latex" : "-3 x^{2} e^{y}",
+          "title" : "Multiply by e^{y}"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.exponential-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-2 x e^{2 y}",
+      "canonicalAnswer" : "(-2*x*exp((2*y)))",
+      "canonicalPrompt" : "(-1*(x)**(2)*exp((2*y)))",
+      "difficulty" : 7,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -1
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "k",
+          "value" : 2
+        }
+      ],
+      "problemID" : "6M30VZBG",
+      "promptLatex" : "-x^{2} e^{2 y}",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[a x^{n} e^{ky}\\right] = a n\\, x^{n-1} e^{ky}",
+          "title" : "Holding y constant, e^{ky} is a constant multiplier"
+        },
+        {
+          "canonical" : "(-2*x)",
+          "latex" : "-2 x",
+          "title" : "Differentiate the power of x"
+        },
+        {
+          "canonical" : "(-2*x*exp((2*y)))",
+          "latex" : "-2 x e^{2 y}",
+          "title" : "Multiply by e^{2 y}"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.exponential-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-24 x^{5} e^{-5 y}",
+      "canonicalAnswer" : "(-24*(x)**(5)*exp((-5*y)))",
+      "canonicalPrompt" : "(-4*(x)**(6)*exp((-5*y)))",
+      "difficulty" : 7,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -4
+        },
+        {
+          "name" : "n",
+          "value" : 6
+        },
+        {
+          "name" : "k",
+          "value" : -5
+        }
+      ],
+      "problemID" : "JNECZGG8",
+      "promptLatex" : "-4 x^{6} e^{-5 y}",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[a x^{n} e^{ky}\\right] = a n\\, x^{n-1} e^{ky}",
+          "title" : "Holding y constant, e^{ky} is a constant multiplier"
+        },
+        {
+          "canonical" : "(-24*(x)**(5))",
+          "latex" : "-24 x^{5}",
+          "title" : "Differentiate the power of x"
+        },
+        {
+          "canonical" : "(-24*(x)**(5)*exp((-5*y)))",
+          "latex" : "-24 x^{5} e^{-5 y}",
+          "title" : "Multiply by e^{-5 y}"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.exponential-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "10 x^{4} e^{-5 y}",
+      "canonicalAnswer" : "(10*(x)**(4)*exp((-5*y)))",
+      "canonicalPrompt" : "(2*(x)**(5)*exp((-5*y)))",
+      "difficulty" : 7,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 2
+        },
+        {
+          "name" : "n",
+          "value" : 5
+        },
+        {
+          "name" : "k",
+          "value" : -5
+        }
+      ],
+      "problemID" : "7ZR330AP",
+      "promptLatex" : "2 x^{5} e^{-5 y}",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[a x^{n} e^{ky}\\right] = a n\\, x^{n-1} e^{ky}",
+          "title" : "Holding y constant, e^{ky} is a constant multiplier"
+        },
+        {
+          "canonical" : "(10*(x)**(4))",
+          "latex" : "10 x^{4}",
+          "title" : "Differentiate the power of x"
+        },
+        {
+          "canonical" : "(10*(x)**(4)*exp((-5*y)))",
+          "latex" : "10 x^{4} e^{-5 y}",
+          "title" : "Multiply by e^{-5 y}"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.exponential-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "9 x^{2} e^{-5 y}",
+      "canonicalAnswer" : "(9*(x)**(2)*exp((-5*y)))",
+      "canonicalPrompt" : "(3*(x)**(3)*exp((-5*y)))",
+      "difficulty" : 10,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 3
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "k",
+          "value" : -5
+        }
+      ],
+      "problemID" : "6ZC3XL1D",
+      "promptLatex" : "3 x^{3} e^{-5 y}",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[a x^{n} e^{ky}\\right] = a n\\, x^{n-1} e^{ky}",
+          "title" : "Holding y constant, e^{ky} is a constant multiplier"
+        },
+        {
+          "canonical" : "(9*(x)**(2))",
+          "latex" : "9 x^{2}",
+          "title" : "Differentiate the power of x"
+        },
+        {
+          "canonical" : "(9*(x)**(2)*exp((-5*y)))",
+          "latex" : "9 x^{2} e^{-5 y}",
+          "title" : "Multiply by e^{-5 y}"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.exponential-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-16 x e^{2 y}",
+      "canonicalAnswer" : "(-16*x*exp((2*y)))",
+      "canonicalPrompt" : "(-8*(x)**(2)*exp((2*y)))",
+      "difficulty" : 10,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -8
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "k",
+          "value" : 2
+        }
+      ],
+      "problemID" : "4VD0J3N2",
+      "promptLatex" : "-8 x^{2} e^{2 y}",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[a x^{n} e^{ky}\\right] = a n\\, x^{n-1} e^{ky}",
+          "title" : "Holding y constant, e^{ky} is a constant multiplier"
+        },
+        {
+          "canonical" : "(-16*x)",
+          "latex" : "-16 x",
+          "title" : "Differentiate the power of x"
+        },
+        {
+          "canonical" : "(-16*x*exp((2*y)))",
+          "latex" : "-16 x e^{2 y}",
+          "title" : "Multiply by e^{2 y}"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.exponential-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "48 x^{5} e^{-5 y}",
+      "canonicalAnswer" : "(48*(x)**(5)*exp((-5*y)))",
+      "canonicalPrompt" : "(8*(x)**(6)*exp((-5*y)))",
+      "difficulty" : 10,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 8
+        },
+        {
+          "name" : "n",
+          "value" : 6
+        },
+        {
+          "name" : "k",
+          "value" : -5
+        }
+      ],
+      "problemID" : "X58BB1JV",
+      "promptLatex" : "8 x^{6} e^{-5 y}",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[a x^{n} e^{ky}\\right] = a n\\, x^{n-1} e^{ky}",
+          "title" : "Holding y constant, e^{ky} is a constant multiplier"
+        },
+        {
+          "canonical" : "(48*(x)**(5))",
+          "latex" : "48 x^{5}",
+          "title" : "Differentiate the power of x"
+        },
+        {
+          "canonical" : "(48*(x)**(5)*exp((-5*y)))",
+          "latex" : "48 x^{5} e^{-5 y}",
+          "title" : "Multiply by e^{-5 y}"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.exponential-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-10 x^{4} e^{2 y}",
+      "canonicalAnswer" : "(-10*(x)**(4)*exp((2*y)))",
+      "canonicalPrompt" : "(-5*(x)**(4)*exp((2*y)))",
+      "difficulty" : 4,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -5
+        },
+        {
+          "name" : "n",
+          "value" : 4
+        },
+        {
+          "name" : "k",
+          "value" : 2
+        }
+      ],
+      "problemID" : "GP7ZWP67",
+      "promptLatex" : "-5 x^{4} e^{2 y}",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[a x^{n} e^{ky}\\right] = a x^{n} k\\, e^{ky}",
+          "title" : "Holding x constant, a x^{n} is a constant multiplier; apply the chain rule to e^{ky}"
+        },
+        {
+          "canonical" : "(2*exp((2*y)))",
+          "latex" : "2 e^{2 y}",
+          "title" : "Differentiate e^{2 y} with respect to y"
+        },
+        {
+          "canonical" : "(-10*(x)**(4)*exp((2*y)))",
+          "latex" : "-10 x^{4} e^{2 y}",
+          "title" : "Multiply by -5 x^{4}"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.exponential-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-15 x^{2} e^{-3 y}",
+      "canonicalAnswer" : "(-15*(x)**(2)*exp((-3*y)))",
+      "canonicalPrompt" : "(5*(x)**(2)*exp((-3*y)))",
+      "difficulty" : 4,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 5
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "k",
+          "value" : -3
+        }
+      ],
+      "problemID" : "JT62A7LH",
+      "promptLatex" : "5 x^{2} e^{-3 y}",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[a x^{n} e^{ky}\\right] = a x^{n} k\\, e^{ky}",
+          "title" : "Holding x constant, a x^{n} is a constant multiplier; apply the chain rule to e^{ky}"
+        },
+        {
+          "canonical" : "(-3*exp((-3*y)))",
+          "latex" : "-3 e^{-3 y}",
+          "title" : "Differentiate e^{-3 y} with respect to y"
+        },
+        {
+          "canonical" : "(-15*(x)**(2)*exp((-3*y)))",
+          "latex" : "-15 x^{2} e^{-3 y}",
+          "title" : "Multiply by 5 x^{2}"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.exponential-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-x^{3} e^{y}",
+      "canonicalAnswer" : "(-1*(x)**(3)*exp(y))",
+      "canonicalPrompt" : "(-1*(x)**(3)*exp(y))",
+      "difficulty" : 4,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -1
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "k",
+          "value" : 1
+        }
+      ],
+      "problemID" : "XQJLT9P4",
+      "promptLatex" : "-x^{3} e^{y}",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[a x^{n} e^{ky}\\right] = a x^{n} k\\, e^{ky}",
+          "title" : "Holding x constant, a x^{n} is a constant multiplier; apply the chain rule to e^{ky}"
+        },
+        {
+          "canonical" : "exp(y)",
+          "latex" : "e^{y}",
+          "title" : "Differentiate e^{y} with respect to y"
+        },
+        {
+          "canonical" : "(-1*(x)**(3)*exp(y))",
+          "latex" : "-x^{3} e^{y}",
+          "title" : "Multiply by -x^{3}"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.exponential-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-2 x^{2} e^{2 y}",
+      "canonicalAnswer" : "(-2*(x)**(2)*exp((2*y)))",
+      "canonicalPrompt" : "(-1*(x)**(2)*exp((2*y)))",
+      "difficulty" : 7,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -1
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "k",
+          "value" : 2
+        }
+      ],
+      "problemID" : "ZZR49F1F",
+      "promptLatex" : "-x^{2} e^{2 y}",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[a x^{n} e^{ky}\\right] = a x^{n} k\\, e^{ky}",
+          "title" : "Holding x constant, a x^{n} is a constant multiplier; apply the chain rule to e^{ky}"
+        },
+        {
+          "canonical" : "(2*exp((2*y)))",
+          "latex" : "2 e^{2 y}",
+          "title" : "Differentiate e^{2 y} with respect to y"
+        },
+        {
+          "canonical" : "(-2*(x)**(2)*exp((2*y)))",
+          "latex" : "-2 x^{2} e^{2 y}",
+          "title" : "Multiply by -x^{2}"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.exponential-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "20 x^{6} e^{-5 y}",
+      "canonicalAnswer" : "(20*(x)**(6)*exp((-5*y)))",
+      "canonicalPrompt" : "(-4*(x)**(6)*exp((-5*y)))",
+      "difficulty" : 7,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -4
+        },
+        {
+          "name" : "n",
+          "value" : 6
+        },
+        {
+          "name" : "k",
+          "value" : -5
+        }
+      ],
+      "problemID" : "B13HDY57",
+      "promptLatex" : "-4 x^{6} e^{-5 y}",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[a x^{n} e^{ky}\\right] = a x^{n} k\\, e^{ky}",
+          "title" : "Holding x constant, a x^{n} is a constant multiplier; apply the chain rule to e^{ky}"
+        },
+        {
+          "canonical" : "(-5*exp((-5*y)))",
+          "latex" : "-5 e^{-5 y}",
+          "title" : "Differentiate e^{-5 y} with respect to y"
+        },
+        {
+          "canonical" : "(20*(x)**(6)*exp((-5*y)))",
+          "latex" : "20 x^{6} e^{-5 y}",
+          "title" : "Multiply by -4 x^{6}"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.exponential-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-10 x^{5} e^{-5 y}",
+      "canonicalAnswer" : "(-10*(x)**(5)*exp((-5*y)))",
+      "canonicalPrompt" : "(2*(x)**(5)*exp((-5*y)))",
+      "difficulty" : 7,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 2
+        },
+        {
+          "name" : "n",
+          "value" : 5
+        },
+        {
+          "name" : "k",
+          "value" : -5
+        }
+      ],
+      "problemID" : "LE3PF8Z5",
+      "promptLatex" : "2 x^{5} e^{-5 y}",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[a x^{n} e^{ky}\\right] = a x^{n} k\\, e^{ky}",
+          "title" : "Holding x constant, a x^{n} is a constant multiplier; apply the chain rule to e^{ky}"
+        },
+        {
+          "canonical" : "(-5*exp((-5*y)))",
+          "latex" : "-5 e^{-5 y}",
+          "title" : "Differentiate e^{-5 y} with respect to y"
+        },
+        {
+          "canonical" : "(-10*(x)**(5)*exp((-5*y)))",
+          "latex" : "-10 x^{5} e^{-5 y}",
+          "title" : "Multiply by 2 x^{5}"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.exponential-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-15 x^{3} e^{-5 y}",
+      "canonicalAnswer" : "(-15*(x)**(3)*exp((-5*y)))",
+      "canonicalPrompt" : "(3*(x)**(3)*exp((-5*y)))",
+      "difficulty" : 10,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 3
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "k",
+          "value" : -5
+        }
+      ],
+      "problemID" : "5W7MM8CN",
+      "promptLatex" : "3 x^{3} e^{-5 y}",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[a x^{n} e^{ky}\\right] = a x^{n} k\\, e^{ky}",
+          "title" : "Holding x constant, a x^{n} is a constant multiplier; apply the chain rule to e^{ky}"
+        },
+        {
+          "canonical" : "(-5*exp((-5*y)))",
+          "latex" : "-5 e^{-5 y}",
+          "title" : "Differentiate e^{-5 y} with respect to y"
+        },
+        {
+          "canonical" : "(-15*(x)**(3)*exp((-5*y)))",
+          "latex" : "-15 x^{3} e^{-5 y}",
+          "title" : "Multiply by 3 x^{3}"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.exponential-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-16 x^{2} e^{2 y}",
+      "canonicalAnswer" : "(-16*(x)**(2)*exp((2*y)))",
+      "canonicalPrompt" : "(-8*(x)**(2)*exp((2*y)))",
+      "difficulty" : 10,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -8
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "k",
+          "value" : 2
+        }
+      ],
+      "problemID" : "707Q0SRY",
+      "promptLatex" : "-8 x^{2} e^{2 y}",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[a x^{n} e^{ky}\\right] = a x^{n} k\\, e^{ky}",
+          "title" : "Holding x constant, a x^{n} is a constant multiplier; apply the chain rule to e^{ky}"
+        },
+        {
+          "canonical" : "(2*exp((2*y)))",
+          "latex" : "2 e^{2 y}",
+          "title" : "Differentiate e^{2 y} with respect to y"
+        },
+        {
+          "canonical" : "(-16*(x)**(2)*exp((2*y)))",
+          "latex" : "-16 x^{2} e^{2 y}",
+          "title" : "Multiply by -8 x^{2}"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.exponential-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-40 x^{6} e^{-5 y}",
+      "canonicalAnswer" : "(-40*(x)**(6)*exp((-5*y)))",
+      "canonicalPrompt" : "(8*(x)**(6)*exp((-5*y)))",
+      "difficulty" : 10,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 8
+        },
+        {
+          "name" : "n",
+          "value" : 6
+        },
+        {
+          "name" : "k",
+          "value" : -5
+        }
+      ],
+      "problemID" : "YPS7ARKD",
+      "promptLatex" : "8 x^{6} e^{-5 y}",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[a x^{n} e^{ky}\\right] = a x^{n} k\\, e^{ky}",
+          "title" : "Holding x constant, a x^{n} is a constant multiplier; apply the chain rule to e^{ky}"
+        },
+        {
+          "canonical" : "(-5*exp((-5*y)))",
+          "latex" : "-5 e^{-5 y}",
+          "title" : "Differentiate e^{-5 y} with respect to y"
+        },
+        {
+          "canonical" : "(-40*(x)**(6)*exp((-5*y)))",
+          "latex" : "-40 x^{6} e^{-5 y}",
+          "title" : "Multiply by 8 x^{6}"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.exponential-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "15 \\cos\\left(-3 x\\right) y^{2}",
+      "canonicalAnswer" : "(15*cos((-3*x))*(y)**(2))",
+      "canonicalPrompt" : "((-5*sin((-3*x))*(y)**(2)) + (-4*(y)**(2)))",
+      "difficulty" : 4,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -5
+        },
+        {
+          "name" : "k",
+          "value" : -3
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : -4
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        }
+      ],
+      "problemID" : "E9H4BAH3",
+      "promptLatex" : "-5 \\sin\\left(-3 x\\right) y^{2} - 4 y^{2}",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[\\sin(kx)\\right] = k\\cos(kx)",
+          "title" : "Apply the chain rule to the sine factor, holding y constant"
+        },
+        {
+          "canonical" : "(15*cos((-3*x))*(y)**(2))",
+          "latex" : "15 \\cos\\left(-3 x\\right) y^{2}",
+          "title" : "Differentiate -5 \\sin\\left(-3 x\\right) y^{2}"
+        },
+        {
+          "latex" : "0",
+          "title" : "-4 y^{2} has no x in it, so it is constant here"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.trig-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-15 \\cos\\left(-3 x\\right) y^{2}",
+      "canonicalAnswer" : "(-15*cos((-3*x))*(y)**(2))",
+      "canonicalPrompt" : "((5*sin((-3*x))*(y)**(2)) + (4*(y)**(2)))",
+      "difficulty" : 4,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 5
+        },
+        {
+          "name" : "k",
+          "value" : -3
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : 4
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        }
+      ],
+      "problemID" : "SAUGFTMV",
+      "promptLatex" : "5 \\sin\\left(-3 x\\right) y^{2} + 4 y^{2}",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[\\sin(kx)\\right] = k\\cos(kx)",
+          "title" : "Apply the chain rule to the sine factor, holding y constant"
+        },
+        {
+          "canonical" : "(-15*cos((-3*x))*(y)**(2))",
+          "latex" : "-15 \\cos\\left(-3 x\\right) y^{2}",
+          "title" : "Differentiate 5 \\sin\\left(-3 x\\right) y^{2}"
+        },
+        {
+          "latex" : "0",
+          "title" : "4 y^{2} has no x in it, so it is constant here"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.trig-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-2 \\cos\\left(2 x\\right) y^{3}",
+      "canonicalAnswer" : "(-2*cos((2*x))*(y)**(3))",
+      "canonicalPrompt" : "((-1*sin((2*x))*(y)**(3)) + (-3*(y)**(2)))",
+      "difficulty" : 4,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -1
+        },
+        {
+          "name" : "k",
+          "value" : 2
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "b",
+          "value" : -3
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        }
+      ],
+      "problemID" : "ZL3PGJNX",
+      "promptLatex" : "-\\sin\\left(2 x\\right) y^{3} - 3 y^{2}",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[\\sin(kx)\\right] = k\\cos(kx)",
+          "title" : "Apply the chain rule to the sine factor, holding y constant"
+        },
+        {
+          "canonical" : "(-2*cos((2*x))*(y)**(3))",
+          "latex" : "-2 \\cos\\left(2 x\\right) y^{3}",
+          "title" : "Differentiate -\\sin\\left(2 x\\right) y^{3}"
+        },
+        {
+          "latex" : "0",
+          "title" : "-3 y^{2} has no x in it, so it is constant here"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.trig-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "5 \\cos\\left(-5 x\\right) y^{2}",
+      "canonicalAnswer" : "(5*cos((-5*x))*(y)**(2))",
+      "canonicalPrompt" : "((-1*sin((-5*x))*(y)**(2)) + (5*(y)**(5)))",
+      "difficulty" : 7,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -1
+        },
+        {
+          "name" : "k",
+          "value" : -5
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : 5
+        },
+        {
+          "name" : "m",
+          "value" : 5
+        }
+      ],
+      "problemID" : "3ML0CGPJ",
+      "promptLatex" : "-\\sin\\left(-5 x\\right) y^{2} + 5 y^{5}",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[\\sin(kx)\\right] = k\\cos(kx)",
+          "title" : "Apply the chain rule to the sine factor, holding y constant"
+        },
+        {
+          "canonical" : "(5*cos((-5*x))*(y)**(2))",
+          "latex" : "5 \\cos\\left(-5 x\\right) y^{2}",
+          "title" : "Differentiate -\\sin\\left(-5 x\\right) y^{2}"
+        },
+        {
+          "latex" : "0",
+          "title" : "5 y^{5} has no x in it, so it is constant here"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.trig-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "20 \\cos\\left(-5 x\\right) y^{3}",
+      "canonicalAnswer" : "(20*cos((-5*x))*(y)**(3))",
+      "canonicalPrompt" : "((-4*sin((-5*x))*(y)**(3)) + (2*(y)**(6)))",
+      "difficulty" : 7,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -4
+        },
+        {
+          "name" : "k",
+          "value" : -5
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "b",
+          "value" : 2
+        },
+        {
+          "name" : "m",
+          "value" : 6
+        }
+      ],
+      "problemID" : "5RK3RZ2V",
+      "promptLatex" : "-4 \\sin\\left(-5 x\\right) y^{3} + 2 y^{6}",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[\\sin(kx)\\right] = k\\cos(kx)",
+          "title" : "Apply the chain rule to the sine factor, holding y constant"
+        },
+        {
+          "canonical" : "(20*cos((-5*x))*(y)**(3))",
+          "latex" : "20 \\cos\\left(-5 x\\right) y^{3}",
+          "title" : "Differentiate -4 \\sin\\left(-5 x\\right) y^{3}"
+        },
+        {
+          "latex" : "0",
+          "title" : "2 y^{6} has no x in it, so it is constant here"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.trig-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-6 \\cos\\left(-3 x\\right) y^{2}",
+      "canonicalAnswer" : "(-6*cos((-3*x))*(y)**(2))",
+      "canonicalPrompt" : "((2*sin((-3*x))*(y)**(2)) + (-3*(y)**(5)))",
+      "difficulty" : 7,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 2
+        },
+        {
+          "name" : "k",
+          "value" : -3
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : -3
+        },
+        {
+          "name" : "m",
+          "value" : 5
+        }
+      ],
+      "problemID" : "J6SGEX60",
+      "promptLatex" : "2 \\sin\\left(-3 x\\right) y^{2} - 3 y^{5}",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[\\sin(kx)\\right] = k\\cos(kx)",
+          "title" : "Apply the chain rule to the sine factor, holding y constant"
+        },
+        {
+          "canonical" : "(-6*cos((-3*x))*(y)**(2))",
+          "latex" : "-6 \\cos\\left(-3 x\\right) y^{2}",
+          "title" : "Differentiate 2 \\sin\\left(-3 x\\right) y^{2}"
+        },
+        {
+          "latex" : "0",
+          "title" : "-3 y^{5} has no x in it, so it is constant here"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.trig-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-15 \\cos\\left(-5 x\\right) y^{7}",
+      "canonicalAnswer" : "(-15*cos((-5*x))*(y)**(7))",
+      "canonicalPrompt" : "((3*sin((-5*x))*(y)**(7)) + (-1*(y)**(4)))",
+      "difficulty" : 10,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 3
+        },
+        {
+          "name" : "k",
+          "value" : -5
+        },
+        {
+          "name" : "n",
+          "value" : 7
+        },
+        {
+          "name" : "b",
+          "value" : -1
+        },
+        {
+          "name" : "m",
+          "value" : 4
+        }
+      ],
+      "problemID" : "RBVBJ1WX",
+      "promptLatex" : "3 \\sin\\left(-5 x\\right) y^{7} - y^{4}",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[\\sin(kx)\\right] = k\\cos(kx)",
+          "title" : "Apply the chain rule to the sine factor, holding y constant"
+        },
+        {
+          "canonical" : "(-15*cos((-5*x))*(y)**(7))",
+          "latex" : "-15 \\cos\\left(-5 x\\right) y^{7}",
+          "title" : "Differentiate 3 \\sin\\left(-5 x\\right) y^{7}"
+        },
+        {
+          "latex" : "0",
+          "title" : "-y^{4} has no x in it, so it is constant here"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.trig-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-24 \\cos\\left(3 x\\right) y^{5}",
+      "canonicalAnswer" : "(-24*cos((3*x))*(y)**(5))",
+      "canonicalPrompt" : "((-8*sin((3*x))*(y)**(5)) + (12*(y)**(5)))",
+      "difficulty" : 10,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -8
+        },
+        {
+          "name" : "k",
+          "value" : 3
+        },
+        {
+          "name" : "n",
+          "value" : 5
+        },
+        {
+          "name" : "b",
+          "value" : 12
+        },
+        {
+          "name" : "m",
+          "value" : 5
+        }
+      ],
+      "problemID" : "P7W85JGM",
+      "promptLatex" : "-8 \\sin\\left(3 x\\right) y^{5} + 12 y^{5}",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[\\sin(kx)\\right] = k\\cos(kx)",
+          "title" : "Apply the chain rule to the sine factor, holding y constant"
+        },
+        {
+          "canonical" : "(-24*cos((3*x))*(y)**(5))",
+          "latex" : "-24 \\cos\\left(3 x\\right) y^{5}",
+          "title" : "Differentiate -8 \\sin\\left(3 x\\right) y^{5}"
+        },
+        {
+          "latex" : "0",
+          "title" : "12 y^{5} has no x in it, so it is constant here"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.trig-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-8 \\cos\\left(-x\\right) y^{3}",
+      "canonicalAnswer" : "(-8*cos((-1*x))*(y)**(3))",
+      "canonicalPrompt" : "((8*sin((-1*x))*(y)**(3)) + (10*(y)**(2)))",
+      "difficulty" : 10,
+      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 8
+        },
+        {
+          "name" : "k",
+          "value" : -1
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "b",
+          "value" : 10
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        }
+      ],
+      "problemID" : "ERN1EF0V",
+      "promptLatex" : "8 \\sin\\left(-x\\right) y^{3} + 10 y^{2}",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial x}\\left[\\sin(kx)\\right] = k\\cos(kx)",
+          "title" : "Apply the chain rule to the sine factor, holding y constant"
+        },
+        {
+          "canonical" : "(-8*cos((-1*x))*(y)**(3))",
+          "latex" : "-8 \\cos\\left(-x\\right) y^{3}",
+          "title" : "Differentiate 8 \\sin\\left(-x\\right) y^{3}"
+        },
+        {
+          "latex" : "0",
+          "title" : "10 y^{2} has no x in it, so it is constant here"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.trig-x",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-x"
+    },
+    {
+      "answerLatex" : "-10 \\sin\\left(-3 x\\right) y - 8 y",
+      "canonicalAnswer" : "((-10*sin((-3*x))*y) + (-8*y))",
+      "canonicalPrompt" : "((-5*sin((-3*x))*(y)**(2)) + (-4*(y)**(2)))",
+      "difficulty" : 4,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -5
+        },
+        {
+          "name" : "k",
+          "value" : -3
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : -4
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        }
+      ],
+      "problemID" : "FUQCNJGP",
+      "promptLatex" : "-5 \\sin\\left(-3 x\\right) y^{2} - 4 y^{2}",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[a \\sin(kx) y^{n}\\right] = a \\sin(kx)\\, n y^{n-1}",
+          "title" : "Holding x constant, sin(kx) is a constant multiplier"
+        },
+        {
+          "canonical" : "(-10*sin((-3*x))*y)",
+          "latex" : "-10 \\sin\\left(-3 x\\right) y",
+          "title" : "Differentiate -5 \\sin\\left(-3 x\\right) y^{2}"
+        },
+        {
+          "canonical" : "(-8*y)",
+          "latex" : "-8 y",
+          "title" : "Differentiate -4 y^{2}"
+        },
+        {
+          "canonical" : "((-10*sin((-3*x))*y) + (-8*y))",
+          "latex" : "-10 \\sin\\left(-3 x\\right) y - 8 y",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.trig-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "10 \\sin\\left(-3 x\\right) y + 8 y",
+      "canonicalAnswer" : "((10*sin((-3*x))*y) + (8*y))",
+      "canonicalPrompt" : "((5*sin((-3*x))*(y)**(2)) + (4*(y)**(2)))",
+      "difficulty" : 4,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 5
+        },
+        {
+          "name" : "k",
+          "value" : -3
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : 4
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        }
+      ],
+      "problemID" : "TV1RS1MF",
+      "promptLatex" : "5 \\sin\\left(-3 x\\right) y^{2} + 4 y^{2}",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[a \\sin(kx) y^{n}\\right] = a \\sin(kx)\\, n y^{n-1}",
+          "title" : "Holding x constant, sin(kx) is a constant multiplier"
+        },
+        {
+          "canonical" : "(10*sin((-3*x))*y)",
+          "latex" : "10 \\sin\\left(-3 x\\right) y",
+          "title" : "Differentiate 5 \\sin\\left(-3 x\\right) y^{2}"
+        },
+        {
+          "canonical" : "(8*y)",
+          "latex" : "8 y",
+          "title" : "Differentiate 4 y^{2}"
+        },
+        {
+          "canonical" : "((10*sin((-3*x))*y) + (8*y))",
+          "latex" : "10 \\sin\\left(-3 x\\right) y + 8 y",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.trig-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-3 \\sin\\left(2 x\\right) y^{2} - 6 y",
+      "canonicalAnswer" : "((-3*sin((2*x))*(y)**(2)) + (-6*y))",
+      "canonicalPrompt" : "((-1*sin((2*x))*(y)**(3)) + (-3*(y)**(2)))",
+      "difficulty" : 4,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -1
+        },
+        {
+          "name" : "k",
+          "value" : 2
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "b",
+          "value" : -3
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        }
+      ],
+      "problemID" : "J5EL8S1L",
+      "promptLatex" : "-\\sin\\left(2 x\\right) y^{3} - 3 y^{2}",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[a \\sin(kx) y^{n}\\right] = a \\sin(kx)\\, n y^{n-1}",
+          "title" : "Holding x constant, sin(kx) is a constant multiplier"
+        },
+        {
+          "canonical" : "(-3*sin((2*x))*(y)**(2))",
+          "latex" : "-3 \\sin\\left(2 x\\right) y^{2}",
+          "title" : "Differentiate -\\sin\\left(2 x\\right) y^{3}"
+        },
+        {
+          "canonical" : "(-6*y)",
+          "latex" : "-6 y",
+          "title" : "Differentiate -3 y^{2}"
+        },
+        {
+          "canonical" : "((-3*sin((2*x))*(y)**(2)) + (-6*y))",
+          "latex" : "-3 \\sin\\left(2 x\\right) y^{2} - 6 y",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.trig-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-2 \\sin\\left(-5 x\\right) y + 25 y^{4}",
+      "canonicalAnswer" : "((-2*sin((-5*x))*y) + (25*(y)**(4)))",
+      "canonicalPrompt" : "((-1*sin((-5*x))*(y)**(2)) + (5*(y)**(5)))",
+      "difficulty" : 7,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -1
+        },
+        {
+          "name" : "k",
+          "value" : -5
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : 5
+        },
+        {
+          "name" : "m",
+          "value" : 5
+        }
+      ],
+      "problemID" : "J2ZDH14N",
+      "promptLatex" : "-\\sin\\left(-5 x\\right) y^{2} + 5 y^{5}",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[a \\sin(kx) y^{n}\\right] = a \\sin(kx)\\, n y^{n-1}",
+          "title" : "Holding x constant, sin(kx) is a constant multiplier"
+        },
+        {
+          "canonical" : "(-2*sin((-5*x))*y)",
+          "latex" : "-2 \\sin\\left(-5 x\\right) y",
+          "title" : "Differentiate -\\sin\\left(-5 x\\right) y^{2}"
+        },
+        {
+          "canonical" : "(25*(y)**(4))",
+          "latex" : "25 y^{4}",
+          "title" : "Differentiate 5 y^{5}"
+        },
+        {
+          "canonical" : "((-2*sin((-5*x))*y) + (25*(y)**(4)))",
+          "latex" : "-2 \\sin\\left(-5 x\\right) y + 25 y^{4}",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.trig-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-12 \\sin\\left(-5 x\\right) y^{2} + 12 y^{5}",
+      "canonicalAnswer" : "((-12*sin((-5*x))*(y)**(2)) + (12*(y)**(5)))",
+      "canonicalPrompt" : "((-4*sin((-5*x))*(y)**(3)) + (2*(y)**(6)))",
+      "difficulty" : 7,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -4
+        },
+        {
+          "name" : "k",
+          "value" : -5
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "b",
+          "value" : 2
+        },
+        {
+          "name" : "m",
+          "value" : 6
+        }
+      ],
+      "problemID" : "L6YGWJHY",
+      "promptLatex" : "-4 \\sin\\left(-5 x\\right) y^{3} + 2 y^{6}",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[a \\sin(kx) y^{n}\\right] = a \\sin(kx)\\, n y^{n-1}",
+          "title" : "Holding x constant, sin(kx) is a constant multiplier"
+        },
+        {
+          "canonical" : "(-12*sin((-5*x))*(y)**(2))",
+          "latex" : "-12 \\sin\\left(-5 x\\right) y^{2}",
+          "title" : "Differentiate -4 \\sin\\left(-5 x\\right) y^{3}"
+        },
+        {
+          "canonical" : "(12*(y)**(5))",
+          "latex" : "12 y^{5}",
+          "title" : "Differentiate 2 y^{6}"
+        },
+        {
+          "canonical" : "((-12*sin((-5*x))*(y)**(2)) + (12*(y)**(5)))",
+          "latex" : "-12 \\sin\\left(-5 x\\right) y^{2} + 12 y^{5}",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.trig-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "4 \\sin\\left(-3 x\\right) y - 15 y^{4}",
+      "canonicalAnswer" : "((4*sin((-3*x))*y) + (-15*(y)**(4)))",
+      "canonicalPrompt" : "((2*sin((-3*x))*(y)**(2)) + (-3*(y)**(5)))",
+      "difficulty" : 7,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 2
+        },
+        {
+          "name" : "k",
+          "value" : -3
+        },
+        {
+          "name" : "n",
+          "value" : 2
+        },
+        {
+          "name" : "b",
+          "value" : -3
+        },
+        {
+          "name" : "m",
+          "value" : 5
+        }
+      ],
+      "problemID" : "VMGLPGX3",
+      "promptLatex" : "2 \\sin\\left(-3 x\\right) y^{2} - 3 y^{5}",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[a \\sin(kx) y^{n}\\right] = a \\sin(kx)\\, n y^{n-1}",
+          "title" : "Holding x constant, sin(kx) is a constant multiplier"
+        },
+        {
+          "canonical" : "(4*sin((-3*x))*y)",
+          "latex" : "4 \\sin\\left(-3 x\\right) y",
+          "title" : "Differentiate 2 \\sin\\left(-3 x\\right) y^{2}"
+        },
+        {
+          "canonical" : "(-15*(y)**(4))",
+          "latex" : "-15 y^{4}",
+          "title" : "Differentiate -3 y^{5}"
+        },
+        {
+          "canonical" : "((4*sin((-3*x))*y) + (-15*(y)**(4)))",
+          "latex" : "4 \\sin\\left(-3 x\\right) y - 15 y^{4}",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.trig-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "21 \\sin\\left(-5 x\\right) y^{6} - 4 y^{3}",
+      "canonicalAnswer" : "((21*sin((-5*x))*(y)**(6)) + (-4*(y)**(3)))",
+      "canonicalPrompt" : "((3*sin((-5*x))*(y)**(7)) + (-1*(y)**(4)))",
+      "difficulty" : 10,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 3
+        },
+        {
+          "name" : "k",
+          "value" : -5
+        },
+        {
+          "name" : "n",
+          "value" : 7
+        },
+        {
+          "name" : "b",
+          "value" : -1
+        },
+        {
+          "name" : "m",
+          "value" : 4
+        }
+      ],
+      "problemID" : "GTGTSXJL",
+      "promptLatex" : "3 \\sin\\left(-5 x\\right) y^{7} - y^{4}",
+      "seed" : 1,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[a \\sin(kx) y^{n}\\right] = a \\sin(kx)\\, n y^{n-1}",
+          "title" : "Holding x constant, sin(kx) is a constant multiplier"
+        },
+        {
+          "canonical" : "(21*sin((-5*x))*(y)**(6))",
+          "latex" : "21 \\sin\\left(-5 x\\right) y^{6}",
+          "title" : "Differentiate 3 \\sin\\left(-5 x\\right) y^{7}"
+        },
+        {
+          "canonical" : "(-4*(y)**(3))",
+          "latex" : "-4 y^{3}",
+          "title" : "Differentiate -y^{4}"
+        },
+        {
+          "canonical" : "((21*sin((-5*x))*(y)**(6)) + (-4*(y)**(3)))",
+          "latex" : "21 \\sin\\left(-5 x\\right) y^{6} - 4 y^{3}",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.trig-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "-40 \\sin\\left(3 x\\right) y^{4} + 60 y^{4}",
+      "canonicalAnswer" : "((-40*sin((3*x))*(y)**(4)) + (60*(y)**(4)))",
+      "canonicalPrompt" : "((-8*sin((3*x))*(y)**(5)) + (12*(y)**(5)))",
+      "difficulty" : 10,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : -8
+        },
+        {
+          "name" : "k",
+          "value" : 3
+        },
+        {
+          "name" : "n",
+          "value" : 5
+        },
+        {
+          "name" : "b",
+          "value" : 12
+        },
+        {
+          "name" : "m",
+          "value" : 5
+        }
+      ],
+      "problemID" : "4S5FNEEU",
+      "promptLatex" : "-8 \\sin\\left(3 x\\right) y^{5} + 12 y^{5}",
+      "seed" : 7,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[a \\sin(kx) y^{n}\\right] = a \\sin(kx)\\, n y^{n-1}",
+          "title" : "Holding x constant, sin(kx) is a constant multiplier"
+        },
+        {
+          "canonical" : "(-40*sin((3*x))*(y)**(4))",
+          "latex" : "-40 \\sin\\left(3 x\\right) y^{4}",
+          "title" : "Differentiate -8 \\sin\\left(3 x\\right) y^{5}"
+        },
+        {
+          "canonical" : "(60*(y)**(4))",
+          "latex" : "60 y^{4}",
+          "title" : "Differentiate 12 y^{5}"
+        },
+        {
+          "canonical" : "((-40*sin((3*x))*(y)**(4)) + (60*(y)**(4)))",
+          "latex" : "-40 \\sin\\left(3 x\\right) y^{4} + 60 y^{4}",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.trig-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
+    },
+    {
+      "answerLatex" : "24 \\sin\\left(-x\\right) y^{2} + 20 y",
+      "canonicalAnswer" : "((24*sin((-1*x))*(y)**(2)) + (20*y))",
+      "canonicalPrompt" : "((8*sin((-1*x))*(y)**(3)) + (10*(y)**(2)))",
+      "difficulty" : 10,
+      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "parameters" : [
+        {
+          "name" : "a",
+          "value" : 8
+        },
+        {
+          "name" : "k",
+          "value" : -1
+        },
+        {
+          "name" : "n",
+          "value" : 3
+        },
+        {
+          "name" : "b",
+          "value" : 10
+        },
+        {
+          "name" : "m",
+          "value" : 2
+        }
+      ],
+      "problemID" : "VV7MA0WB",
+      "promptLatex" : "8 \\sin\\left(-x\\right) y^{3} + 10 y^{2}",
+      "seed" : 4242,
+      "steps" : [
+        {
+          "latex" : "\\frac{\\partial}{\\partial y}\\left[a \\sin(kx) y^{n}\\right] = a \\sin(kx)\\, n y^{n-1}",
+          "title" : "Holding x constant, sin(kx) is a constant multiplier"
+        },
+        {
+          "canonical" : "(24*sin((-1*x))*(y)**(2))",
+          "latex" : "24 \\sin\\left(-x\\right) y^{2}",
+          "title" : "Differentiate 8 \\sin\\left(-x\\right) y^{3}"
+        },
+        {
+          "canonical" : "(20*y)",
+          "latex" : "20 y",
+          "title" : "Differentiate 10 y^{2}"
+        },
+        {
+          "canonical" : "((24*sin((-1*x))*(y)**(2)) + (20*y))",
+          "latex" : "24 \\sin\\left(-x\\right) y^{2} + 20 y",
+          "title" : "Combine the terms"
+        }
+      ],
+      "subTypeID" : "partial",
+      "templateID" : "derivatives.partial.trig-y",
+      "topicID" : "derivatives",
+      "verificationRule" : "partial-y"
     }
   ],
   "schemaVersion" : 2,

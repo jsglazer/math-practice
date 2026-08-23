@@ -49,6 +49,10 @@ public struct SolutionStep: Hashable, Sendable, Codable {
 public enum VerificationRule: String, Hashable, Sendable, Codable {
     /// `answer` must equal `d/dx problem`.
     case derivative
+    /// `answer` must equal `∂/∂x problem`, holding y constant.
+    case partialDerivativeX = "partial-x"
+    /// `answer` must equal `∂/∂y problem`, holding x constant.
+    case partialDerivativeY = "partial-y"
 }
 
 /// What a template produces from one parameter draw, before it is stamped with its seed.

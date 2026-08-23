@@ -12,4 +12,5 @@ public extension SubTypeID {
     static let chainRule = SubTypeID("chain")
     static let trigonometric = SubTypeID("trig")
     static let exponentialLogarithmic = SubTypeID("exp-log")
+    static let partial = SubTypeID("partial")
 }

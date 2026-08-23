@@ -14,7 +14,8 @@ public struct DerivativesTopic: TopicModule {
         SubType(id: .quotientRule, displayName: "Quotient rule"),
         SubType(id: .chainRule, displayName: "Chain rule"),
         SubType(id: .trigonometric, displayName: "Trigonometric"),
-        SubType(id: .exponentialLogarithmic, displayName: "Exponential & log")
+        SubType(id: .exponentialLogarithmic, displayName: "Exponential & log"),
+        SubType(id: .partial, displayName: "Partial derivatives")
     ]
 
     public let templates: [any ProblemTemplate] = [
@@ -33,6 +34,14 @@ public struct DerivativesTopic: TopicModule {
         SineCosineTemplate(),
         TangentSecantTemplate(),
         ExponentialTemplate(),
-        LogarithmTemplate()
+        LogarithmTemplate(),
+        PartialPolynomialXTemplate(),
+        PartialPolynomialYTemplate(),
+        PartialProductXTemplate(),
+        PartialProductYTemplate(),
+        PartialExponentialXTemplate(),
+        PartialExponentialYTemplate(),
+        PartialTrigXTemplate(),
+        PartialTrigYTemplate()
     ]
 }
