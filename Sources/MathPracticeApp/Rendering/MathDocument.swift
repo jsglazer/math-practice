@@ -158,13 +158,23 @@ struct MathDocument: Hashable {
         )
     }
 
-    /// Wraps free-form user text (a Key note) as a KaTeX `\text{}` block, escaping the
-    /// handful of characters that would otherwise be read as LaTeX control sequences.
+    /// Wraps free-form user text (a Key note) as a KaTeX `\text{}` block, escaping every
+    /// character LaTeX would otherwise read as a control sequence. A note with an unescaped
+    /// one of these (e.g. a stray `$` or `%`) made KaTeX throw, which failed the whole
+    /// render and left the exported PDF as the empty placeholder file `fileExporter` writes
+    /// before the real bytes come back — a "corrupt", unopenable PDF.
     private static func latexText(_ raw: String) -> String {
         let escaped = raw
             .replacingOccurrences(of: "\\", with: "\\\\")
             .replacingOccurrences(of: "{", with: "\\{")
             .replacingOccurrences(of: "}", with: "\\}")
+            .replacingOccurrences(of: "$", with: "\\$")
+            .replacingOccurrences(of: "&", with: "\\&")
+            .replacingOccurrences(of: "%", with: "\\%")
+            .replacingOccurrences(of: "#", with: "\\#")
+            .replacingOccurrences(of: "_", with: "\\_")
+            .replacingOccurrences(of: "~", with: "\\textasciitilde{}")
+            .replacingOccurrences(of: "^", with: "\\textasciicircum{}")
         return "\\text{\(escaped)}"
     }
 

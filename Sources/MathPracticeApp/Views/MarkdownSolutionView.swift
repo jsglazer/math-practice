@@ -1,33 +1,30 @@
 //  MarkdownSolutionView.swift
-//  A pop-up showing the current problem (and whatever has been revealed of it) typeset —
-//  not as raw Markdown source — so it reads the way it would once pasted into Obsidian.
-//  The Copy button still puts the plain-Markdown source (math wrapped in single dollar
-//  signs) on the clipboard, ready to paste into any Markdown-aware app.
+//  A pop-up showing the current problem (and whatever has been revealed of it) as plain
+//  Markdown, math wrapped in single dollar signs, so it can be selected — or copied with one
+//  tap — and pasted straight into Obsidian or any other Markdown-aware app.
 
 import SwiftUI
 
 struct MarkdownSolutionView: View {
     let markdown: String
-    let blocks: [MathBlock]
 
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                MathTextView(blocks: blocks, minHeight: 60)
-                    .padding(12)
-            }
-            .textSelection(.enabled)
-            .navigationTitle("Markdown")
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button("Copy", systemImage: "doc.on.doc") { PlatformClipboard.copy(markdown) }
+            TextEditor(text: .constant(markdown))
+                .font(.system(.body, design: .monospaced))
+                .textSelection(.enabled)
+                .padding(4)
+                .navigationTitle("Markdown")
+                .toolbar {
+                    ToolbarItem(placement: .primaryAction) {
+                        Button("Copy", systemImage: "doc.on.doc") { PlatformClipboard.copy(markdown) }
+                    }
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Done") { dismiss() }
+                    }
                 }
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Done") { dismiss() }
-                }
-            }
         }
     }
 }

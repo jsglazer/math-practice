@@ -35,18 +35,16 @@ struct PracticeView: View {
                         .font(.caption)
                     } footer: {
                         VStack(alignment: .leading, spacing: 6) {
-                            if model.isKey(problem.problemID) {
-                                TextField("Note about this problem", text: $keyNoteDraft)
-                                    .font(.caption)
-                                    .padding(6)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 6)
-                                            .stroke(Color.gray.opacity(0.4))
-                                    )
-                                    .onSubmit {
-                                        model.setKeyNote(keyNoteDraft, for: problem.problemID)
-                                    }
-                            }
+                            TextField("Note", text: $keyNoteDraft)
+                                .font(.caption)
+                                .padding(6)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(Color.gray.opacity(0.4))
+                                )
+                                .onSubmit {
+                                    model.setNote(keyNoteDraft, for: problem)
+                                }
                             HStack {
                                 // Written down for troubleshooting: quoting this ID is enough
                                 // to pull this exact problem instance back up later.
@@ -162,7 +160,7 @@ struct PracticeView: View {
                 Button("Cancel", role: .cancel) { skipNote = "" }
             }
             .sheet(isPresented: $showMarkdownSheet) {
-                MarkdownSolutionView(markdown: markdownText, blocks: markdownBlocks)
+                MarkdownSolutionView(markdown: markdownText)
             }
         }
     }
@@ -189,41 +187,27 @@ struct PracticeView: View {
         lines.append("")
         lines.append("$\(problem.promptLatex)$")
 
+        for (index, step) in model.revealedSteps.enumerated() {
+            lines.append("")
+            lines.append("**Step \(index + 1) · \(step.title)**")
+            lines.append("$\(step.latex)$")
+        }
         if let answer = model.revealedAnswer {
             lines.append("")
             lines.append("**Answer:** $\(answer)$")
         }
-        for (index, step) in model.revealedSteps.enumerated() {
-            lines.append("")
-            lines.append("**Step \(index + 1) · \(step.title)**")
-            lines.append("")
-            lines.append("$\(step.latex)$")
-        }
         return lines.joined(separator: "\n")
     }
 
-    /// The same content as `markdownText`, as typeset blocks for the "View as Markdown"
-    /// preview — the problem itself is included here (unlike `solutionBlocks`, which only
-    /// covers what Reveal has shown) since the preview always has a problem to show.
-    private var markdownBlocks: [MathBlock] {
-        guard let problem = model.currentProblem else { return [] }
-        var blocks: [MathBlock] = [MathBlock(latex: problem.promptLatex, label: "Problem:")]
-        if let answer = model.revealedAnswer {
-            blocks.append(MathBlock(latex: answer, style: .inline, label: "Answer:"))
-        }
-        for (index, step) in model.revealedSteps.enumerated() {
-            blocks.append(MathBlock(latex: step.latex, style: .inline, label: "Step \(index + 1) · \(step.title)"))
-        }
-        return blocks
-    }
-
+    /// Steps before the answer, so the full solution reads as a derivation ending in its
+    /// result rather than leading with it.
     private var solutionBlocks: [MathBlock] {
         var blocks: [MathBlock] = []
-        if let answer = model.revealedAnswer {
-            blocks.append(MathBlock(latex: answer, label: "Answer"))
-        }
         for (index, step) in model.revealedSteps.enumerated() {
             blocks.append(MathBlock(latex: step.latex, label: "Step \(index + 1) · \(step.title)"))
+        }
+        if let answer = model.revealedAnswer {
+            blocks.append(MathBlock(latex: answer, label: "Answer"))
         }
         return blocks
     }

@@ -54,10 +54,7 @@ struct KeyView: View {
             }
             .sheet(item: $showMarkdownFor) { record in
                 if let problem = record.problem {
-                    MarkdownSolutionView(
-                        markdown: "$\(problem.promptLatex)$",
-                        blocks: [MathBlock(latex: problem.promptLatex)]
-                    )
+                    MarkdownSolutionView(markdown: "$\(problem.promptLatex)$")
                 }
             }
             .onDisappear(perform: commitPendingUnstars)
@@ -104,11 +101,11 @@ private struct KeyProblemRow: View {
 
                 MathTextView(latex: problem.promptLatex, minHeight: 44)
 
-                TextField("Note about this problem", text: noteBinding)
+                TextField("Note", text: noteBinding)
                     .font(.caption)
                     .textFieldStyle(.roundedBorder)
                     .onSubmit {
-                        model.setKeyNote(noteDrafts[record.problemID] ?? "", for: record.problemID)
+                        model.setNote(noteDrafts[record.problemID] ?? "", for: problem)
                     }
 
                 HStack {

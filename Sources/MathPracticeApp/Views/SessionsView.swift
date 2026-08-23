@@ -147,6 +147,11 @@ private struct SessionEntryRow: View {
                 if let problem {
                     MathTextView(latex: problem.promptLatex, minHeight: 24)
                         .frame(maxWidth: 180)
+                } else if entry.problemID != nil {
+                    Text("Question text unavailable")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .italic()
                 }
 
                 Spacer(minLength: 4)
@@ -172,21 +177,18 @@ private struct SessionEntryRow: View {
                     .italic()
             }
 
-            if let problemID = entry.problemID, model.isKey(problemID) {
-                TextField("Note about this problem", text: noteBinding(for: problemID))
+            if let problemID = entry.problemID, let problem {
+                TextField("Note", text: noteBinding(for: problemID))
                     .font(.caption2)
                     .textFieldStyle(.roundedBorder)
                     .onSubmit {
-                        model.setKeyNote(noteDrafts[problemID] ?? "", for: problemID)
+                        model.setNote(noteDrafts[problemID] ?? "", for: problem)
                     }
             }
         }
         .sheet(isPresented: $showMarkdownSheet) {
             if let problem {
-                MarkdownSolutionView(
-                    markdown: "$\(problem.promptLatex)$",
-                    blocks: [MathBlock(latex: problem.promptLatex)]
-                )
+                MarkdownSolutionView(markdown: "$\(problem.promptLatex)$")
             }
         }
     }

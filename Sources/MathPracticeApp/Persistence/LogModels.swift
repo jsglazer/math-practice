@@ -186,14 +186,18 @@ final class KeyProblemRecord {
     var note: String = ""
     var createdAt: Date = Date.distantPast
     var updatedAt: Date = Date.distantPast
+    /// Whether this problem is starred "Key". A record can exist purely to carry a note on
+    /// an unstarred problem — `isKey` is what the Key tab filters on, not record existence.
+    var isKey: Bool = true
 
-    init(problem: GeneratedProblem, note: String = "", createdAt: Date = Date()) {
+    init(problem: GeneratedProblem, note: String = "", createdAt: Date = Date(), isKey: Bool = true) {
         dedupeKey = DedupeKey.keyProblem(problemID: problem.problemID)
         problemID = problem.problemID
         problemData = try? JSONEncoder().encode(problem)
         self.note = note
         self.createdAt = createdAt
         updatedAt = createdAt
+        self.isKey = isKey
     }
 
     var problem: GeneratedProblem? {

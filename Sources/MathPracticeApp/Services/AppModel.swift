@@ -35,6 +35,9 @@ final class AppModel {
     private(set) var ladder: LadderSnapshot = DifficultyLadder.fold([])
     private(set) var worksheets: [Worksheet] = []
     private(set) var keyProblems: [KeyProblemRecord] = []
+    /// Every note-bearing record, starred or not — separate from `keyProblems` (which is
+    /// starred-only) so a note on an unstarred problem still shows up where it was typed.
+    private(set) var noteRecords: [KeyProblemRecord] = []
 
     // MARK: Session state
 
@@ -86,6 +89,7 @@ final class AppModel {
         ladder = DifficultyLadder.fold(events)
         worksheets = worksheetStore.all()
         keyProblems = keyProblemStore.all()
+        noteRecords = keyProblemStore.allRecords()
     }
 
     // MARK: - Derived views
@@ -206,11 +210,13 @@ final class AppModel {
         return keyProblems.contains { $0.problemID == problemID }
     }
 
+    /// A problem's note, whether or not it's starred Key.
     func keyNote(for problemID: String) -> String? {
-        keyProblems.first { $0.problemID == problemID }?.note
+        noteRecords.first { $0.problemID == problemID }?.note
     }
 
-    /// Flags `problem` if it isn't already Key, or un-flags it (and drops its note) if it is.
+    /// Flags `problem` if it isn't already Key, or un-flags it if it is. Un-flagging keeps
+    /// any note that was taken on it — only the star comes off.
     func toggleKey(for problem: GeneratedProblem) {
         if keyProblemStore.isFlagged(problem.problemID) {
             keyProblemStore.unflag(problem.problemID)
@@ -220,8 +226,9 @@ final class AppModel {
         reload()
     }
 
-    func setKeyNote(_ note: String, for problemID: String) {
-        keyProblemStore.setNote(note, for: problemID)
+    /// Saves a note against `problem`, whether or not it's starred Key.
+    func setNote(_ note: String, for problem: GeneratedProblem) {
+        keyProblemStore.setNote(note, for: problem)
         reload()
     }
 
