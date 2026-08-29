@@ -7490,7 +7490,7 @@
       "canonicalAnswer" : "((9*(x)**(2)*(y)**(2)) + (9*(x)**(2)))",
       "canonicalPrompt" : "((3*(x)**(3)*(y)**(2)) + (3*(x)**(3)) + (3*(y)**(3)))",
       "difficulty" : 1,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -7559,7 +7559,7 @@
       "canonicalAnswer" : "((2*x*(y)**(2)) + (2*x))",
       "canonicalPrompt" : "(((x)**(2)*(y)**(2)) + (x)**(2) + (y)**(2))",
       "difficulty" : 1,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -7628,7 +7628,7 @@
       "canonicalAnswer" : "((4*x*(y)**(3)) + (4*x))",
       "canonicalPrompt" : "((2*(x)**(2)*(y)**(3)) + (2*(x)**(2)) + (y)**(2))",
       "difficulty" : 1,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -7697,7 +7697,7 @@
       "canonicalAnswer" : "((-20*(x)**(3)*(y)**(2)) + (-8*x))",
       "canonicalPrompt" : "((-5*(x)**(4)*(y)**(2)) + (-4*(x)**(2)) + (5*(y)**(2)))",
       "difficulty" : 4,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -7766,7 +7766,7 @@
       "canonicalAnswer" : "((10*x*(y)**(2)) + (6*(x)**(2)))",
       "canonicalPrompt" : "((5*(x)**(2)*(y)**(2)) + (2*(x)**(3)) + (-2*(y)**(2)))",
       "difficulty" : 4,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -7835,7 +7835,7 @@
       "canonicalAnswer" : "((-3*(x)**(2)*(y)**(3)) + (-6*x))",
       "canonicalPrompt" : "((-1*(x)**(3)*(y)**(3)) + (-3*(x)**(2)) + (5*(y)**(2)))",
       "difficulty" : 4,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -7904,7 +7904,7 @@
       "canonicalAnswer" : "((-48*(x)**(5)*(y)**(2)) + (12*(x)**(2)))",
       "canonicalPrompt" : "((-8*(x)**(6)*(y)**(2)) + (4*(x)**(3)) + (-8*(y)**(2)))",
       "difficulty" : 8,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -7973,7 +7973,7 @@
       "canonicalAnswer" : "((-6*(x)**(5)*(y)**(3)) + (-42*(x)**(5)))",
       "canonicalPrompt" : "((-1*(x)**(6)*(y)**(3)) + (-7*(x)**(6)) + (-4*(y)**(5)))",
       "difficulty" : 8,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -8042,7 +8042,7 @@
       "canonicalAnswer" : "((-15*(x)**(4)*(y)**(2)) + (40*(x)**(4)))",
       "canonicalPrompt" : "((-3*(x)**(5)*(y)**(2)) + (8*(x)**(5)) + (7*(y)**(2)))",
       "difficulty" : 8,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -8111,7 +8111,7 @@
       "canonicalAnswer" : "((6*(x)**(3)*y) + (9*(y)**(2)))",
       "canonicalPrompt" : "((3*(x)**(3)*(y)**(2)) + (3*(x)**(3)) + (3*(y)**(3)))",
       "difficulty" : 1,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -8180,7 +8180,7 @@
       "canonicalAnswer" : "((2*(x)**(2)*y) + (2*y))",
       "canonicalPrompt" : "(((x)**(2)*(y)**(2)) + (x)**(2) + (y)**(2))",
       "difficulty" : 1,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -8249,7 +8249,7 @@
       "canonicalAnswer" : "((6*(x)**(2)*(y)**(2)) + (2*y))",
       "canonicalPrompt" : "((2*(x)**(2)*(y)**(3)) + (2*(x)**(2)) + (y)**(2))",
       "difficulty" : 1,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -8318,7 +8318,7 @@
       "canonicalAnswer" : "((-10*(x)**(4)*y) + (10*y))",
       "canonicalPrompt" : "((-5*(x)**(4)*(y)**(2)) + (-4*(x)**(2)) + (5*(y)**(2)))",
       "difficulty" : 4,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -8387,7 +8387,7 @@
       "canonicalAnswer" : "((10*(x)**(2)*y) + (-4*y))",
       "canonicalPrompt" : "((5*(x)**(2)*(y)**(2)) + (2*(x)**(3)) + (-2*(y)**(2)))",
       "difficulty" : 4,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -8456,7 +8456,7 @@
       "canonicalAnswer" : "((-3*(x)**(3)*(y)**(2)) + (10*y))",
       "canonicalPrompt" : "((-1*(x)**(3)*(y)**(3)) + (-3*(x)**(2)) + (5*(y)**(2)))",
       "difficulty" : 4,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -8525,7 +8525,7 @@
       "canonicalAnswer" : "((-16*(x)**(6)*y) + (-16*y))",
       "canonicalPrompt" : "((-8*(x)**(6)*(y)**(2)) + (4*(x)**(3)) + (-8*(y)**(2)))",
       "difficulty" : 8,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -8594,7 +8594,7 @@
       "canonicalAnswer" : "((-3*(x)**(6)*(y)**(2)) + (-20*(y)**(4)))",
       "canonicalPrompt" : "((-1*(x)**(6)*(y)**(3)) + (-7*(x)**(6)) + (-4*(y)**(5)))",
       "difficulty" : 8,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -8663,7 +8663,7 @@
       "canonicalAnswer" : "((-6*(x)**(5)*y) + (14*y))",
       "canonicalPrompt" : "((-3*(x)**(5)*(y)**(2)) + (8*(x)**(5)) + (7*(y)**(2)))",
       "difficulty" : 8,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -8732,7 +8732,7 @@
       "canonicalAnswer" : "(12*(x)**(2)*((2*(y)**(2)) + 1))",
       "canonicalPrompt" : "(((4*(x)**(3)) + -1)*((2*(y)**(2)) + 1))",
       "difficulty" : 3,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -8792,7 +8792,7 @@
       "canonicalAnswer" : "(-6*x*((-5*(y)**(3)) + -1))",
       "canonicalPrompt" : "(((-3*(x)**(2)) + -4)*((-5*(y)**(3)) + -1))",
       "difficulty" : 3,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -8852,7 +8852,7 @@
       "canonicalAnswer" : "(-3*(x)**(2)*((4*(y)**(2)) + -1))",
       "canonicalPrompt" : "(((-1*(x)**(3)) + -3)*((4*(y)**(2)) + -1))",
       "difficulty" : 3,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -8912,7 +8912,7 @@
       "canonicalAnswer" : "(10*(x)**(4)*((4*(y)**(3)) + 1))",
       "canonicalPrompt" : "(((2*(x)**(5)) + -7)*((4*(y)**(3)) + 1))",
       "difficulty" : 6,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -8972,7 +8972,7 @@
       "canonicalAnswer" : "(-16*x*((3*(y)**(4)) + -7))",
       "canonicalPrompt" : "(((-8*(x)**(2)) + -1)*((3*(y)**(4)) + -7))",
       "difficulty" : 6,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -9032,7 +9032,7 @@
       "canonicalAnswer" : "(20*(x)**(3)*((8*(y)**(2)) + -4))",
       "canonicalPrompt" : "(((5*(x)**(4)) + 3)*((8*(y)**(2)) + -4))",
       "difficulty" : 6,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -9092,7 +9092,7 @@
       "canonicalAnswer" : "(-24*(x)**(2)*((9*(y)**(5)) + -8))",
       "canonicalPrompt" : "(((-8*(x)**(3)) + 5)*((9*(y)**(5)) + -8))",
       "difficulty" : 9,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -9152,7 +9152,7 @@
       "canonicalAnswer" : "(-20*x*((10*(y)**(6)) + -4))",
       "canonicalPrompt" : "(((-10*(x)**(2)) + -10)*((10*(y)**(6)) + -4))",
       "difficulty" : 9,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -9212,7 +9212,7 @@
       "canonicalAnswer" : "(30*(x)**(5)*((-11*(y)**(2)) + -1))",
       "canonicalPrompt" : "(((5*(x)**(6)) + 9)*((-11*(y)**(2)) + -1))",
       "difficulty" : 9,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -9272,7 +9272,7 @@
       "canonicalAnswer" : "(4*((4*(x)**(3)) + -1)*y)",
       "canonicalPrompt" : "(((4*(x)**(3)) + -1)*((2*(y)**(2)) + 1))",
       "difficulty" : 3,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -9332,7 +9332,7 @@
       "canonicalAnswer" : "(-15*((-3*(x)**(2)) + -4)*(y)**(2))",
       "canonicalPrompt" : "(((-3*(x)**(2)) + -4)*((-5*(y)**(3)) + -1))",
       "difficulty" : 3,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -9392,7 +9392,7 @@
       "canonicalAnswer" : "(8*((-1*(x)**(3)) + -3)*y)",
       "canonicalPrompt" : "(((-1*(x)**(3)) + -3)*((4*(y)**(2)) + -1))",
       "difficulty" : 3,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -9452,7 +9452,7 @@
       "canonicalAnswer" : "(12*((2*(x)**(5)) + -7)*(y)**(2))",
       "canonicalPrompt" : "(((2*(x)**(5)) + -7)*((4*(y)**(3)) + 1))",
       "difficulty" : 6,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -9512,7 +9512,7 @@
       "canonicalAnswer" : "(12*((-8*(x)**(2)) + -1)*(y)**(3))",
       "canonicalPrompt" : "(((-8*(x)**(2)) + -1)*((3*(y)**(4)) + -7))",
       "difficulty" : 6,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -9572,7 +9572,7 @@
       "canonicalAnswer" : "(16*((5*(x)**(4)) + 3)*y)",
       "canonicalPrompt" : "(((5*(x)**(4)) + 3)*((8*(y)**(2)) + -4))",
       "difficulty" : 6,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -9632,7 +9632,7 @@
       "canonicalAnswer" : "(45*((-8*(x)**(3)) + 5)*(y)**(4))",
       "canonicalPrompt" : "(((-8*(x)**(3)) + 5)*((9*(y)**(5)) + -8))",
       "difficulty" : 9,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -9692,7 +9692,7 @@
       "canonicalAnswer" : "(60*((-10*(x)**(2)) + -10)*(y)**(5))",
       "canonicalPrompt" : "(((-10*(x)**(2)) + -10)*((10*(y)**(6)) + -4))",
       "difficulty" : 9,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -9752,7 +9752,7 @@
       "canonicalAnswer" : "(-22*((5*(x)**(6)) + 9)*y)",
       "canonicalPrompt" : "(((5*(x)**(6)) + 9)*((-11*(y)**(2)) + -1))",
       "difficulty" : 9,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -9812,7 +9812,7 @@
       "canonicalAnswer" : "(-20*(x)**(3)*exp((2*y)))",
       "canonicalPrompt" : "(-5*(x)**(4)*exp((2*y)))",
       "difficulty" : 4,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -9856,7 +9856,7 @@
       "canonicalAnswer" : "(10*x*exp((-3*y)))",
       "canonicalPrompt" : "(5*(x)**(2)*exp((-3*y)))",
       "difficulty" : 4,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -9900,7 +9900,7 @@
       "canonicalAnswer" : "(-3*(x)**(2)*exp(y))",
       "canonicalPrompt" : "(-1*(x)**(3)*exp(y))",
       "difficulty" : 4,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -9944,7 +9944,7 @@
       "canonicalAnswer" : "(-2*x*exp((2*y)))",
       "canonicalPrompt" : "(-1*(x)**(2)*exp((2*y)))",
       "difficulty" : 7,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -9988,7 +9988,7 @@
       "canonicalAnswer" : "(-24*(x)**(5)*exp((-5*y)))",
       "canonicalPrompt" : "(-4*(x)**(6)*exp((-5*y)))",
       "difficulty" : 7,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -10032,7 +10032,7 @@
       "canonicalAnswer" : "(10*(x)**(4)*exp((-5*y)))",
       "canonicalPrompt" : "(2*(x)**(5)*exp((-5*y)))",
       "difficulty" : 7,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -10076,7 +10076,7 @@
       "canonicalAnswer" : "(9*(x)**(2)*exp((-5*y)))",
       "canonicalPrompt" : "(3*(x)**(3)*exp((-5*y)))",
       "difficulty" : 10,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -10120,7 +10120,7 @@
       "canonicalAnswer" : "(-16*x*exp((2*y)))",
       "canonicalPrompt" : "(-8*(x)**(2)*exp((2*y)))",
       "difficulty" : 10,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -10164,7 +10164,7 @@
       "canonicalAnswer" : "(48*(x)**(5)*exp((-5*y)))",
       "canonicalPrompt" : "(8*(x)**(6)*exp((-5*y)))",
       "difficulty" : 10,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -10208,7 +10208,7 @@
       "canonicalAnswer" : "(-10*(x)**(4)*exp((2*y)))",
       "canonicalPrompt" : "(-5*(x)**(4)*exp((2*y)))",
       "difficulty" : 4,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -10252,7 +10252,7 @@
       "canonicalAnswer" : "(-15*(x)**(2)*exp((-3*y)))",
       "canonicalPrompt" : "(5*(x)**(2)*exp((-3*y)))",
       "difficulty" : 4,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -10296,7 +10296,7 @@
       "canonicalAnswer" : "(-1*(x)**(3)*exp(y))",
       "canonicalPrompt" : "(-1*(x)**(3)*exp(y))",
       "difficulty" : 4,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -10340,7 +10340,7 @@
       "canonicalAnswer" : "(-2*(x)**(2)*exp((2*y)))",
       "canonicalPrompt" : "(-1*(x)**(2)*exp((2*y)))",
       "difficulty" : 7,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -10384,7 +10384,7 @@
       "canonicalAnswer" : "(20*(x)**(6)*exp((-5*y)))",
       "canonicalPrompt" : "(-4*(x)**(6)*exp((-5*y)))",
       "difficulty" : 7,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -10428,7 +10428,7 @@
       "canonicalAnswer" : "(-10*(x)**(5)*exp((-5*y)))",
       "canonicalPrompt" : "(2*(x)**(5)*exp((-5*y)))",
       "difficulty" : 7,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -10472,7 +10472,7 @@
       "canonicalAnswer" : "(-15*(x)**(3)*exp((-5*y)))",
       "canonicalPrompt" : "(3*(x)**(3)*exp((-5*y)))",
       "difficulty" : 10,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -10516,7 +10516,7 @@
       "canonicalAnswer" : "(-16*(x)**(2)*exp((2*y)))",
       "canonicalPrompt" : "(-8*(x)**(2)*exp((2*y)))",
       "difficulty" : 10,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -10560,7 +10560,7 @@
       "canonicalAnswer" : "(-40*(x)**(6)*exp((-5*y)))",
       "canonicalPrompt" : "(8*(x)**(6)*exp((-5*y)))",
       "difficulty" : 10,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -10604,7 +10604,7 @@
       "canonicalAnswer" : "(15*cos((-3*x))*(y)**(2))",
       "canonicalPrompt" : "((-5*sin((-3*x))*(y)**(2)) + (-4*(y)**(2)))",
       "difficulty" : 4,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -10655,7 +10655,7 @@
       "canonicalAnswer" : "(-15*cos((-3*x))*(y)**(2))",
       "canonicalPrompt" : "((5*sin((-3*x))*(y)**(2)) + (4*(y)**(2)))",
       "difficulty" : 4,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -10706,7 +10706,7 @@
       "canonicalAnswer" : "(-2*cos((2*x))*(y)**(3))",
       "canonicalPrompt" : "((-1*sin((2*x))*(y)**(3)) + (-3*(y)**(2)))",
       "difficulty" : 4,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -10757,7 +10757,7 @@
       "canonicalAnswer" : "(5*cos((-5*x))*(y)**(2))",
       "canonicalPrompt" : "((-1*sin((-5*x))*(y)**(2)) + (5*(y)**(5)))",
       "difficulty" : 7,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -10808,7 +10808,7 @@
       "canonicalAnswer" : "(20*cos((-5*x))*(y)**(3))",
       "canonicalPrompt" : "((-4*sin((-5*x))*(y)**(3)) + (2*(y)**(6)))",
       "difficulty" : 7,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -10859,7 +10859,7 @@
       "canonicalAnswer" : "(-6*cos((-3*x))*(y)**(2))",
       "canonicalPrompt" : "((2*sin((-3*x))*(y)**(2)) + (-3*(y)**(5)))",
       "difficulty" : 7,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -10910,7 +10910,7 @@
       "canonicalAnswer" : "(-15*cos((-5*x))*(y)**(7))",
       "canonicalPrompt" : "((3*sin((-5*x))*(y)**(7)) + (-1*(y)**(4)))",
       "difficulty" : 10,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -10961,7 +10961,7 @@
       "canonicalAnswer" : "(-24*cos((3*x))*(y)**(5))",
       "canonicalPrompt" : "((-8*sin((3*x))*(y)**(5)) + (12*(y)**(5)))",
       "difficulty" : 10,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -11012,7 +11012,7 @@
       "canonicalAnswer" : "(-8*cos((-1*x))*(y)**(3))",
       "canonicalPrompt" : "((8*sin((-1*x))*(y)**(3)) + (10*(y)**(2)))",
       "difficulty" : 10,
-      "instruction" : "Find ∂f/∂x, treating y as a constant",
+      "instruction" : "Find ∂f/∂x, with respect to y",
       "parameters" : [
         {
           "name" : "a",
@@ -11063,7 +11063,7 @@
       "canonicalAnswer" : "((-10*sin((-3*x))*y) + (-8*y))",
       "canonicalPrompt" : "((-5*sin((-3*x))*(y)**(2)) + (-4*(y)**(2)))",
       "difficulty" : 4,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -11120,7 +11120,7 @@
       "canonicalAnswer" : "((10*sin((-3*x))*y) + (8*y))",
       "canonicalPrompt" : "((5*sin((-3*x))*(y)**(2)) + (4*(y)**(2)))",
       "difficulty" : 4,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -11177,7 +11177,7 @@
       "canonicalAnswer" : "((-3*sin((2*x))*(y)**(2)) + (-6*y))",
       "canonicalPrompt" : "((-1*sin((2*x))*(y)**(3)) + (-3*(y)**(2)))",
       "difficulty" : 4,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -11234,7 +11234,7 @@
       "canonicalAnswer" : "((-2*sin((-5*x))*y) + (25*(y)**(4)))",
       "canonicalPrompt" : "((-1*sin((-5*x))*(y)**(2)) + (5*(y)**(5)))",
       "difficulty" : 7,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -11291,7 +11291,7 @@
       "canonicalAnswer" : "((-12*sin((-5*x))*(y)**(2)) + (12*(y)**(5)))",
       "canonicalPrompt" : "((-4*sin((-5*x))*(y)**(3)) + (2*(y)**(6)))",
       "difficulty" : 7,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -11348,7 +11348,7 @@
       "canonicalAnswer" : "((4*sin((-3*x))*y) + (-15*(y)**(4)))",
       "canonicalPrompt" : "((2*sin((-3*x))*(y)**(2)) + (-3*(y)**(5)))",
       "difficulty" : 7,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -11405,7 +11405,7 @@
       "canonicalAnswer" : "((21*sin((-5*x))*(y)**(6)) + (-4*(y)**(3)))",
       "canonicalPrompt" : "((3*sin((-5*x))*(y)**(7)) + (-1*(y)**(4)))",
       "difficulty" : 10,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -11462,7 +11462,7 @@
       "canonicalAnswer" : "((-40*sin((3*x))*(y)**(4)) + (60*(y)**(4)))",
       "canonicalPrompt" : "((-8*sin((3*x))*(y)**(5)) + (12*(y)**(5)))",
       "difficulty" : 10,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",
@@ -11519,7 +11519,7 @@
       "canonicalAnswer" : "((24*sin((-1*x))*(y)**(2)) + (20*y))",
       "canonicalPrompt" : "((8*sin((-1*x))*(y)**(3)) + (10*(y)**(2)))",
       "difficulty" : 10,
-      "instruction" : "Find ∂f/∂y, treating x as a constant",
+      "instruction" : "Find ∂f/∂y, with respect to x",
       "parameters" : [
         {
           "name" : "a",

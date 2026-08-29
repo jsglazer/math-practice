@@ -10,7 +10,7 @@ struct PartialPolynomialXTemplate: ProblemTemplate {
     let displayName = "Polynomial (∂/∂x)"
     let difficultyRange = 1...8
     let verificationRule = VerificationRule.partialDerivativeX
-    var instruction: String { "Find ∂f/∂x, treating y as a constant" }
+    var instruction: String { "Find ∂f/∂x, with respect to y" }
 
     func draw(difficulty: Int, using generator: inout RandomSource) -> ProblemDraw {
         let scale = DifficultyScale(difficulty: difficulty)
@@ -66,7 +66,7 @@ struct PartialPolynomialYTemplate: ProblemTemplate {
     let displayName = "Polynomial (∂/∂y)"
     let difficultyRange = 1...8
     let verificationRule = VerificationRule.partialDerivativeY
-    var instruction: String { "Find ∂f/∂y, treating x as a constant" }
+    var instruction: String { "Find ∂f/∂y, with respect to x" }
 
     func draw(difficulty: Int, using generator: inout RandomSource) -> ProblemDraw {
         let scale = DifficultyScale(difficulty: difficulty)
@@ -122,7 +122,7 @@ struct PartialProductXTemplate: ProblemTemplate {
     let displayName = "Product of factors (∂/∂x)"
     let difficultyRange = 3...9
     let verificationRule = VerificationRule.partialDerivativeX
-    var instruction: String { "Find ∂f/∂x, treating y as a constant" }
+    var instruction: String { "Find ∂f/∂x, with respect to y" }
 
     func draw(difficulty: Int, using generator: inout RandomSource) -> ProblemDraw {
         let scale = DifficultyScale(difficulty: difficulty)
@@ -177,7 +177,7 @@ struct PartialProductYTemplate: ProblemTemplate {
     let displayName = "Product of factors (∂/∂y)"
     let difficultyRange = 3...9
     let verificationRule = VerificationRule.partialDerivativeY
-    var instruction: String { "Find ∂f/∂y, treating x as a constant" }
+    var instruction: String { "Find ∂f/∂y, with respect to x" }
 
     func draw(difficulty: Int, using generator: inout RandomSource) -> ProblemDraw {
         let scale = DifficultyScale(difficulty: difficulty)
@@ -232,7 +232,7 @@ struct PartialExponentialXTemplate: ProblemTemplate {
     let displayName = "Exponential (∂/∂x)"
     let difficultyRange = 4...10
     let verificationRule = VerificationRule.partialDerivativeX
-    var instruction: String { "Find ∂f/∂x, treating y as a constant" }
+    var instruction: String { "Find ∂f/∂x, with respect to y" }
 
     func draw(difficulty: Int, using generator: inout RandomSource) -> ProblemDraw {
         let scale = DifficultyScale(difficulty: difficulty)
@@ -275,7 +275,7 @@ struct PartialExponentialYTemplate: ProblemTemplate {
     let displayName = "Exponential (∂/∂y)"
     let difficultyRange = 4...10
     let verificationRule = VerificationRule.partialDerivativeY
-    var instruction: String { "Find ∂f/∂y, treating x as a constant" }
+    var instruction: String { "Find ∂f/∂y, with respect to x" }
 
     func draw(difficulty: Int, using generator: inout RandomSource) -> ProblemDraw {
         let scale = DifficultyScale(difficulty: difficulty)
@@ -320,7 +320,7 @@ struct PartialTrigXTemplate: ProblemTemplate {
     let displayName = "Trigonometric (∂/∂x)"
     let difficultyRange = 4...10
     let verificationRule = VerificationRule.partialDerivativeX
-    var instruction: String { "Find ∂f/∂x, treating y as a constant" }
+    var instruction: String { "Find ∂f/∂x, with respect to y" }
 
     func draw(difficulty: Int, using generator: inout RandomSource) -> ProblemDraw {
         let scale = DifficultyScale(difficulty: difficulty)
@@ -370,7 +370,7 @@ struct PartialTrigYTemplate: ProblemTemplate {
     let displayName = "Trigonometric (∂/∂y)"
     let difficultyRange = 4...10
     let verificationRule = VerificationRule.partialDerivativeY
-    var instruction: String { "Find ∂f/∂y, treating x as a constant" }
+    var instruction: String { "Find ∂f/∂y, with respect to x" }
 
     func draw(difficulty: Int, using generator: inout RandomSource) -> ProblemDraw {
         let scale = DifficultyScale(difficulty: difficulty)

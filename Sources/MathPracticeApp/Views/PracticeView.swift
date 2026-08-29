@@ -22,8 +22,8 @@ struct PracticeView: View {
                 if let problem = model.currentProblem {
                     Section {
                         Text(problem.instruction)
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                            .font(.system(size: 24))
+                            .foregroundStyle(.primary)
                         MathTextView(latex: problem.promptLatex, minHeight: 76)
                     } header: {
                         HStack {
