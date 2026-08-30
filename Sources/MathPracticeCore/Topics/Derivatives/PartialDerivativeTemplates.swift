@@ -10,7 +10,7 @@ struct PartialPolynomialXTemplate: ProblemTemplate {
     let displayName = "Polynomial (∂/∂x)"
     let difficultyRange = 1...8
     let verificationRule = VerificationRule.partialDerivativeX
-    var instruction: String { "Find ∂f/∂x, with respect to y" }
+    var instruction: String { "Find ∂f/∂x" }
 
     func draw(difficulty: Int, using generator: inout RandomSource) -> ProblemDraw {
         let scale = DifficultyScale(difficulty: difficulty)
@@ -36,9 +36,9 @@ struct PartialPolynomialXTemplate: ProblemTemplate {
                 "Differentiate term by term, holding y constant",
                 latex: "\\frac{\\partial}{\\partial x}\\left[k x^{p} y^{q}\\right] = k p\\, x^{p-1} y^{q}"
             ),
-            SolutionStep(title: "Differentiate \(mixedTerm.latex)", expression: mixedDerivative),
-            SolutionStep(title: "Differentiate \(xTerm.latex)", expression: xTermDerivative),
-            .narrative("\(yTerm.latex) has no x in it, so it is constant here", latex: "0"),
+            SolutionStep(title: "Differentiate $\(mixedTerm.latex)$", expression: mixedDerivative),
+            SolutionStep(title: "Differentiate $\(xTerm.latex)$", expression: xTermDerivative),
+            .narrative("$\(yTerm.latex)$ has no x in it, so it is constant here", latex: "0"),
             SolutionStep(title: "Combine the terms", expression: answer)
         ]
 
@@ -66,7 +66,7 @@ struct PartialPolynomialYTemplate: ProblemTemplate {
     let displayName = "Polynomial (∂/∂y)"
     let difficultyRange = 1...8
     let verificationRule = VerificationRule.partialDerivativeY
-    var instruction: String { "Find ∂f/∂y, with respect to x" }
+    var instruction: String { "Find ∂f/∂y" }
 
     func draw(difficulty: Int, using generator: inout RandomSource) -> ProblemDraw {
         let scale = DifficultyScale(difficulty: difficulty)
@@ -92,9 +92,9 @@ struct PartialPolynomialYTemplate: ProblemTemplate {
                 "Differentiate term by term, holding x constant",
                 latex: "\\frac{\\partial}{\\partial y}\\left[k x^{p} y^{q}\\right] = k q\\, x^{p} y^{q-1}"
             ),
-            SolutionStep(title: "Differentiate \(mixedTerm.latex)", expression: mixedDerivative),
-            SolutionStep(title: "Differentiate \(yTerm.latex)", expression: yTermDerivative),
-            .narrative("\(xTerm.latex) has no y in it, so it is constant here", latex: "0"),
+            SolutionStep(title: "Differentiate $\(mixedTerm.latex)$", expression: mixedDerivative),
+            SolutionStep(title: "Differentiate $\(yTerm.latex)$", expression: yTermDerivative),
+            .narrative("$\(xTerm.latex)$ has no y in it, so it is constant here", latex: "0"),
             SolutionStep(title: "Combine the terms", expression: answer)
         ]
 
@@ -122,7 +122,7 @@ struct PartialProductXTemplate: ProblemTemplate {
     let displayName = "Product of factors (∂/∂x)"
     let difficultyRange = 3...9
     let verificationRule = VerificationRule.partialDerivativeX
-    var instruction: String { "Find ∂f/∂x, with respect to y" }
+    var instruction: String { "Find ∂f/∂x" }
 
     func draw(difficulty: Int, using generator: inout RandomSource) -> ProblemDraw {
         let scale = DifficultyScale(difficulty: difficulty)
@@ -177,7 +177,7 @@ struct PartialProductYTemplate: ProblemTemplate {
     let displayName = "Product of factors (∂/∂y)"
     let difficultyRange = 3...9
     let verificationRule = VerificationRule.partialDerivativeY
-    var instruction: String { "Find ∂f/∂y, with respect to x" }
+    var instruction: String { "Find ∂f/∂y" }
 
     func draw(difficulty: Int, using generator: inout RandomSource) -> ProblemDraw {
         let scale = DifficultyScale(difficulty: difficulty)
@@ -232,7 +232,7 @@ struct PartialExponentialXTemplate: ProblemTemplate {
     let displayName = "Exponential (∂/∂x)"
     let difficultyRange = 4...10
     let verificationRule = VerificationRule.partialDerivativeX
-    var instruction: String { "Find ∂f/∂x, with respect to y" }
+    var instruction: String { "Find ∂f/∂x" }
 
     func draw(difficulty: Int, using generator: inout RandomSource) -> ProblemDraw {
         let scale = DifficultyScale(difficulty: difficulty)
@@ -248,11 +248,11 @@ struct PartialExponentialXTemplate: ProblemTemplate {
 
         let steps: [SolutionStep] = [
             .narrative(
-                "Holding y constant, e^{ky} is a constant multiplier",
+                "Holding y constant, $e^{ky}$ is a constant multiplier",
                 latex: "\\frac{\\partial}{\\partial x}\\left[a x^{n} e^{ky}\\right] = a n\\, x^{n-1} e^{ky}"
             ),
             SolutionStep(title: "Differentiate the power of x", expression: xDerivative),
-            SolutionStep(title: "Multiply by \(expFactor.latex)", expression: answer)
+            SolutionStep(title: "Multiply by $\(expFactor.latex)$", expression: answer)
         ]
 
         return ProblemDraw(
@@ -275,7 +275,7 @@ struct PartialExponentialYTemplate: ProblemTemplate {
     let displayName = "Exponential (∂/∂y)"
     let difficultyRange = 4...10
     let verificationRule = VerificationRule.partialDerivativeY
-    var instruction: String { "Find ∂f/∂y, with respect to x" }
+    var instruction: String { "Find ∂f/∂y" }
 
     func draw(difficulty: Int, using generator: inout RandomSource) -> ProblemDraw {
         let scale = DifficultyScale(difficulty: difficulty)
@@ -293,11 +293,11 @@ struct PartialExponentialYTemplate: ProblemTemplate {
 
         let steps: [SolutionStep] = [
             .narrative(
-                "Holding x constant, a x^{n} is a constant multiplier; apply the chain rule to e^{ky}",
+                "Holding x constant, $a x^{n}$ is a constant multiplier; apply the chain rule to $e^{ky}$",
                 latex: "\\frac{\\partial}{\\partial y}\\left[a x^{n} e^{ky}\\right] = a x^{n} k\\, e^{ky}"
             ),
-            SolutionStep(title: "Differentiate \(expFactor.latex) with respect to y", expression: expDerivative),
-            SolutionStep(title: "Multiply by \(xPart.latex)", expression: answer)
+            SolutionStep(title: "Differentiate $\(expFactor.latex)$ with respect to y", expression: expDerivative),
+            SolutionStep(title: "Multiply by $\(xPart.latex)$", expression: answer)
         ]
 
         return ProblemDraw(
@@ -320,7 +320,7 @@ struct PartialTrigXTemplate: ProblemTemplate {
     let displayName = "Trigonometric (∂/∂x)"
     let difficultyRange = 4...10
     let verificationRule = VerificationRule.partialDerivativeX
-    var instruction: String { "Find ∂f/∂x, with respect to y" }
+    var instruction: String { "Find ∂f/∂x" }
 
     func draw(difficulty: Int, using generator: inout RandomSource) -> ProblemDraw {
         let scale = DifficultyScale(difficulty: difficulty)
@@ -344,8 +344,8 @@ struct PartialTrigXTemplate: ProblemTemplate {
                 "Apply the chain rule to the sine factor, holding y constant",
                 latex: "\\frac{\\partial}{\\partial x}\\left[\\sin(kx)\\right] = k\\cos(kx)"
             ),
-            SolutionStep(title: "Differentiate \(trigTerm.latex)", expression: answer),
-            .narrative("\(yTerm.latex) has no x in it, so it is constant here", latex: "0")
+            SolutionStep(title: "Differentiate $\(trigTerm.latex)$", expression: answer),
+            .narrative("$\(yTerm.latex)$ has no x in it, so it is constant here", latex: "0")
         ]
 
         return ProblemDraw(
@@ -370,7 +370,7 @@ struct PartialTrigYTemplate: ProblemTemplate {
     let displayName = "Trigonometric (∂/∂y)"
     let difficultyRange = 4...10
     let verificationRule = VerificationRule.partialDerivativeY
-    var instruction: String { "Find ∂f/∂y, with respect to x" }
+    var instruction: String { "Find ∂f/∂y" }
 
     func draw(difficulty: Int, using generator: inout RandomSource) -> ProblemDraw {
         let scale = DifficultyScale(difficulty: difficulty)
@@ -396,11 +396,11 @@ struct PartialTrigYTemplate: ProblemTemplate {
 
         let steps: [SolutionStep] = [
             .narrative(
-                "Holding x constant, sin(kx) is a constant multiplier",
+                "Holding x constant, $\\sin(kx)$ is a constant multiplier",
                 latex: "\\frac{\\partial}{\\partial y}\\left[a \\sin(kx) y^{n}\\right] = a \\sin(kx)\\, n y^{n-1}"
             ),
-            SolutionStep(title: "Differentiate \(trigTerm.latex)", expression: trigTermDerivative),
-            SolutionStep(title: "Differentiate \(yTerm.latex)", expression: yTermDerivative),
+            SolutionStep(title: "Differentiate $\(trigTerm.latex)$", expression: trigTermDerivative),
+            SolutionStep(title: "Differentiate $\(yTerm.latex)$", expression: yTermDerivative),
             SolutionStep(title: "Combine the terms", expression: answer)
         ]
 

@@ -209,7 +209,7 @@ struct MathDocument: Hashable {
         .joined(separator: "\n")
 
         let body = blocks.map { block in
-            let label = block.label.map { "<span class=\"label\">\(Self.escape($0))</span>" } ?? ""
+            let label = block.label.map { "<span class=\"label\">\(Self.labelHTML($0))</span>" } ?? ""
             let space = workingSpace > 0 ? "<div class=\"working\"></div>" : ""
             return """
             <section class="block">
@@ -240,6 +240,8 @@ struct MathDocument: Hashable {
             .subtitle { margin: 0 0 20px; opacity: 0.6; font-size: 13px; }
             .block { margin: 0 0 14px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; }
             .label { font-variant-numeric: tabular-nums; font-weight: 600; opacity: 0.85; min-width: 26px; }
+            /* Math inside a label sits in running text, so it matches the label's size. */
+            .label .math { display: inline-block; font-size: 1.05em; font-weight: 400; }
             .math-scroll { flex: 1 1 auto; min-width: 0; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
             .math { font-size: 19px; display: inline-block; }
             .working { flex-basis: 100%; height: \(workingSpace)px; border-bottom: 1px solid \(rule); }
@@ -296,6 +298,33 @@ struct MathDocument: Hashable {
       }
     })();
     """
+
+    /// A label as HTML, typesetting any `$…$` spans inside it rather than printing them
+    /// literally. Step titles name the term they act on ("Differentiate $x^{3}y^{3}$"), and
+    /// before this the LaTeX came out raw on screen and in every export. The delimiter is
+    /// the same single `$` the Markdown view already uses, so one convention covers both.
+    ///
+    /// Math spans become `.math` nodes, which the render script typesets alongside the
+    /// block expressions — so the completion gate still waits for them, and a malformed one
+    /// is still counted as a failure.
+    static func labelHTML(_ text: String) -> String {
+        // Odd indices are the insides of matched `$…$` pairs. A trailing unmatched `$`
+        // leaves an even-indexed final piece, which falls through as ordinary text.
+        let pieces = text.components(separatedBy: "$")
+        guard pieces.count > 2 else { return escape(text) }
+        let hasUnmatchedDelimiter = pieces.count % 2 == 0
+
+        return pieces.enumerated().map { index, piece in
+            let isMath = index % 2 == 1 && !(hasUnmatchedDelimiter && index == pieces.count - 1)
+            guard isMath, !piece.isEmpty else {
+                // Put back the `$` that `components` consumed ahead of a piece that turned
+                // out not to open a math span after all.
+                return (index % 2 == 1 ? "$" : "") + escape(piece)
+            }
+            return "<span class=\"math\" data-latex=\"\(escape(piece))\" data-display=\"false\"></span>"
+        }
+        .joined()
+    }
 
     private static func escape(_ text: String) -> String {
         text

@@ -30,8 +30,8 @@ struct ExponentialTemplate: ProblemTemplate {
                 "The exponential reproduces itself, times the inner derivative",
                 latex: "\\frac{d}{dx}e^{kx} = k e^{kx}"
             ),
-            SolutionStep(title: "Differentiate \(exponentialPart.latex)", expression: exponentialDerivative),
-            SolutionStep(title: "Differentiate \(powerTerm(b, 1).latex)", expression: .integer(b)),
+            SolutionStep(title: "Differentiate $\(exponentialPart.latex)$", expression: exponentialDerivative),
+            SolutionStep(title: "Differentiate $\(powerTerm(b, 1).latex)$", expression: .integer(b)),
             SolutionStep(title: "Combine the terms", expression: answer)
         ]
 

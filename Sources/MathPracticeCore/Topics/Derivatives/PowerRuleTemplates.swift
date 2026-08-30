@@ -31,8 +31,8 @@ struct PolynomialTemplate: ProblemTemplate {
                 "Apply the power rule term by term",
                 latex: "\\frac{d}{dx}\\left[k x^{p}\\right] = k p\\, x^{p-1}"
             ),
-            SolutionStep(title: "Differentiate \(powerTerm(a, n).latex)", expression: firstDerivative),
-            SolutionStep(title: "Differentiate \(powerTerm(b, m).latex)", expression: secondDerivative)
+            SolutionStep(title: "Differentiate $\(powerTerm(a, n).latex)$", expression: firstDerivative),
+            SolutionStep(title: "Differentiate $\(powerTerm(b, m).latex)$", expression: secondDerivative)
         ]
         if c != 0 {
             steps.append(.narrative("The derivative of the constant \(c) is 0", latex: "0"))
@@ -77,7 +77,7 @@ struct NegativeExponentTemplate: ProblemTemplate {
                 latex: "\\frac{\(a)}{x^{\(n)}} = \(powerTerm(a, -n).latex)"
             ),
             SolutionStep(title: "Apply the power rule to the negative power", expression: firstDerivative),
-            SolutionStep(title: "Differentiate \(powerTerm(b, 1).latex)", expression: .integer(b)),
+            SolutionStep(title: "Differentiate $\(powerTerm(b, 1).latex)$", expression: .integer(b)),
             SolutionStep(title: "Combine the terms", expression: answer)
         ]
 
@@ -127,7 +127,7 @@ struct RadicalTemplate: ProblemTemplate {
                 latex: "\\sqrt{x} = x^{\\frac{1}{2}}"
             ),
             SolutionStep(title: "Apply the power rule to the radical term", expression: rootDerivative),
-            SolutionStep(title: "Differentiate \(powerTerm(b, m).latex)", expression: polynomialDerivative),
+            SolutionStep(title: "Differentiate $\(powerTerm(b, m).latex)$", expression: polynomialDerivative),
             SolutionStep(title: "Combine the terms", expression: answer)
         ]
 

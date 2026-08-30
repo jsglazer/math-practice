@@ -32,8 +32,8 @@ struct SineCosineTemplate: ProblemTemplate {
                 "Recall the trig derivatives, each with its chain factor",
                 latex: "\\frac{d}{dx}\\sin(kx) = k\\cos(kx),\\quad \\frac{d}{dx}\\cos(kx) = -k\\sin(kx)"
             ),
-            SolutionStep(title: "Differentiate \(sinePart.latex)", expression: sineDerivative),
-            SolutionStep(title: "Differentiate \(cosinePart.latex)", expression: cosineDerivative),
+            SolutionStep(title: "Differentiate $\(sinePart.latex)$", expression: sineDerivative),
+            SolutionStep(title: "Differentiate $\(cosinePart.latex)$", expression: cosineDerivative),
             SolutionStep(title: "Combine the terms", expression: answer)
         ]
 
@@ -83,7 +83,7 @@ struct TangentSecantTemplate: ProblemTemplate {
         let steps: [SolutionStep] = [
             .narrative("Recall the derivative of the outer function", latex: ruleLatex),
             .narrative(
-                "The inner function is \(argument.latex), so the chain factor is \(k)",
+                "The inner function is $\(argument.latex)$, so the chain factor is \(k)",
                 latex: "u = \(argument.latex),\\quad u' = \(k)"
             ),
             SolutionStep(title: "Multiply through", expression: answer)
