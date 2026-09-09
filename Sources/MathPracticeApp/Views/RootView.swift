@@ -61,36 +61,53 @@ private enum RootTab: CaseIterable {
 /// The topic / sub-type / difficulty selector, shared by practice and worksheet creation.
 struct SelectionControls: View {
     @Environment(AppModel.self) private var model
+    @State private var showCustomMixSheet = false
 
     var body: some View {
         @Bindable var model = model
         Group {
-            Picker("Topic", selection: $model.selectedTopic) {
-                Text("Random mix").tag(TopicID?.none)
-                ForEach(model.registry.topics, id: \.id) { topic in
-                    Text(topic.displayName).tag(TopicID?.some(topic.id))
+            if model.customMixEnabled {
+                LabeledContent(
+                    "Custom mix",
+                    value: "\(model.customMixSelectedKeys.count) sub-type\(model.customMixSelectedKeys.count == 1 ? "" : "s") · Level \(model.customMixDifficulty)"
+                )
+                HStack {
+                    Button("Edit…") { showCustomMixSheet = true }
+                    Button("Clear", role: .destructive) { model.clearCustomMix() }
                 }
-            }
-
-            Picker("Sub-type", selection: $model.selectedSubType) {
-                Text("Random mix").tag(SubTypeID?.none)
-                ForEach(model.subTypesForSelectedTopic) { subType in
-                    Text(subType.displayName).tag(SubTypeID?.some(subType.id))
-                }
-            }
-            .disabled(model.selectedTopic == nil)
-
-            Toggle("Adaptive difficulty", isOn: $model.useAdaptiveDifficulty)
-
-            if model.useAdaptiveDifficulty {
-                LabeledContent("Level", value: "\(model.effectiveDifficulty)")
             } else {
-                Picker("Level", selection: $model.chosenDifficulty) {
-                    ForEach(Array(DifficultyLadder.bounds), id: \.self) { level in
-                        Text("\(level)").tag(level)
+                Picker("Topic", selection: $model.selectedTopic) {
+                    Text("Random mix").tag(TopicID?.none)
+                    ForEach(model.registry.topics, id: \.id) { topic in
+                        Text(topic.displayName).tag(TopicID?.some(topic.id))
                     }
                 }
+
+                Picker("Sub-type", selection: $model.selectedSubType) {
+                    Text("Random mix").tag(SubTypeID?.none)
+                    ForEach(model.subTypesForSelectedTopic) { subType in
+                        Text(subType.displayName).tag(SubTypeID?.some(subType.id))
+                    }
+                }
+                .disabled(model.selectedTopic == nil)
+
+                Toggle("Adaptive difficulty", isOn: $model.useAdaptiveDifficulty)
+
+                if model.useAdaptiveDifficulty {
+                    LabeledContent("Level", value: "\(model.effectiveDifficulty)")
+                } else {
+                    Picker("Level", selection: $model.chosenDifficulty) {
+                        ForEach(Array(DifficultyLadder.bounds), id: \.self) { level in
+                            Text("\(level)").tag(level)
+                        }
+                    }
+                }
+
+                Button("Custom mix…") { showCustomMixSheet = true }
             }
+        }
+        .sheet(isPresented: $showCustomMixSheet) {
+            CustomMixSheet()
         }
     }
 }

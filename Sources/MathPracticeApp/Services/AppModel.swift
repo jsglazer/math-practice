@@ -46,6 +46,12 @@ final class AppModel {
     var useAdaptiveDifficulty = true
     var chosenDifficulty = 3
 
+    /// When on, `nextProblem()`/`createWorksheet()` draw a fresh random `(topic, sub-type)`
+    /// from `customMixSelectedKeys` per problem instead of using the pickers above.
+    private(set) var customMixEnabled = false
+    private(set) var customMixSelectedKeys: Set<PracticeKey>
+    private(set) var customMixDifficulty: Int
+
     private(set) var currentProblem: GeneratedProblem?
     private(set) var revealState = RevealState()
     private(set) var revealedAnswer: String?
@@ -74,6 +80,8 @@ final class AppModel {
         // the shell — never core, which only ever sees the seed it is handed.
         self.generator = RandomSource(seed: sessionSeed)
         self.selectedTopic = registry.topics.first?.id
+        self.customMixSelectedKeys = CustomMixPreferences.loadSelectedKeys() ?? Set(registry.practiceKeys)
+        self.customMixDifficulty = CustomMixPreferences.loadDifficulty() ?? 3
     }
 
     // MARK: - Lifecycle
@@ -131,15 +139,50 @@ final class AppModel {
 
     // MARK: - Practice loop
 
-    func nextProblem() {
-        let request = PracticeRequest(
+    /// When custom mix is active, draws a fresh random `(topic, sub-type)` from the checked
+    /// set for every problem — so a session (or worksheet) actually mixes sub-types rather
+    /// than pinning one for its whole duration — at the mix's chosen fixed difficulty.
+    /// Otherwise falls back to the ordinary topic/sub-type pickers.
+    private func nextPracticeRequest() -> PracticeRequest {
+        if customMixEnabled, let key = generator.drawElement(from: sortedCustomMixKeys) {
+            return PracticeRequest(topic: key.topic, subType: key.subType, difficulty: .fixed(customMixDifficulty))
+        }
+        return PracticeRequest(
             topic: selectedTopic,
             subType: selectedSubType,
             difficulty: useAdaptiveDifficulty ? .adaptive : .fixed(chosenDifficulty)
         )
+    }
+
+    /// Sorted so a session seed still replays the same problem sequence — `Set` iteration
+    /// order is not guaranteed stable across runs.
+    private var sortedCustomMixKeys: [PracticeKey] {
+        customMixSelectedKeys.sorted {
+            ($0.topic.rawValue, $0.subType.rawValue) < ($1.topic.rawValue, $1.subType.rawValue)
+        }
+    }
+
+    /// Turns on custom mix with `keys` (must be non-empty) and `difficulty`, and remembers
+    /// both for next time the picker opens — including across launches.
+    func applyCustomMix(keys: Set<PracticeKey>, difficulty: Int) {
+        guard !keys.isEmpty else { return }
+        customMixSelectedKeys = keys
+        customMixDifficulty = DifficultyLadder.clamp(difficulty)
+        customMixEnabled = true
+        CustomMixPreferences.saveSelectedKeys(keys)
+        CustomMixPreferences.saveDifficulty(customMixDifficulty)
+    }
+
+    /// Turns custom mix off and returns to the ordinary pickers. The checked set and
+    /// difficulty stay remembered so reopening the picker starts from where it left off.
+    func clearCustomMix() {
+        customMixEnabled = false
+    }
+
+    func nextProblem() {
         do {
             currentProblem = try ProblemSelector(registry: registry)
-                .next(request, ladder: ladder, using: &generator)
+                .next(nextPracticeRequest(), ladder: ladder, using: &generator)
             revealState = RevealState()
             revealedAnswer = nil
             revealedSteps = []
@@ -255,15 +298,10 @@ final class AppModel {
     /// Freezes a worksheet. Always called before any rendering: the PDF reads the record.
     @discardableResult
     func createWorksheet(name: String, questionCount: Int) -> Worksheet? {
-        let request = PracticeRequest(
-            topic: selectedTopic,
-            subType: selectedSubType,
-            difficulty: useAdaptiveDifficulty ? .adaptive : .fixed(chosenDifficulty)
-        )
         let selector = ProblemSelector(registry: registry)
         do {
             let problems = try (0..<questionCount).map { _ in
-                try selector.next(request, ladder: ladder, using: &generator)
+                try selector.next(nextPracticeRequest(), ladder: ladder, using: &generator)
             }
             let worksheet = try worksheetStore.persist(name: name, problems: problems)
             reload()
