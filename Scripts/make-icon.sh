@@ -28,6 +28,7 @@ sips -z 256 256 "$TMP/icon_1024.png" --out "$APPICONSET/icon_256x256.png"    >/d
 sips -z 512 512 "$TMP/icon_1024.png" --out "$APPICONSET/icon_256x256@2x.png" >/dev/null
 sips -z 512 512 "$TMP/icon_1024.png" --out "$APPICONSET/icon_512x512.png"    >/dev/null
 cp              "$TMP/icon_1024.png"        "$APPICONSET/icon_512x512@2x.png"
+cp              "$TMP/icon_1024.png"        "$APPICONSET/icon_1024.png"
 
 cat > "$APPICONSET/Contents.json" <<'JSON'
 {
@@ -41,7 +42,8 @@ cat > "$APPICONSET/Contents.json" <<'JSON'
     { "idiom" : "mac", "size" : "256x256", "scale" : "1x", "filename" : "icon_256x256.png" },
     { "idiom" : "mac", "size" : "256x256", "scale" : "2x", "filename" : "icon_256x256@2x.png" },
     { "idiom" : "mac", "size" : "512x512", "scale" : "1x", "filename" : "icon_512x512.png" },
-    { "idiom" : "mac", "size" : "512x512", "scale" : "2x", "filename" : "icon_512x512@2x.png" }
+    { "idiom" : "mac", "size" : "512x512", "scale" : "2x", "filename" : "icon_512x512@2x.png" },
+    { "idiom" : "universal", "platform" : "ios", "size" : "1024x1024", "filename" : "icon_1024.png" }
   ],
   "info" : { "version" : 1, "author" : "xcode" }
 }
