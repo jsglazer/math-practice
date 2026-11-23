@@ -101,12 +101,15 @@ private struct KeyProblemRow: View {
 
                 MathTextView(latex: problem.promptLatex, minHeight: 44)
 
-                TextField("Note", text: noteBinding)
-                    .font(.caption)
-                    .textFieldStyle(.roundedBorder)
-                    .onSubmit {
-                        model.setNote(noteDrafts[record.problemID] ?? "", for: problem)
-                    }
+                NoteField(text: noteBinding) {
+                    model.setNote(noteDrafts[record.problemID] ?? "", for: problem)
+                }
+                .font(.caption)
+
+                if let note = model.keyNote(for: record.problemID), !note.isEmpty {
+                    MarkdownNoteText(note: note)
+                        .font(.callout)
+                }
 
                 HStack {
                     Text("ID \(record.problemID)")

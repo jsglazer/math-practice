@@ -18,7 +18,7 @@ final class WorksheetStore {
 
     /// Freezes and saves a worksheet. Call this before rendering anything.
     @discardableResult
-    func persist(name: String, problems: [GeneratedProblem], createdAt: Date = Date()) throws -> Worksheet {
+    func persist(name: String, problems: [GeneratedProblem], className: String? = nil, createdAt: Date = Date()) throws -> Worksheet {
         let worksheet = WorksheetBuilder.make(
             id: UUID(),
             name: name,
@@ -26,6 +26,7 @@ final class WorksheetStore {
             problems: problems
         )
         let record = WorksheetRecord(worksheet: worksheet)
+        record.className = className
         context.insert(record)
         for question in worksheet.questions {
             let questionRecord = WorksheetQuestionRecord(question: question, createdAt: createdAt)
@@ -43,6 +44,28 @@ final class WorksheetStore {
         )
         let records = (try? context.fetch(descriptor)) ?? []
         return records.compactMap(Self.worksheet(from:))
+    }
+
+    /// Every worksheet's class tag, keyed by worksheet ID. Untagged worksheets are absent.
+    func classTags() -> [UUID: String] {
+        let records = (try? context.fetch(FetchDescriptor<WorksheetRecord>())) ?? []
+        var tags: [UUID: String] = [:]
+        for record in records {
+            if let className = record.className {
+                tags[record.worksheetID] = className
+            }
+        }
+        return tags
+    }
+
+    /// Tags (or with `nil`, untags) a worksheet with the class its time counts toward.
+    func setClassTag(_ className: String?, for worksheetID: UUID) {
+        let descriptor = FetchDescriptor<WorksheetRecord>(predicate: #Predicate { $0.worksheetID == worksheetID })
+        // CloudKit sync can briefly leave duplicates; tag every copy so they agree.
+        for record in (try? context.fetch(descriptor)) ?? [] {
+            record.className = className
+        }
+        try? context.save()
     }
 
     static func worksheet(from record: WorksheetRecord) -> Worksheet? {

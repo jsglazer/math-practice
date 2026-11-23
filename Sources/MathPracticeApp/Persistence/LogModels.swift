@@ -131,6 +131,10 @@ final class WorksheetRecord {
     var worksheetID: UUID = UUID()
     var name: String = ""
     var createdAt: Date = Date.distantPast
+    /// The class this worksheet's time counts toward: `nil` = untagged (falls back to the
+    /// practice session's class, then the device's Default class), `""` = deliberately no
+    /// class. Optional, so it is a lightweight, CloudKit-safe addition and syncs with the set.
+    var className: String?
 
     @Relationship(deleteRule: .cascade, inverse: \WorksheetQuestionRecord.worksheet)
     var questions: [WorksheetQuestionRecord]? = []

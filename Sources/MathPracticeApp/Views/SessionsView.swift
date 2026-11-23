@@ -178,12 +178,14 @@ private struct SessionEntryRow: View {
             }
 
             if let problemID = entry.problemID, let problem {
-                TextField("Note", text: noteBinding(for: problemID))
-                    .font(.caption2)
-                    .textFieldStyle(.roundedBorder)
-                    .onSubmit {
-                        model.setNote(noteDrafts[problemID] ?? "", for: problem)
-                    }
+                NoteField(text: noteBinding(for: problemID)) {
+                    model.setNote(noteDrafts[problemID] ?? "", for: problem)
+                }
+                .font(.caption2)
+                if let note = model.keyNote(for: problemID), !note.isEmpty {
+                    MarkdownNoteText(note: note)
+                        .font(.caption)
+                }
             }
         }
         .sheet(isPresented: $showMarkdownSheet) {

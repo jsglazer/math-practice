@@ -67,6 +67,11 @@ struct SettingsView: View {
                     .disabled(pinKey == nil)
                 }
 
+                ClassesSettingsSection()
+
+                // Empty on iOS: ActivityWatch has no iOS server.
+                ActivityWatchSettingsSection()
+
                 Section("Problem packs") {
                     PackImportControl()
                 }
@@ -127,5 +132,64 @@ private struct PackImportControl: View {
         if let message {
             Text(message).font(.caption).foregroundStyle(.secondary)
         }
+    }
+}
+
+/// The class list every class picker offers, and this device's Default class.
+private struct ClassesSettingsSection: View {
+    @Environment(AppModel.self) private var model
+    @State private var newClass = ""
+
+    var body: some View {
+        Section {
+            Picker("Default class", selection: Binding(
+                get: { model.defaultClassName },
+                set: { model.setDefaultClassName($0) }
+            )) {
+                ForEach(defaultOptions, id: \.self) { name in
+                    Text(name).tag(name)
+                }
+                Text("No class").tag("")
+            }
+            ForEach(model.classNames, id: \.self) { name in
+                HStack {
+                    Text(name)
+                    Spacer()
+                    Button(role: .destructive) {
+                        if let index = model.classNames.firstIndex(of: name) {
+                            model.removeClassNames(at: IndexSet(integer: index))
+                        }
+                    } label: {
+                        Image(systemName: "minus.circle")
+                    }
+                    .buttonStyle(.borderless)
+                    .help("Remove from the class list")
+                }
+            }
+            HStack {
+                TextField("Add a class", text: $newClass, prompt: Text("Econ - PUBP 720"))
+                    .onSubmit(add)
+                Button("Add", action: add)
+                    .disabled(newClass.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            }
+        } header: {
+            Text("Classes")
+        } footer: {
+            Text("Spell each class exactly as the Classes dashboard names it (its folder under ~/VaultSchar/Classes/<term>/). The Default class is what untagged practice counts toward on this device.")
+        }
+    }
+
+    /// The listed classes, plus the current default if it was removed from the list.
+    private var defaultOptions: [String] {
+        var names = model.classNames
+        if !model.defaultClassName.isEmpty, !names.contains(model.defaultClassName) {
+            names.append(model.defaultClassName)
+        }
+        return names
+    }
+
+    private func add() {
+        model.addClassName(newClass)
+        newClass = ""
     }
 }

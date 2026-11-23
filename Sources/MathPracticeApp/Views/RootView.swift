@@ -43,6 +43,10 @@ struct RootView: View {
                     .tag(RootTab.settings)
             }
         }
+        // The ActivityWatch heartbeat reports which tab is on screen.
+        .onChange(of: selectedTab, initial: true) { _, tab in
+            model.activeTab = tab.activityTab
+        }
     }
 
     private func moveTab(by delta: Int) {
@@ -56,24 +60,45 @@ struct RootView: View {
 /// `Cmd-Shift-[` / `Cmd-Shift-]` (documented in Settings) cycle through these in order.
 private enum RootTab: CaseIterable {
     case practice, progress, sessions, key, worksheets, settings
+
+    var activityTab: ActivityTab {
+        switch self {
+        case .practice: return .practice
+        case .progress: return .progress
+        case .sessions: return .sessions
+        case .key: return .key
+        case .worksheets: return .worksheets
+        case .settings: return .settings
+        }
+    }
 }
 
 /// The topic / sub-type / difficulty selector, shared by practice and worksheet creation.
-struct SelectionControls: View {
+/// `accessory` rides at the trailing end of the custom-mix row (or the "Custom mix…" row) —
+/// Practice puts the problem ID and note there so the whole thing reads as one line.
+struct SelectionControls<Accessory: View>: View {
     @Environment(AppModel.self) private var model
     @State private var showCustomMixSheet = false
+    private let accessory: Accessory
+
+    init(@ViewBuilder accessory: () -> Accessory) {
+        self.accessory = accessory()
+    }
 
     var body: some View {
         @Bindable var model = model
         Group {
             if model.customMixEnabled {
-                LabeledContent(
-                    "Custom mix",
-                    value: "\(model.customMixSelectedKeys.count) sub-type\(model.customMixSelectedKeys.count == 1 ? "" : "s") · Level \(model.customMixDifficulty)"
-                )
-                HStack {
+                HStack(spacing: 10) {
+                    Text("Custom mix")
                     Button("Edit…") { showCustomMixSheet = true }
                     Button("Clear", role: .destructive) { model.clearCustomMix() }
+                    Text("\(model.customMixSelectedKeys.count) sub-type\(model.customMixSelectedKeys.count == 1 ? "" : "s") · Level \(model.customMixDifficulty)")
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                        .fixedSize()
+                    Spacer(minLength: 12)
+                    accessory
                 }
             } else {
                 Picker("Topic", selection: $model.selectedTopic) {
@@ -103,11 +128,21 @@ struct SelectionControls: View {
                     }
                 }
 
-                Button("Custom mix…") { showCustomMixSheet = true }
+                HStack(spacing: 10) {
+                    Button("Custom mix…") { showCustomMixSheet = true }
+                    Spacer(minLength: 12)
+                    accessory
+                }
             }
         }
         .sheet(isPresented: $showCustomMixSheet) {
             CustomMixSheet()
         }
+    }
+}
+
+extension SelectionControls where Accessory == EmptyView {
+    init() {
+        self.init { EmptyView() }
     }
 }

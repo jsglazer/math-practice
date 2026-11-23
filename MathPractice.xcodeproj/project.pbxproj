@@ -33,8 +33,10 @@
 		547BD98FC567DF4ADE3D5B4F /* MathDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1C7AF96DBB7F306FBF0AB /* MathDocument.swift */; };
 		54FBEA365665A9CA1253065E /* WorksheetExporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328C1E49F6D984CE8B90609 /* WorksheetExporting.swift */; };
 		564BF4DD9C7574BC07A4A950 /* MacKeyExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2D71B9C98EE7CE6D9DD6D4 /* MacKeyExporter.swift */; };
+		5B2626A44929843A1721E805 /* ClassAndNoteControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7866FFA78F864CD684E595 /* ClassAndNoteControls.swift */; };
 		5B59527496C9C9E6C092AEBC /* WorksheetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B088F018B04D1BF3B597B0 /* WorksheetStore.swift */; };
 		5F30E1CEB2A10C12CBAEE7D3 /* KaTeXAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA53430016646E194DA409CB /* KaTeXAssets.swift */; };
+		5FB0A91602E03832F97BFB6A /* ActivityWatchSettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654B476E46729AEA447AC3A /* ActivityWatchSettingsSection.swift */; };
 		6C2F0D1C5E1F65FF4F10C5E6 /* MacSessionExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BE4C11EE4AE76689310B4E /* MacSessionExporter.swift */; };
 		765F0AC3C417897CBAFFCE97 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34061659930113212A557A /* SettingsView.swift */; };
 		7A35E272AA366287C3F61D35 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF576AFE82FA8DC7408F8B0 /* PracticeView.swift */; };
@@ -45,11 +47,14 @@
 		7FB61C5E34C28DEFD84B02FF /* KeyExporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A174302DA4F24A0E13ABB9 /* KeyExporting.swift */; };
 		848CE0F1FF6210742452E6E5 /* katex in Resources */ = {isa = PBXBuildFile; fileRef = 6F54EA1ADCCEDAEA70F4AAF4 /* katex */; };
 		88F1BC148C386A245A4EE508 /* KeyProblemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D134AA2F89E85B62859A /* KeyProblemStore.swift */; };
+		8B3C066B82F9BEEC14360706 /* ActivityWatchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61095829D75BE1CE1A58BDF2 /* ActivityWatchService.swift */; };
 		9125DB9FA89484D7BB8372E6 /* KeyExporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A174302DA4F24A0E13ABB9 /* KeyExporting.swift */; };
 		92940F614E5F3AE10BE11920 /* MathPracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CF28C8DD3D4164164C436F /* MathPracticeApp.swift */; };
 		92AC5A6B7C510094F46E1FB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8D67AE42EEF678387F86B8E /* Assets.xcassets */; };
 		94713DF1CB820961B997CB2E /* WorksheetExporterInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06739EBEDF98B708C01DA7FF /* WorksheetExporterInstaller.swift */; };
+		95B84DD93D0EE59DF8727E52 /* ActivityWatchStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60726132B005AB89FD43253E /* ActivityWatchStubs.swift */; };
 		9C69B0C683763E2B30B68C5F /* WorksheetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B088F018B04D1BF3B597B0 /* WorksheetStore.swift */; };
+		A00CD40E831F08D10C149FEA /* ClassPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6026C324190BE0A49ADC073C /* ClassPreferences.swift */; };
 		A48E94CA80FFB1954B39AE59 /* KeyExporterInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DF1C671611410AEEBFF38D /* KeyExporterInstaller.swift */; };
 		AF7454B26316692735117489 /* LogModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0926473ECB900B36FC4204A0 /* LogModels.swift */; };
 		B47569BFF17629D66010B21D /* WorksheetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187488CDCAEBAA356DF5CFCD /* WorksheetsView.swift */; };
@@ -62,9 +67,11 @@
 		CD02261E135A22D7A50F5947 /* CustomMixSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547458D86E3EDD25F47616DE /* CustomMixSheet.swift */; };
 		CDA7890BB4F76959AD731184 /* LibraryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4F61480A5CB94E87C3C9BA /* LibraryModels.swift */; };
 		CDEBEDDF43EBFB2DCE7FF17C /* PackImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FA40CD26CA88F408B9B970 /* PackImportService.swift */; };
+		CFE4F9472E90621F34FC6E7C /* ClassPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6026C324190BE0A49ADC073C /* ClassPreferences.swift */; };
 		D061186D8FD31F9A5CB65DD7 /* CustomMixPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198F6B28337590CBFBE95937 /* CustomMixPreferences.swift */; };
 		D2D67A7991CCC9868BBA8668 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34061659930113212A557A /* SettingsView.swift */; };
 		D4E409251155D77A58174B7C /* MacWorksheetExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A9117E9B925DA4C37B220 /* MacWorksheetExporter.swift */; };
+		D83C014C3FB828C407FF4B0A /* ClassAndNoteControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7866FFA78F864CD684E595 /* ClassAndNoteControls.swift */; };
 		D934A5EAEA18E6B39A938DD7 /* CustomMixSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547458D86E3EDD25F47616DE /* CustomMixSheet.swift */; };
 		D9784F504121CB07C4DA5692 /* PlatformClipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9206B33FB0822C561CC3C665 /* PlatformClipboard.swift */; };
 		DBB5DDEB8F4BDF46791533A0 /* MathPracticeCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9FF61486D6172A12D642B9BB /* MathPracticeCore */; };
@@ -91,6 +98,7 @@
 		1459D134AA2F89E85B62859A /* KeyProblemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyProblemStore.swift; sourceTree = "<group>"; };
 		187488CDCAEBAA356DF5CFCD /* WorksheetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksheetsView.swift; sourceTree = "<group>"; };
 		198F6B28337590CBFBE95937 /* CustomMixPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMixPreferences.swift; sourceTree = "<group>"; };
+		1B7866FFA78F864CD684E595 /* ClassAndNoteControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassAndNoteControls.swift; sourceTree = "<group>"; };
 		2BF091EF86454A9370E598B1 /* MathPractice-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "MathPractice-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F07628E40D80964914AC273 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		3271B69343A7DC6D8DBC064E /* MathTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathTextView.swift; sourceTree = "<group>"; };
@@ -102,6 +110,9 @@
 		547458D86E3EDD25F47616DE /* CustomMixSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMixSheet.swift; sourceTree = "<group>"; };
 		564CD3DD592C9C3B13DAA836 /* WorksheetExporterInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksheetExporterInstaller.swift; sourceTree = "<group>"; };
 		59FA40CD26CA88F408B9B970 /* PackImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackImportService.swift; sourceTree = "<group>"; };
+		6026C324190BE0A49ADC073C /* ClassPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPreferences.swift; sourceTree = "<group>"; };
+		60726132B005AB89FD43253E /* ActivityWatchStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityWatchStubs.swift; sourceTree = "<group>"; };
+		61095829D75BE1CE1A58BDF2 /* ActivityWatchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityWatchService.swift; sourceTree = "<group>"; };
 		6801D32377467297703A7722 /* MarkdownSolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownSolutionView.swift; sourceTree = "<group>"; };
 		68BE4C11EE4AE76689310B4E /* MacSessionExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacSessionExporter.swift; sourceTree = "<group>"; };
 		6BE3D982D3DA85C9F957C891 /* SessionExporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionExporting.swift; sourceTree = "<group>"; };
@@ -110,6 +121,7 @@
 		74CF28C8DD3D4164164C436F /* MathPracticeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathPracticeApp.swift; sourceTree = "<group>"; };
 		76DF1C671611410AEEBFF38D /* KeyExporterInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyExporterInstaller.swift; sourceTree = "<group>"; };
 		846FEF2D607662D1D49633DB /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		8654B476E46729AEA447AC3A /* ActivityWatchSettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityWatchSettingsSection.swift; sourceTree = "<group>"; };
 		8B8D3E318B5AFFEB919106E7 /* EventStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStore.swift; sourceTree = "<group>"; };
 		8C4F61480A5CB94E87C3C9BA /* LibraryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModels.swift; sourceTree = "<group>"; };
 		9206B33FB0822C561CC3C665 /* PlatformClipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformClipboard.swift; sourceTree = "<group>"; };
@@ -148,6 +160,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DE5972A4C839D30F97A2488 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				60726132B005AB89FD43253E /* ActivityWatchStubs.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
 		0F0CE42F85850E507226693D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +189,7 @@
 		2DC19BCB851CBD5AD7593E51 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1B7866FFA78F864CD684E595 /* ClassAndNoteControls.swift */,
 				547458D86E3EDD25F47616DE /* CustomMixSheet.swift */,
 				846FEF2D607662D1D49633DB /* DashboardView.swift */,
 				B6072E6F18E01DA67ADCF4DF /* KeyView.swift */,
@@ -189,6 +210,15 @@
 				9ABDC763B9CB199D4590C26B /* MathPractice.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		5297CF8E36561C390CA2B8CD /* ActivityWatch */ = {
+			isa = PBXGroup;
+			children = (
+				0DE5972A4C839D30F97A2488 /* iOS */,
+				C074FEBBB3C4F94B11F29E61 /* macOS */,
+			);
+			path = ActivityWatch;
 			sourceTree = "<group>";
 		};
 		59F13C3372F175BE6DCFB597 = {
@@ -249,10 +279,20 @@
 			name = Packages;
 			sourceTree = "<group>";
 		};
+		C074FEBBB3C4F94B11F29E61 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				61095829D75BE1CE1A58BDF2 /* ActivityWatchService.swift */,
+				8654B476E46729AEA447AC3A /* ActivityWatchSettingsSection.swift */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
 		C2FB726C7ADEE29E9938D634 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				E18426DF1C3B7D1D57EDCA3E /* AppModel.swift */,
+				6026C324190BE0A49ADC073C /* ClassPreferences.swift */,
 				198F6B28337590CBFBE95937 /* CustomMixPreferences.swift */,
 				37E0B541F812DB152AD94B0E /* DeduplicationService.swift */,
 				0A849205F092A26E2F2B0DB7 /* DeviceIdentity.swift */,
@@ -268,6 +308,7 @@
 		D5C1156942F2C4744B644C2F /* MathPracticeApp */ = {
 			isa = PBXGroup;
 			children = (
+				5297CF8E36561C390CA2B8CD /* ActivityWatch */,
 				9FEA1C6C9A5EA639191C6BF0 /* Export */,
 				236488A8A518A61D21CBF436 /* Persistence */,
 				7C51A4B21957A80186339189 /* Rendering */,
@@ -404,7 +445,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B3C066B82F9BEEC14360706 /* ActivityWatchService.swift in Sources */,
+				5FB0A91602E03832F97BFB6A /* ActivityWatchSettingsSection.swift in Sources */,
 				EC6430FE4D21E7612CF6F6D8 /* AppModel.swift in Sources */,
+				D83C014C3FB828C407FF4B0A /* ClassAndNoteControls.swift in Sources */,
+				CFE4F9472E90621F34FC6E7C /* ClassPreferences.swift in Sources */,
 				D061186D8FD31F9A5CB65DD7 /* CustomMixPreferences.swift in Sources */,
 				D934A5EAEA18E6B39A938DD7 /* CustomMixSheet.swift in Sources */,
 				2768A7A0A44F7F6529146C5D /* DashboardView.swift in Sources */,
@@ -446,7 +491,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95B84DD93D0EE59DF8727E52 /* ActivityWatchStubs.swift in Sources */,
 				3F5A44FF92D3BC0AECE7CC06 /* AppModel.swift in Sources */,
+				5B2626A44929843A1721E805 /* ClassAndNoteControls.swift in Sources */,
+				A00CD40E831F08D10C149FEA /* ClassPreferences.swift in Sources */,
 				33BAEE13A4194648E6610132 /* CustomMixPreferences.swift in Sources */,
 				CD02261E135A22D7A50F5947 /* CustomMixSheet.swift in Sources */,
 				B6D4BDE9B0679771A5B68DE6 /* DashboardView.swift in Sources */,
@@ -539,7 +587,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0.11;
+				MARKETING_VERSION = 1.0.12;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -600,7 +648,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0.11;
+				MARKETING_VERSION = 1.0.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

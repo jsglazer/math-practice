@@ -17,6 +17,25 @@
 import Foundation
 import WebKit
 
+/// A web view that never traps vertical scrolling. Each `MathTextView` sizes itself to its
+/// content, so the page inside has nothing to scroll vertically — but on macOS a WKWebView
+/// still swallows every scroll-wheel event, which froze the window whenever the pointer sat
+/// over a revealed solution. Mostly-vertical gestures are handed on to the enclosing scroll
+/// view (the Form); mostly-horizontal ones stay here so a wide expression can still pan.
+#if os(macOS)
+final class PassthroughScrollWebView: WKWebView {
+    override func scrollWheel(with event: NSEvent) {
+        if abs(event.scrollingDeltaY) >= abs(event.scrollingDeltaX), let outer = enclosingScrollView ?? nextResponder {
+            outer.scrollWheel(with: event)
+        } else {
+            super.scrollWheel(with: event)
+        }
+    }
+}
+#else
+typealias PassthroughScrollWebView = WKWebView
+#endif
+
 enum MathRenderError: Error, LocalizedError {
     /// KaTeX reported a failure, or the page could not be loaded.
     case renderFailed(String)
@@ -54,7 +73,7 @@ final class MathRenderer: NSObject {
     init(bundle: Bundle = .main) {
         let configuration = WKWebViewConfiguration()
         configuration.setURLSchemeHandler(KaTeXSchemeHandler(bundle: bundle), forURLScheme: KaTeXAssets.scheme)
-        webView = WKWebView(frame: .zero, configuration: configuration)
+        webView = PassthroughScrollWebView(frame: .zero, configuration: configuration)
         super.init()
 
         configuration.userContentController.add(self, name: Self.messageHandlerName)

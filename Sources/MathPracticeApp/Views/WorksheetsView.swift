@@ -15,6 +15,8 @@ struct WorksheetsView: View {
     @State private var newName = ""
     @State private var questionCount = 10
     @State private var pendingExport: Worksheet?
+    /// `nil` = untagged: counts toward the Practice tab's class, then the Default class.
+    @State private var newClassTag: String?
 
     var body: some View {
         NavigationStack {
@@ -23,12 +25,13 @@ struct WorksheetsView: View {
                     TextField("Name", text: $newName, prompt: Text("Derivs 0821"))
                     Stepper("\(questionCount) questions", value: $questionCount, in: 1...50)
                     SelectionControls()
+                    ClassPicker(title: "Class", nilLabel: "Same as Practice", selection: $newClassTag)
                     Button("Create") {
                         let name = newName.trimmingCharacters(in: .whitespacesAndNewlines)
                         guard !name.isEmpty else { return }
                         // Persist first: the PDF renders from the saved record, so the
                         // printed numbers and the self-report rows cannot diverge.
-                        if let worksheet = model.createWorksheet(name: name, questionCount: questionCount) {
+                        if let worksheet = model.createWorksheet(name: name, questionCount: questionCount, className: newClassTag) {
                             newName = ""
                             if model.worksheetExporter != nil {
                                 pendingExport = worksheet
@@ -92,7 +95,11 @@ struct WorksheetsView: View {
 private extension WorksheetsView {
     func subtitle(for worksheet: Worksheet) -> String {
         let stamp = worksheet.createdAt.formatted(date: .abbreviated, time: .shortened)
-        return "\(worksheet.questions.count) questions · \(stamp)"
+        var parts = ["\(worksheet.questions.count) questions", stamp]
+        if let tag = model.worksheetClassTag(worksheet.id) {
+            parts.append(tag.isEmpty ? "No class" : tag)
+        }
+        return parts.joined(separator: " · ")
     }
 }
 
@@ -120,6 +127,19 @@ struct WorksheetReportView: View {
 
     var body: some View {
         Form {
+            Section {
+                // Synced with the worksheet; the ActivityWatch heartbeat credits time spent
+                // on this sheet to it.
+                ClassPicker(
+                    title: "Class",
+                    nilLabel: "Same as Practice",
+                    selection: Binding(
+                        get: { model.worksheetClassTag(worksheet.id) },
+                        set: { model.setWorksheetClassTag($0, for: worksheet.id) }
+                    )
+                )
+            }
+
             Section {
                 ForEach(worksheet.questions) { question in
                     VStack(alignment: .leading, spacing: 8) {
@@ -153,6 +173,10 @@ struct WorksheetReportView: View {
         }
         .formStyle(.grouped)
         .navigationTitle(worksheet.name)
+        .onAppear { model.openWorksheetID = worksheet.id }
+        .onDisappear {
+            if model.openWorksheetID == worksheet.id { model.openWorksheetID = nil }
+        }
     }
 
     private func binding(for number: Int) -> Binding<AttemptOutcome?> {

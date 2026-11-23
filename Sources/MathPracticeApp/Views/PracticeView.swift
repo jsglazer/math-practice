@@ -16,7 +16,20 @@ struct PracticeView: View {
         NavigationStack {
             Form {
                 Section("What to practise") {
-                    SelectionControls()
+                    // One consolidated line: mix controls, then the problem's ID and note.
+                    SelectionControls {
+                        if let problem = model.currentProblem {
+                            problemAccessory(for: problem)
+                        }
+                    }
+                    ClassPicker(
+                        title: "Class",
+                        nilLabel: defaultClassLabel,
+                        selection: Binding(
+                            get: { model.sessionClassTag },
+                            set: { model.setSessionClassTag($0) }
+                        )
+                    )
                 }
 
                 if let problem = model.currentProblem {
@@ -34,38 +47,25 @@ struct PracticeView: View {
                         }
                         .font(.caption)
                     } footer: {
-                        VStack(alignment: .leading, spacing: 6) {
-                            TextField("Note", text: $keyNoteDraft)
-                                .font(.caption)
-                                .padding(6)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 6)
-                                        .stroke(Color.gray.opacity(0.4))
-                                )
-                                .onSubmit {
-                                    model.setNote(keyNoteDraft, for: problem)
-                                }
-                            HStack {
-                                // Written down for troubleshooting: quoting this ID is enough
-                                // to pull this exact problem instance back up later.
-                                Text("ID \(problem.problemID)")
-                                    .font(.caption2.monospaced())
-                                    .foregroundStyle(.secondary)
-                                    .textSelection(.enabled)
-                                Spacer()
-                                Button {
-                                    model.toggleKey(for: problem)
-                                    keyNoteDraft = model.keyNote(for: problem.problemID) ?? ""
-                                } label: {
-                                    Label(
-                                        model.isKey(problem.problemID) ? "Key" : "Mark as key",
-                                        systemImage: model.isKey(problem.problemID) ? "star.fill" : "star"
-                                    )
-                                }
-                                .buttonStyle(.plain)
-                                .font(.title3)
-                                .foregroundStyle(model.isKey(problem.problemID) ? .yellow : .secondary)
+                        HStack(alignment: .top) {
+                            // The saved note, rendered as Markdown.
+                            if let note = model.keyNote(for: problem.problemID), !note.isEmpty {
+                                MarkdownNoteText(note: note)
+                                    .font(.callout)
                             }
+                            Spacer()
+                            Button {
+                                model.toggleKey(for: problem)
+                                keyNoteDraft = model.keyNote(for: problem.problemID) ?? ""
+                            } label: {
+                                Label(
+                                    model.isKey(problem.problemID) ? "Key" : "Mark as key",
+                                    systemImage: model.isKey(problem.problemID) ? "star.fill" : "star"
+                                )
+                            }
+                            .buttonStyle(.plain)
+                            .font(.title3)
+                            .foregroundStyle(model.isKey(problem.problemID) ? .yellow : .secondary)
                         }
                     }
 
@@ -75,6 +75,8 @@ struct PracticeView: View {
                                 .disabled(model.revealState.answerShown)
                             Button(stepButtonTitle, action: model.revealStep)
                                 .disabled(!model.canRevealMoreSteps)
+                            Button(model.solutionHidden ? "Show steps" : "Hide steps", action: model.toggleSolutionHidden)
+                                .disabled(!model.hasRevealedSolution)
                             Spacer()
                             Button("View as Markdown", systemImage: "doc.on.clipboard") {
                                 showMarkdownSheet = true
@@ -85,7 +87,7 @@ struct PracticeView: View {
                         // Answer and steps render together in one WKWebView, so a person can
                         // select and copy the whole worked solution in one drag rather than
                         // hunting through a separate box per step.
-                        if !solutionBlocks.isEmpty {
+                        if !solutionBlocks.isEmpty, !model.solutionHidden {
                             MathTextView(blocks: solutionBlocks, minHeight: 60)
                         }
                     }
@@ -163,6 +165,26 @@ struct PracticeView: View {
                 MarkdownSolutionView(markdown: markdownText)
             }
         }
+    }
+
+    /// The problem's ID and an inline note field, riding at the end of the selection row.
+    /// The ID is written down for troubleshooting: quoting it is enough to pull this exact
+    /// problem instance back up later.
+    @ViewBuilder
+    private func problemAccessory(for problem: GeneratedProblem) -> some View {
+        Text("ID \(problem.problemID)")
+            .font(.body.monospaced())
+            .foregroundStyle(.secondary)
+            .textSelection(.enabled)
+            .fixedSize()
+        NoteField(text: $keyNoteDraft) {
+            model.setNote(keyNoteDraft, for: problem)
+        }
+        .frame(minWidth: 140, maxWidth: 280)
+    }
+
+    private var defaultClassLabel: String {
+        model.defaultClassName.isEmpty ? "Default (no class)" : "Default (\(model.defaultClassName))"
     }
 
     /// Once the answer is out there is nothing left to gate, so the label says so.

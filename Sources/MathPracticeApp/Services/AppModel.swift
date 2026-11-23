@@ -28,6 +28,8 @@ final class AppModel {
     let sessionExporter: (any SessionExporting)?
     /// `nil` on iOS: there is no `KeyExporting` conformance there.
     let keyExporter: (any KeyExporting)?
+    /// Heartbeats to the local ActivityWatch server. A no-op on iOS (`ActivityWatch/iOS`).
+    let activityWatch = ActivityWatchService()
 
     // MARK: Derived state (in-memory cache of a pure fold — never persisted)
 
@@ -38,6 +40,23 @@ final class AppModel {
     /// Every note-bearing record, starred or not — separate from `keyProblems` (which is
     /// starred-only) so a note on an unstarred problem still shows up where it was typed.
     private(set) var noteRecords: [KeyProblemRecord] = []
+    /// Worksheet class tags by worksheet ID (synced on the record; untagged = absent).
+    private(set) var worksheetClassTags: [UUID: String] = [:]
+
+    // MARK: Classes and ActivityWatch (local preferences — never the event log or CloudKit)
+
+    /// The classes every class picker offers, spelled exactly as the Classes dashboard does.
+    private(set) var classNames: [String]
+    /// What untagged work counts toward on this device. `""` = no class.
+    private(set) var defaultClassName: String
+    /// The Practice tab's class: `nil` = use the Default class, `""` = no class.
+    private(set) var sessionClassTag: String?
+    private(set) var activityWatchEnabled: Bool
+    private(set) var activityWatchServer: String
+
+    /// Which tab is on screen and which worksheet (if any) is open — what the heartbeat reports.
+    var activeTab: ActivityTab = .practice
+    var openWorksheetID: UUID?
 
     // MARK: Session state
 
@@ -56,6 +75,9 @@ final class AppModel {
     private(set) var revealState = RevealState()
     private(set) var revealedAnswer: String?
     private(set) var revealedSteps: [SolutionStep] = []
+    /// "Hide steps": the revealed answer and steps stay revealed but are folded away until
+    /// asked for again, so the problem can be re-attempted from a clean screen.
+    private(set) var solutionHidden = false
     private(set) var lastError: String?
 
     /// The session's generator. Seeded once so a session is reproducible end to end.
@@ -82,6 +104,11 @@ final class AppModel {
         self.selectedTopic = registry.topics.first?.id
         self.customMixSelectedKeys = CustomMixPreferences.loadSelectedKeys() ?? Set(registry.practiceKeys)
         self.customMixDifficulty = CustomMixPreferences.loadDifficulty() ?? 3
+        self.classNames = ClassPreferences.loadClassNames()
+        self.defaultClassName = ClassPreferences.loadDefaultClass()
+        self.sessionClassTag = ClassPreferences.loadSessionClass()
+        self.activityWatchEnabled = ClassPreferences.loadActivityWatchEnabled()
+        self.activityWatchServer = ClassPreferences.loadActivityWatchServer()
     }
 
     // MARK: - Lifecycle
@@ -89,6 +116,11 @@ final class AppModel {
     func start() {
         deduplication.start()
         reload()
+        activityWatch.start(
+            context: { [weak self] in self?.activityContext },
+            isEnabled: { [weak self] in self?.activityWatchEnabled ?? false },
+            server: { [weak self] in self?.activityWatchServer ?? ActivityWatchAPI.defaultServer }
+        )
     }
 
     /// Re-reads the stream and recomputes everything derived from it.
@@ -98,6 +130,7 @@ final class AppModel {
         worksheets = worksheetStore.all()
         keyProblems = keyProblemStore.all()
         noteRecords = keyProblemStore.allRecords()
+        worksheetClassTags = worksheetStore.classTags()
     }
 
     // MARK: - Derived views
@@ -171,12 +204,21 @@ final class AppModel {
         customMixEnabled = true
         CustomMixPreferences.saveSelectedKeys(keys)
         CustomMixPreferences.saveDifficulty(customMixDifficulty)
+        resetProblemAfterSelectionChange()
     }
 
     /// Turns custom mix off and returns to the ordinary pickers. The checked set and
     /// difficulty stay remembered so reopening the picker starts from where it left off.
     func clearCustomMix() {
         customMixEnabled = false
+        resetProblemAfterSelectionChange()
+    }
+
+    /// The problem on screen was drawn from the old selection, so after the mix changes it is
+    /// replaced (unlogged — it was never attempted under the new mix) with one from the new.
+    private func resetProblemAfterSelectionChange() {
+        guard currentProblem != nil else { return }
+        nextProblem()
     }
 
     func nextProblem() {
@@ -186,6 +228,7 @@ final class AppModel {
             revealState = RevealState()
             revealedAnswer = nil
             revealedSteps = []
+            solutionHidden = false
             lastError = nil
         } catch {
             lastError = "No problem available for that selection."
@@ -207,6 +250,7 @@ final class AppModel {
         let machine = RevealMachine(problem: currentProblem)
         let result = machine.apply(request, to: revealState)
         revealState = result.state
+        solutionHidden = false
 
         switch result.output {
         case let .answer(latex):
@@ -218,6 +262,15 @@ final class AppModel {
         case .noFurtherSteps:
             break
         }
+    }
+
+    /// Folds the revealed answer and steps away, or brings them back.
+    func toggleSolutionHidden() {
+        solutionHidden.toggle()
+    }
+
+    var hasRevealedSolution: Bool {
+        revealedAnswer != nil || !revealedSteps.isEmpty
     }
 
     var canRevealMoreSteps: Bool {
@@ -297,13 +350,13 @@ final class AppModel {
 
     /// Freezes a worksheet. Always called before any rendering: the PDF reads the record.
     @discardableResult
-    func createWorksheet(name: String, questionCount: Int) -> Worksheet? {
+    func createWorksheet(name: String, questionCount: Int, className: String? = nil) -> Worksheet? {
         let selector = ProblemSelector(registry: registry)
         do {
             let problems = try (0..<questionCount).map { _ in
                 try selector.next(nextPracticeRequest(), ladder: ladder, using: &generator)
             }
-            let worksheet = try worksheetStore.persist(name: name, problems: problems)
+            let worksheet = try worksheetStore.persist(name: name, problems: problems, className: className)
             reload()
             return worksheet
         } catch {
@@ -352,6 +405,81 @@ final class AppModel {
         } catch {
             lastError = error.localizedDescription
         }
+    }
+
+    // MARK: - Classes
+
+    func worksheetClassTag(_ worksheetID: UUID) -> String? {
+        worksheetClassTags[worksheetID]
+    }
+
+    func setWorksheetClassTag(_ className: String?, for worksheetID: UUID) {
+        worksheetStore.setClassTag(className, for: worksheetID)
+        reload()
+    }
+
+    func setSessionClassTag(_ tag: String?) {
+        sessionClassTag = tag
+        ClassPreferences.saveSessionClass(tag)
+    }
+
+    func setDefaultClassName(_ name: String) {
+        defaultClassName = name
+        ClassPreferences.saveDefaultClass(name)
+    }
+
+    /// Adds a class name (trimmed; ignored if blank or already listed).
+    func addClassName(_ name: String) {
+        let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty, !classNames.contains(trimmed) else { return }
+        classNames.append(trimmed)
+        ClassPreferences.saveClassNames(classNames)
+    }
+
+    /// Removes a class from the pickers. Existing tags that use it are left alone — the
+    /// pickers still show a tag that is no longer listed, so nothing is silently re-tagged.
+    func removeClassNames(at offsets: IndexSet) {
+        classNames.remove(atOffsets: offsets)
+        ClassPreferences.saveClassNames(classNames)
+    }
+
+    func setActivityWatchEnabled(_ enabled: Bool) {
+        activityWatchEnabled = enabled
+        ClassPreferences.saveActivityWatchEnabled(enabled)
+    }
+
+    func setActivityWatchServer(_ server: String) {
+        let trimmed = server.trimmingCharacters(in: .whitespacesAndNewlines)
+        activityWatchServer = trimmed.isEmpty ? ActivityWatchAPI.defaultServer : trimmed
+        ClassPreferences.saveActivityWatchServer(activityWatchServer)
+    }
+
+    /// The class the work on screen counts toward right now.
+    var activeClassName: String {
+        let worksheetTag = activeTab == .worksheets ? openWorksheetID.flatMap(worksheetClassTag) : nil
+        return ActivityClass.resolve(worksheetTag: worksheetTag, sessionTag: sessionClassTag, defaultClass: defaultClassName)
+    }
+
+    /// What the ActivityWatch heartbeat reports for the screen as it is now.
+    var activityContext: ActivityContext {
+        let selection: ActivityContextBuilder.Selection
+        let level: Int
+        if customMixEnabled {
+            selection = .customMix(subtypes: sortedCustomMixKeys.map { registry.displayName(for: $0) })
+            level = customMixDifficulty
+        } else {
+            let topic = selectedTopic.flatMap { registry.topic($0) }
+            let subType = selectedSubType.flatMap { id in topic?.subTypes.first { $0.id == id } }
+            selection = .pickers(topic: topic?.displayName, subtype: subType?.displayName)
+            level = effectiveDifficulty
+        }
+        return ActivityContextBuilder.make(
+            tab: activeTab,
+            selection: selection,
+            level: level,
+            problemID: activeTab == .practice ? currentProblem?.problemID : nil,
+            className: activeClassName
+        )
     }
 
     // MARK: - Packs
